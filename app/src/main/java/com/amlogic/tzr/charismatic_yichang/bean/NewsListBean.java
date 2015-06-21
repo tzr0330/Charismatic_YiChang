@@ -1,19 +1,18 @@
 package com.amlogic.tzr.charismatic_yichang.bean;
 
-import java.io.File;
-
 import cn.bmob.v3.BmobObject;
+import cn.bmob.v3.datatype.BmobFile;
 
 public class NewsListBean extends BmobObject {
     private String news_title;
-    private File news_thumb;
+    private BmobFile news_thumb;
     private String news_type;
 
     public String getNews_title() {
         return news_title;
     }
 
-    public File getNews_thumb() {
+    public BmobFile getNews_thumb() {
         return news_thumb;
     }
 
@@ -25,7 +24,7 @@ public class NewsListBean extends BmobObject {
         this.news_title = news_title;
     }
 
-    public void setNews_thumb(File news_thumb) {
+    public void setNews_thumb(BmobFile news_thumb) {
         this.news_thumb = news_thumb;
     }
 

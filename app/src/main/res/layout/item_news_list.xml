@@ -3,12 +3,11 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="horizontal">
-
-    <ImageView
+    <com.android.volley.toolbox.NetworkImageView
         android:id="@+id/iv_inl_img"
-        android:layout_width="60dp"
+        android:layout_width="100dp"
         android:layout_height="60dp"
-        android:layout_margin="10dp" />
+        android:layout_margin="5dp"/>
 
     <TextView
         android:id="@+id/tv_inl_title"

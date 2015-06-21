@@ -4,6 +4,7 @@ package com.amlogic.tzr.charismatic_yichang.fragment;
 import android.content.Context;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -52,7 +53,7 @@ public class NewsFragment extends Fragment {
     private Context context;
     private NewsAdapter mAdapter;
 
-    private List<NewsListBean> list = new ArrayList<NewsListBean>();
+    private List<NewsListBean> list ;
     private int pageNum = 0;
 
 
@@ -66,12 +67,13 @@ public class NewsFragment extends Fragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         context = getActivity();
+        list = new ArrayList<NewsListBean>();
         Bundle arguments = getArguments();
         if (arguments != null) {
-            list.clear();
             type = arguments.getString(BUNDLE_URL);
 
         }
+        Log.d(TAG,"-------type==="+type);
     }
 
     @Override
@@ -156,6 +158,7 @@ public class NewsFragment extends Fragment {
         bmobQuery.addWhereEqualTo("news_type", type);
         bmobQuery.setLimit(limit);            // 设置每页多少条数据
         bmobQuery.setSkip(page * limit);        // 从第几条数据开始
+
         bmobQuery.findObjects(context, new FindListener<NewsListBean>() {
             @Override
             public void onSuccess(List<NewsListBean> queryList) {
@@ -189,6 +192,9 @@ public class NewsFragment extends Fragment {
             }
         });
     }
+
+
+
 
     private void showToast(String msg) {
         Toast.makeText(context, msg, Toast.LENGTH_SHORT).show();

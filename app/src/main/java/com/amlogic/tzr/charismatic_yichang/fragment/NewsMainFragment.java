@@ -58,15 +58,16 @@ public class NewsMainFragment extends Fragment {
         new_fm=NewsFragment.newInstance(NewsFragment.FLAG_NEW);
         hot_fm=NewsFragment.newInstance(NewsFragment.FLAG_HOT);
         recommand_fm=NewsFragment.newInstance(NewsFragment.FLAG_RECOMMAND);
+        fragments.add(recommand_fm);
         fragments.add(new_fm);
         fragments.add(hot_fm);
-        fragments.add(recommand_fm);
         List<String> titles=new ArrayList<String>();
         titles.add(getResources().getString(R.string.recommand_news));
         titles.add(getResources().getString(R.string.new_news));
         titles.add(getResources().getString(R.string.hot_news));
         fragmentAdapter=new FragmentAdapter(getActivity().getSupportFragmentManager(),fragments,titles);
         mViewPager.setAdapter(fragmentAdapter);
+        mViewPager.setOffscreenPageLimit(3);
         mTabLayout.setupWithViewPager(mViewPager);
         mTabLayout.setTabsFromPagerAdapter(fragmentAdapter);
     }

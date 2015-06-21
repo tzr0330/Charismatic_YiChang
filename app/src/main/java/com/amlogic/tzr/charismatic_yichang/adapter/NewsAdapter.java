@@ -5,13 +5,16 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
-import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.amlogic.tzr.charismatic_yichang.R;
+import com.amlogic.tzr.charismatic_yichang.Tool.VolleyImageCache;
 import com.amlogic.tzr.charismatic_yichang.bean.NewsListBean;
+import com.android.volley.toolbox.NetworkImageView;
 
 import java.util.List;
+
+import cn.bmob.v3.datatype.BmobFile;
 
 
 public class NewsAdapter extends BaseAdapter {
@@ -55,7 +58,7 @@ public class NewsAdapter extends BaseAdapter {
         if (convertView == null) {
             viewHolder = new viewHolder();
             convertView = LayoutInflater.from(context).inflate(R.layout.item_news_list, null);
-            viewHolder.imageView = (ImageView) convertView.findViewById(R.id.iv_inl_img);
+            viewHolder.imageView = (NetworkImageView) convertView.findViewById(R.id.iv_inl_img);
             viewHolder.titletTextView = (TextView) convertView.findViewById(R.id.tv_inl_title);
             convertView.setTag(viewHolder);
         } else {
@@ -63,8 +66,14 @@ public class NewsAdapter extends BaseAdapter {
         }
         if (list.size() > 0) {
             NewsListBean bean = list.get(position);
-//	    CacheTool.displayImg( viewHolder.imageView,Config.URL_IMG+bean.getThumb());
-            viewHolder.imageView.setImageResource(R.mipmap.ic_launcher);
+            if (bean.getNews_thumb()!=null){
+                BmobFile icon=bean.getNews_thumb();
+                String url=icon.getFileUrl(context);
+                VolleyImageCache.networkImageViewUse(viewHolder.imageView,url);
+            }else{
+                viewHolder.imageView.setImageResource(R.mipmap.pic_default);
+            }
+
             viewHolder.titletTextView.setText(bean.getNews_title());
         }
 
@@ -72,7 +81,7 @@ public class NewsAdapter extends BaseAdapter {
     }
 
     static class viewHolder {
-        ImageView imageView;
+        NetworkImageView imageView;
         TextView titletTextView;
     }
 }
