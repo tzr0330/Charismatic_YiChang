@@ -1,0 +1,23 @@
+<resources>
+    <string name="app_name">魅力宜昌</string>
+
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Settings</string>
+    
+    
+    
+    <string name="news_yc">宜昌资讯</string>
+    <string name="tour_yc">宜昌旅游</string>
+    <string name="food_yc">宜昌美食</string>
+    <string name="info_yc">宜昌百科</string>
+
+    <string name="version">版本</string>
+    <string name="about_us">关于</string>
+
+    <string name="hot_news">热门</string>
+    <string name="new_news">最新</string>
+    <string name="recommand_news">推荐</string>
+
+<!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+</resources>

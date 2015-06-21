@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/news_yc"
+            android:icon="@mipmap/ic_dashboard"
+            android:title="@string/news_yc"/>
+        <item
+            android:id="@+id/tour_yc"
+            android:icon="@mipmap/ic_event"
+            android:title="@string/tour_yc"/>
+        <item
+            android:id="@+id/food_yc"
+            android:icon="@mipmap/ic_headset"
+            android:title="@string/food_yc"/>
+        <item
+            android:id="@+id/info_yc"
+            android:icon="@mipmap/ic_forum"
+            android:title="@string/info_yc"/>
+    </group>
+
+    <item android:title="Version">
+        <menu>
+            <item
+                android:id="@+id/version"
+                android:icon="@mipmap/ic_dashboard"
+                android:title="@string/version"/>
+            <item
+                android:id="@+id/about"
+                android:icon="@mipmap/ic_dashboard"
+                android:title="@string/about_us"/>
+        </menu>
+    </item>
+
+</menu>
