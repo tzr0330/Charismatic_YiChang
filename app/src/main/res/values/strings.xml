@@ -18,6 +18,15 @@
     <string name="new_news">最新</string>
     <string name="recommand_news">推荐</string>
 
+
+    <string name="pull_to_refresh_top_pull">下拉刷新</string>
+    <string name="pull_to_refresh_top_release">释放刷新</string>
+    <string name="pull_to_refresh_top_refreshing">加载中...</string>
+    <string name="pull_to_refresh_bottom_pull">继续拖动</string>
+    <string name="pull_to_refresh_bottom_release">放开装载更多</string>
+    <string name="pull_to_refresh_bottom_refreshing">正在装载数据..</string>
+    <string name="pull_to_refresh_no_data">没有更多数据</string>
+
 <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>
