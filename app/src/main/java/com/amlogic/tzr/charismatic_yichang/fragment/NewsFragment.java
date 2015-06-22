@@ -2,6 +2,7 @@ package com.amlogic.tzr.charismatic_yichang.fragment;
 
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.util.Log;
@@ -9,10 +10,12 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AbsListView;
+import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.Toast;
 
 import com.amlogic.tzr.charismatic_yichang.R;
+import com.amlogic.tzr.charismatic_yichang.activity.NewsDetailActivity;
 import com.amlogic.tzr.charismatic_yichang.adapter.NewsAdapter;
 import com.amlogic.tzr.charismatic_yichang.bean.NewsListBean;
 import com.handmark.pulltorefresh.library.ILoadingLayout;
@@ -35,10 +38,10 @@ public class NewsFragment extends Fragment {
     public static final String FLAG_HOT = "hot";
     public static final String FLAG_RECOMMAND = "recommand";
 
-    private static final int STATE_REFRESH = 0;// ÏÂÀ­Ë¢ĞÂ
-    private static final int STATE_MORE = 1;// ¼ÓÔØ¸ü¶à
-    private int limit = 10; // Ã¿Ò³µÄÊı¾İÊÇ10Ìõ
-    private int curPage = 0; // µ±Ç°Ò³µÄ±àºÅ£¬´Ó0¿ªÊ¼
+    private static final int STATE_REFRESH = 0;// ï¿½ï¿½ï¿½ï¿½Ë¢ï¿½ï¿½
+    private static final int STATE_MORE = 1;// ï¿½ï¿½ï¿½Ø¸ï¿½ï¿½ï¿½
+    private int limit = 10; // Ã¿Ò³ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½10ï¿½ï¿½
+    private int curPage = 0; // ï¿½ï¿½Ç°Ò³ï¿½Ä±ï¿½Å£ï¿½ï¿½ï¿½0ï¿½ï¿½Ê¼
     private ILoadingLayout mILoadingLayout;
     private PullToRefreshListView news_Listview;
     private ListView mMsgListView;
@@ -130,52 +133,60 @@ public class NewsFragment extends Fragment {
             }
         });
 
-        // ÏÂÀ­Ë¢ĞÂ¼àÌı
         news_Listview.setOnRefreshListener(new PullToRefreshBase.OnRefreshListener2<ListView>() {
 
             @Override
             public void onPullDownToRefresh(
                     PullToRefreshBase<ListView> refreshView) {
-                // ÏÂÀ­Ë¢ĞÂ(´ÓµÚÒ»Ò³¿ªÊ¼×°ÔØÊı¾İ)
                 queryData(0, STATE_REFRESH, type);
             }
 
             @Override
             public void onPullUpToRefresh(
                     PullToRefreshBase<ListView> refreshView) {
-                // ÉÏÀ­¼ÓÔØ¸ü¶à(¼ÓÔØÏÂÒ»Ò³Êı¾İ)
                 queryData(curPage, STATE_MORE, type);
+            }
+        });
+        news_Listview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Intent newsId_intent=new Intent(context, NewsDetailActivity.class);
+                String newsId=list.get(position-1).getObjectId();
+                String news_title=list.get(position-1).getNews_title();
+                Bundle bundle=new Bundle();
+                bundle.putCharSequence("news_id",newsId);
+                bundle.putCharSequence("news_title",news_title);
+                newsId_intent.putExtras(bundle);
+                startActivity(newsId_intent);
             }
         });
         mMsgListView = news_Listview.getRefreshableView();
         mAdapter = new NewsAdapter(context, list);
-        // ÔÙÉèÖÃadapter
         mMsgListView.setAdapter(mAdapter);
     }
 
     private void queryData(final int page, final int actionType, String type) {
         bmobQuery = new BmobQuery<NewsListBean>();
         bmobQuery.addWhereEqualTo("news_type", type);
-        bmobQuery.setLimit(limit);            // ÉèÖÃÃ¿Ò³¶àÉÙÌõÊı¾İ
-        bmobQuery.setSkip(page * limit);        // ´ÓµÚ¼¸ÌõÊı¾İ¿ªÊ¼
+        bmobQuery.setLimit(limit);
+        bmobQuery.setSkip(page * limit);
 
         bmobQuery.findObjects(context, new FindListener<NewsListBean>() {
             @Override
             public void onSuccess(List<NewsListBean> queryList) {
                 if (queryList.size() > 0) {
                     if (actionType == STATE_REFRESH) {
-                        // µ±ÊÇÏÂÀ­Ë¢ĞÂ²Ù×÷Ê±£¬½«µ±Ç°Ò³µÄ±àºÅÖØÖÃÎª0£¬²¢°ÑlistÇå¿Õ£¬ÖØĞÂÌí¼Ó
+
                         curPage = 0;
                         list.clear();
                     }
-                    // ½«±¾´Î²éÑ¯µÄÊı¾İÌí¼Óµ½listÖĞ
+
                     for (NewsListBean bean : queryList) {
                         list.add(bean);
                     }
-                    // ÕâÀïÔÚÃ¿´Î¼ÓÔØÍêÊı¾İºó£¬½«µ±Ç°Ò³Âë+1£¬ÕâÑùÔÚÉÏÀ­Ë¢ĞÂµÄonPullUpToRefresh·½·¨ÖĞ¾Í²»ĞèÒª²Ù×÷curPageÁË
                     curPage++;
                 } else if (actionType == STATE_MORE) {
-                    showToast("Ã»ÓĞ¸ü¶àÊı¾İÁË");
+                    showToast("æ²¡æœ‰æ›´å¤šæ•°æ®äº†");
                 } else if (actionType == STATE_REFRESH) {
 
                 }
@@ -187,7 +198,7 @@ public class NewsFragment extends Fragment {
 
             @Override
             public void onError(int i, String s) {
-                showToast("²éÑ¯Ê§°Ü:" + s);
+                showToast("åˆ·æ–°å¤±è´¥:" + s);
                 news_Listview.onRefreshComplete();
             }
         });

@@ -62,8 +62,6 @@ public class MainActivity extends AppCompatActivity {
             setupDrawerContent(mNavigationView);
         }
 
-
-
     }
 
     private void setTabSelection(int index) {
