@@ -5,7 +5,6 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -48,18 +47,11 @@ public class NewsFragment extends Fragment {
 
 
     private String type;
-    private int page_total = 0;
-    private int page = 1;
-    private int default_pageSize = 10;
-    private int show_id = 0;
     private View fragmentView;
     private Context context;
     private NewsAdapter mAdapter;
 
     private List<NewsListBean> list ;
-    private int pageNum = 0;
-
-
     private BmobQuery<NewsListBean> bmobQuery;
 
     public NewsFragment() {
@@ -76,7 +68,6 @@ public class NewsFragment extends Fragment {
             type = arguments.getString(BUNDLE_URL);
 
         }
-        Log.d(TAG,"-------type==="+type);
     }
 
     @Override
