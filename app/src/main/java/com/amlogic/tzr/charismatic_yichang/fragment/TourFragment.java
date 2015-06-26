@@ -2,16 +2,19 @@ package com.amlogic.tzr.charismatic_yichang.fragment;
 
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AbsListView;
+import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.Toast;
 
 import com.amlogic.tzr.charismatic_yichang.R;
+import com.amlogic.tzr.charismatic_yichang.activity.TourDetailActivity;
 import com.amlogic.tzr.charismatic_yichang.adapter.TourAdapter;
 import com.amlogic.tzr.charismatic_yichang.bean.TourListBean;
 import com.handmark.pulltorefresh.library.ILoadingLayout;
@@ -122,6 +125,20 @@ public class TourFragment extends Fragment {
                         queryData(curPage, STATE_MORE);
                     }
                 });
+        mPullToRefreshView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Intent tourId_intent=new Intent(context, TourDetailActivity.class);
+                String tour_id=list.get(position-1).getObjectId();
+                String tour_title=list.get(position-1).getTour_name();
+                Bundle bundle=new Bundle();
+                bundle.putCharSequence("tour_id",tour_id);
+                bundle.putCharSequence("tour_title",tour_title);
+                tourId_intent.putExtras(bundle);
+                startActivity(tourId_intent);
+            }
+        });
+
         mMsgListView = mPullToRefreshView.getRefreshableView();
         mAdapter=new TourAdapter(context,list);
         mMsgListView.setAdapter(mAdapter);

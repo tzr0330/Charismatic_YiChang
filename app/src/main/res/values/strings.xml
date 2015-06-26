@@ -18,6 +18,11 @@
     <string name="new_news">最新</string>
     <string name="recommand_news">推荐</string>
 
+    <string name="tour_info">景点介绍</string>
+    <string name="tour_tip">特别提示</string>
+    <string name="tour_morePic">更多图片</string>
+    <string name="tour_look">查看</string>
+
 
     <string name="pull_to_refresh_top_pull">下拉刷新</string>
     <string name="pull_to_refresh_top_release">释放刷新</string>
@@ -27,6 +32,18 @@
     <string name="pull_to_refresh_bottom_refreshing">正在装载数据..</string>
     <string name="pull_to_refresh_no_data">没有更多数据</string>
 
+
+
+
 <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="title_activity_tour_detail">TourDetailActivity</string>
+
+
+
+
+
+
+
+
 </resources>
