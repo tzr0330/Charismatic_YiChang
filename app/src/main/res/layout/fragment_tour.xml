@@ -10,8 +10,10 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:fadingEdge="none"
+        android:divider="@null"
         android:fastScrollEnabled="false"
         android:smoothScrollbar="true"
+        android:layout_marginTop="16dp"
         ptr:ptrMode="both"/>
 
 </LinearLayout>
