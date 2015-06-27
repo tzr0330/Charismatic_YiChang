@@ -1,17 +1,15 @@
 package com.amlogic.tzr.charismatic_yichang.bean;
 
+import java.util.ArrayList;
+
 import cn.bmob.v3.BmobObject;
-import cn.bmob.v3.datatype.BmobFile;
 
 /**
  * Created by Administrator on 2015/6/27.
  */
 public class TourDetailBean extends BmobObject {
     private String tour_id;
-    private BmobFile tour_img1;
-    private BmobFile tour_img2;
-    private BmobFile tour_img3;
-    private BmobFile tour_img4;
+    private ArrayList<String> tour_banner;
     private String tour_info;
     private String tour_tip;
 
@@ -23,36 +21,12 @@ public class TourDetailBean extends BmobObject {
         this.tour_id = tour_id;
     }
 
-    public BmobFile getTour_img1() {
-        return tour_img1;
+    public ArrayList<String> getTour_banner() {
+        return tour_banner;
     }
 
-    public void setTour_img1(BmobFile tour_img1) {
-        this.tour_img1 = tour_img1;
-    }
-
-    public BmobFile getTour_img2() {
-        return tour_img2;
-    }
-
-    public void setTour_img2(BmobFile tour_img2) {
-        this.tour_img2 = tour_img2;
-    }
-
-    public BmobFile getTour_img3() {
-        return tour_img3;
-    }
-
-    public void setTour_img3(BmobFile tour_img3) {
-        this.tour_img3 = tour_img3;
-    }
-
-    public BmobFile getTour_img4() {
-        return tour_img4;
-    }
-
-    public void setTour_img4(BmobFile tour_img4) {
-        this.tour_img4 = tour_img4;
+    public void setTour_banner(ArrayList<String> tour_banner) {
+        this.tour_banner = tour_banner;
     }
 
     public String getTour_info() {

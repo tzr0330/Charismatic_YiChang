@@ -105,10 +105,7 @@ public class TourDetailActivity extends AppCompatActivity {
             @Override
             public void onSuccess(List<TourDetailBean> list) {
                 if (list.size() > 0) {
-                    mImageUrl.add(list.get(0).getTour_img1().getFileUrl(mContext));
-                    mImageUrl.add(list.get(0).getTour_img2().getFileUrl(mContext));
-                    mImageUrl.add(list.get(0).getTour_img3().getFileUrl(mContext));
-                    mImageUrl.add(list.get(0).getTour_img4().getFileUrl(mContext));
+                    mImageUrl=list.get(0).getTour_banner();
                     mImageCycleView.setImageResources(mImageUrl, mAdCycleViewListener);
                     tv_info.setText(Html.fromHtml(list.get(0).getTour_info()));
                     tv_tip.setText(Html.fromHtml(list.get(0).getTour_tip()));
