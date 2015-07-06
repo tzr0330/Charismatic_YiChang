@@ -8,11 +8,12 @@
     
     <string name="news_yc">宜昌资讯</string>
     <string name="tour_yc">宜昌旅游</string>
-    <string name="food_yc">宜昌美食</string>
+    <string name="video_yc">宜昌风采</string>
     <string name="info_yc">宜昌百科</string>
 
     <string name="version">版本</string>
     <string name="about_us">关于</string>
+    <string name="setting">设置</string>
 
     <string name="hot_news">热门</string>
     <string name="new_news">最新</string>

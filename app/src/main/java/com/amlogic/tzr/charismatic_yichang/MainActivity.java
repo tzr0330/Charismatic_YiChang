@@ -12,7 +12,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 
-import com.amlogic.tzr.charismatic_yichang.fragment.FoodFragment;
+import com.amlogic.tzr.charismatic_yichang.fragment.VideoFragment;
 import com.amlogic.tzr.charismatic_yichang.fragment.InfoFragment;
 import com.amlogic.tzr.charismatic_yichang.fragment.NewsMainFragment;
 import com.amlogic.tzr.charismatic_yichang.fragment.TourFragment;
@@ -34,7 +34,7 @@ public class MainActivity extends AppCompatActivity {
      */
     private List<Fragment> mFragments = new ArrayList<Fragment>();
     private NewsMainFragment mNewsMainFragment;
-    private FoodFragment mFoodFragment;
+    private VideoFragment mFoodFragment;
     private TourFragment mTourFragment;
     private InfoFragment mInfoFragment;
 
@@ -87,7 +87,7 @@ public class MainActivity extends AppCompatActivity {
                 break;
             case 2:
                 if (mFoodFragment==null){
-                    mFoodFragment = new FoodFragment();
+                    mFoodFragment = new VideoFragment();
                     transaction.add(R.id.fl_main_content,mFoodFragment);
                 }else{
                     transaction.show(mFoodFragment);
@@ -150,7 +150,7 @@ public class MainActivity extends AppCompatActivity {
                                 mToolbar.setTitle(menuItem.getTitle());
                                 menuItem.setChecked(true);
                                 break;
-                            case R.id.version:
+                            case R.id.setting:
 
                                 break;
                             case R.id.about:

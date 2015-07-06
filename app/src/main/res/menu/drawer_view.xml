@@ -9,12 +9,12 @@
             android:title="@string/news_yc"/>
         <item
             android:id="@+id/tour_yc"
-            android:icon="@mipmap/ic_event"
+            android:icon="@mipmap/ic_stars_black_24dp"
             android:title="@string/tour_yc"/>
         <item
             android:id="@+id/food_yc"
-            android:icon="@mipmap/ic_headset"
-            android:title="@string/food_yc"/>
+            android:icon="@mipmap/ic_video_library_black_24dp"
+            android:title="@string/video_yc"/>
         <item
             android:id="@+id/info_yc"
             android:icon="@mipmap/ic_forum"
@@ -24,13 +24,14 @@
     <item android:title="Version">
         <menu>
             <item
-                android:id="@+id/version"
-                android:icon="@mipmap/ic_dashboard"
-                android:title="@string/version"/>
-            <item
                 android:id="@+id/about"
-                android:icon="@mipmap/ic_dashboard"
+                android:icon="@mipmap/ic_receipt_black_24dp"
                 android:title="@string/about_us"/>
+
+            <item
+                android:id="@+id/setting"
+                android:icon="@mipmap/ic_settings_applications_black_24dp"
+                android:title="@string/setting"/>
         </menu>
     </item>
 
