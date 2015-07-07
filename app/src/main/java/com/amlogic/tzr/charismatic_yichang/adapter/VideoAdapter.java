@@ -13,7 +13,7 @@ import com.amlogic.tzr.charismatic_yichang.R;
 import com.amlogic.tzr.charismatic_yichang.Tool.BitmapCache;
 import com.amlogic.tzr.charismatic_yichang.Tool.ScreenUtil;
 import com.amlogic.tzr.charismatic_yichang.bean.VideoListBean;
-import com.amlogic.tzr.charismatic_yichang.view.SquaredImageView;
+import com.amlogic.tzr.charismatic_yichang.view.ShowMaxImageView;
 import com.android.volley.RequestQueue;
 import com.android.volley.toolbox.ImageLoader;
 
@@ -46,9 +46,9 @@ public class VideoAdapter extends RecyclerView.Adapter {
     }
 
     private void runEnterAnimation(View view,int position){
-        if (position >=ANIMATED_ITEMS_COUNT-1){
-           return;
-        }
+//        if (position >=ANIMATED_ITEMS_COUNT-1){
+//           return;
+//        }
 
         if (position>lastAnimatedPosition){
             lastAnimatedPosition=position;
@@ -70,7 +70,6 @@ public class VideoAdapter extends RecyclerView.Adapter {
 
     @Override
     public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
-        runEnterAnimation(holder.itemView,position);
         CellVideoHoder videoHoder= (CellVideoHoder) holder;
         if (list.size()>0){
             VideoListBean bean=list.get(position);
@@ -86,6 +85,7 @@ public class VideoAdapter extends RecyclerView.Adapter {
             videoHoder.clockView.setText(bean.getVideo_time());
             videoHoder.dateView.setText(bean.getVideo_date());
         }
+        runEnterAnimation(holder.itemView,position);
 
     }
 
@@ -97,12 +97,12 @@ public class VideoAdapter extends RecyclerView.Adapter {
 
     static class CellVideoHoder extends RecyclerView.ViewHolder{
 
-        SquaredImageView mImageView;
+        ShowMaxImageView mImageView;
         TextView titleView,clockView,dateView;
 
         public CellVideoHoder(View itemView) {
             super(itemView);
-            mImageView= (SquaredImageView) itemView.findViewById(R.id.iv_vp_video);
+            mImageView= (ShowMaxImageView) itemView.findViewById(R.id.iv_vp_video);
             titleView= (TextView) itemView.findViewById(R.id.tv_vp_title);
             clockView= (TextView) itemView.findViewById(R.id.tv_vp_clock);
             dateView= (TextView) itemView.findViewById(R.id.tv_vp_date);

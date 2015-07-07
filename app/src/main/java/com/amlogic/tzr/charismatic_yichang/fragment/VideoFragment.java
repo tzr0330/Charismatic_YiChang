@@ -4,6 +4,7 @@ package com.amlogic.tzr.charismatic_yichang.fragment;
 import android.content.Context;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -32,6 +33,7 @@ public class VideoFragment extends Fragment {
 
     private View fragmentView;
     private Context context;
+    private SwipeRefreshLayout mSwipeRefreshLayout;
     private RecyclerView mRecyclerView;
     private VideoAdapter mAdapter;
     private List<VideoListBean> list;
@@ -62,6 +64,19 @@ public class VideoFragment extends Fragment {
     }
 
     private void initView() {
+        mSwipeRefreshLayout= (SwipeRefreshLayout) fragmentView.findViewById(R.id.srl_fv_refresh);
+        mSwipeRefreshLayout.setColorSchemeResources(android.R.color.holo_blue_bright,
+                android.R.color.holo_green_light,
+                android.R.color.holo_orange_light,
+                android.R.color.holo_red_light);
+        mSwipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+               curPage=0;
+                list.clear();
+                queryData();
+            }
+        });
         mRecyclerView= (RecyclerView) fragmentView.findViewById(R.id.rv_video);
         mRecyclerView.setLayoutManager(new LinearLayoutManager(context));
         mAdapter=new VideoAdapter(context,list);
@@ -80,12 +95,13 @@ public class VideoFragment extends Fragment {
                         list.add(bean);
                     }
                     mAdapter.notifyDataSetChanged();
+                    mSwipeRefreshLayout.setRefreshing(false);
                 }
             }
 
             @Override
             public void onError(int i, String s) {
-
+                mSwipeRefreshLayout.setRefreshing(false);
             }
         });
 

@@ -29,9 +29,10 @@
                 android:textAppearance="@style/TextAppearance.AppCompat.Title"
                 android:textSize="14sp" />
 
-            <com.amlogic.tzr.charismatic_yichang.view.SquaredImageView
+            <com.amlogic.tzr.charismatic_yichang.view.ShowMaxImageView
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="200dp"
+                android:layout_margin="8dp"
                 android:id="@+id/iv_vp_video" />
 
         </LinearLayout>
