@@ -1,6 +1,7 @@
 package com.amlogic.tzr.charismatic_yichang;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
 import android.support.v4.app.Fragment;
@@ -11,8 +12,12 @@ import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.ImageView;
+import android.widget.TextView;
 
 import com.amlogic.tzr.charismatic_yichang.Tool.DensityUtil;
+import com.amlogic.tzr.charismatic_yichang.activity.LoginActivity;
 import com.amlogic.tzr.charismatic_yichang.fragment.InfoFragment;
 import com.amlogic.tzr.charismatic_yichang.fragment.NewsMainFragment;
 import com.amlogic.tzr.charismatic_yichang.fragment.TourFragment;
@@ -30,6 +35,8 @@ public class MainActivity extends AppCompatActivity {
     private NavigationView mNavigationView;
     private Toolbar mToolbar;
     private boolean pendingIntroAnimation=false;
+    private TextView mUserName;
+    private ImageView mUserHead;
 
     /*
     fragment
@@ -58,6 +65,8 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void initView() {
+        mUserHead= (ImageView) findViewById(R.id.iv_user_head);
+        mUserName= (TextView) findViewById(R.id.tv_user_name);
         mToolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(mToolbar);
         final ActionBar actionBar = getSupportActionBar();
@@ -69,6 +78,12 @@ public class MainActivity extends AppCompatActivity {
         if (mNavigationView != null) {
             setupDrawerContent(mNavigationView);
         }
+        mUserHead.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(MainActivity.this, LoginActivity.class));
+            }
+        });
 
     }
 

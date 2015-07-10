@@ -9,6 +9,7 @@
               android:theme="@style/ThemeOverlay.AppCompat.Dark">
 
     <ImageView
+        android:id="@+id/iv_user_head"
         android:layout_width="100dp"
         android:layout_height="100dp"
         android:layout_marginTop="16dp"
@@ -16,6 +17,7 @@
         android:background="@mipmap/ic_user"/>
 
     <TextView
+        android:id="@+id/tv_user_name"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"

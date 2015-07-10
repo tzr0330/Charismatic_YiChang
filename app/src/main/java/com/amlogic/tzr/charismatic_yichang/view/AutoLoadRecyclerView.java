@@ -94,10 +94,6 @@ public class AutoLoadRecyclerView extends RecyclerView implements LoadFinishCall
 //						}
 //						break;
 
-
-
-
-
 //					case 2:
 //						if (pauseOnFling) {
 //							imageLoader.pause();
