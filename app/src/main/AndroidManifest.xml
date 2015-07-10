@@ -31,6 +31,11 @@
             android:name=".activity.TourDetailActivity"
             android:label="@string/title_activity_tour_detail" >
         </activity>
+        <activity
+            android:name=".activity.VideoPlayActivity"
+            android:screenOrientation="landscape"
+            android:windowSoftInputMode="adjustPan|stateHidden">
+        </activity>
 
     </application>
 

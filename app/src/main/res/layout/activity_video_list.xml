@@ -1,0 +1,173 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" >
+
+    <com.amlogic.tzr.charismatic_yichang.view.FullVideoView
+        android:id="@+id/video_VideoView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+    <ImageView
+        android:id="@+id/video_img"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" 
+        />
+    <ImageView
+        android:id="@+id/video_img_center_speed"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" 
+        android:layout_centerInParent="true"
+        />
+
+    <RelativeLayout
+        android:id="@+id/video_relative_right"
+        android:layout_width="300dp"
+        android:layout_height="match_parent"
+        android:layout_above="@+id/video_relative_buttom"
+        android:layout_alignParentRight="true"
+        android:background="@color/lightgray_50" >
+
+        <ImageView
+            android:id="@+id/video_imageView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:src="@drawable/right_video_img" />
+
+        <ListView
+            android:id="@+id/video_listview"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@+id/video_imageView"
+            android:paddingRight="10dp" >
+        </ListView>
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/video_relative_buttom"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:paddingTop="10dp"
+        android:paddingBottom="10dp"
+        android:background="@color/gray_50" >
+
+        <ImageView
+            android:id="@+id/video_img_last"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="40dp"
+            android:layout_centerVertical="true"
+            android:src="@drawable/last_video_selector" />
+
+        <ImageView
+            android:id="@+id/video_img_start"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:layout_centerVertical="true"
+            android:layout_toRightOf="@+id/video_img_last"
+            android:src="@drawable/start_video_df" />
+
+        <ImageView
+            android:id="@+id/video_img_next"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:layout_centerVertical="true"
+            android:layout_toRightOf="@+id/video_img_start"
+            android:src="@drawable/next_video_selector" />
+
+        <ImageView
+            android:id="@+id/video_img_voice"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="20dp"
+            android:layout_centerVertical="true"
+            android:layout_toLeftOf="@+id/video_img_full"
+            android:src="@drawable/right_show_img" />
+
+        <ImageView
+            android:id="@+id/video_img_full"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="30dp"
+            android:src="@drawable/big_video_selector" />
+
+        <TextView
+            android:id="@+id/video_txt_current_time"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="10dp"
+            android:layout_toRightOf="@+id/video_img_next"
+            android:text="@string/play_time"
+            android:textColor="@color/white" />
+
+        <ImageView
+            android:id="@+id/video_videoview_pres_bg"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_toLeftOf="@+id/video_txt_max_time"
+            android:layout_toRightOf="@+id/video_txt_current_time"
+            android:background="@drawable/video_num_bg" />
+
+        <ImageView
+            android:id="@+id/video_videoview_pres_front"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_toRightOf="@+id/video_txt_current_time"
+            android:background="@drawable/video_num_front" />
+
+        <TextView
+            android:id="@+id/video_txt_max_time"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="10dp"
+            android:layout_toLeftOf="@+id/video_img_voice"
+            android:text="@string/play_time"
+            android:textColor="@color/white" />
+    </RelativeLayout>
+
+    <ImageView
+        android:id="@+id/video_img_center"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:src="@drawable/video_brightness_bg"
+        android:visibility="gone" />
+
+    <FrameLayout
+        android:id="@+id/video_frame"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/video_img_center"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="-30dp"
+        android:visibility="gone" >
+
+        <ImageView
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:background="@drawable/video_num_bg" />
+
+        <ImageView
+            android:id="@+id/video_img_pres_front"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:background="@drawable/video_num_front" />
+    </FrameLayout>
+
+</RelativeLayout>

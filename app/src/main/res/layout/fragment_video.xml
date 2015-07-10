@@ -9,7 +9,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         >
-   <android.support.v7.widget.RecyclerView
+   <com.amlogic.tzr.charismatic_yichang.view.AutoLoadRecyclerView
        android:id="@+id/rv_video"
        android:layout_width="match_parent"
        android:layout_height="match_parent"

@@ -6,4 +6,28 @@
     <color name="window_background">#FFF5F5F5</color>
     <color name="devide_line">#CBCED2</color>
 
+
+
+    <color name="transparent">#00000000</color>
+
+    <!-- 白色 -->
+    <color name="white">#ffffffff</color>
+
+    <!-- 灰色 -->
+    <color name="gray">#ff868686</color>
+
+    <!-- 浅绿色 -->
+    <color name="light_green">#fff1dd58</color>
+
+    <!-- 园的底色 -->
+    <color name="char_circlebackground">#ff303030</color>
+
+    <!-- 园进度条的颜色 -->
+    <color name="char_circleplan">#ffCD2990</color>
+
+    <!-- 半透明灰色 -->
+    <color name="gray_50">#50949494</color>
+    <!-- 半透明浅灰色 -->
+    <color name="lightgray_50">#50cdd0d7</color>
+
 </resources>

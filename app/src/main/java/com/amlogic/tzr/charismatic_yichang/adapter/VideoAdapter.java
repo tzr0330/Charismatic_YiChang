@@ -37,6 +37,14 @@ public class VideoAdapter extends RecyclerView.Adapter {
 
     private ImageLoader mImageLoader;
 
+    private OnItemClickLitener mOnItemClickLitener;
+
+    public void setOnItemClickLitener(OnItemClickLitener mOnItemClickLitener)
+    {
+        this.mOnItemClickLitener = mOnItemClickLitener;
+    }
+
+
 
     public VideoAdapter(Context mContext, List<VideoListBean> list) {
         this.mContext = mContext;
@@ -69,7 +77,7 @@ public class VideoAdapter extends RecyclerView.Adapter {
     }
 
     @Override
-    public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
+    public void onBindViewHolder(final RecyclerView.ViewHolder holder, int position) {
         CellVideoHoder videoHoder= (CellVideoHoder) holder;
         if (list.size()>0){
             VideoListBean bean=list.get(position);
@@ -86,6 +94,16 @@ public class VideoAdapter extends RecyclerView.Adapter {
             videoHoder.dateView.setText(bean.getVideo_date());
         }
         runEnterAnimation(holder.itemView,position);
+
+        if (mOnItemClickLitener!=null){
+            holder.itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    int pos=holder.getLayoutPosition();
+                    mOnItemClickLitener.onItemClick(holder.itemView, pos);
+                }
+            });
+        }
 
     }
 

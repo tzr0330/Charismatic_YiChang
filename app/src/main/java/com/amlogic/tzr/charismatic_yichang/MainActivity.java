@@ -12,10 +12,11 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 
-import com.amlogic.tzr.charismatic_yichang.fragment.VideoFragment;
+import com.amlogic.tzr.charismatic_yichang.Tool.DensityUtil;
 import com.amlogic.tzr.charismatic_yichang.fragment.InfoFragment;
 import com.amlogic.tzr.charismatic_yichang.fragment.NewsMainFragment;
 import com.amlogic.tzr.charismatic_yichang.fragment.TourFragment;
+import com.amlogic.tzr.charismatic_yichang.fragment.VideoFragment;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -28,6 +29,7 @@ public class MainActivity extends AppCompatActivity {
     private DrawerLayout mDrawerLayout;
     private NavigationView mNavigationView;
     private Toolbar mToolbar;
+    private boolean pendingIntroAnimation=false;
 
     /*
     fragment
@@ -44,8 +46,14 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         mContext=MainActivity.this;
+        if (savedInstanceState==null){
+            pendingIntroAnimation=true;
+        }
         Bmob.initialize(mContext,"d3ec31d05d5dd780ced301c5c81431ee");
         initView();
+        if (pendingIntroAnimation){
+//            startIntroAnimation();
+        }
         setTabSelection(0);
     }
 
@@ -61,6 +69,17 @@ public class MainActivity extends AppCompatActivity {
         if (mNavigationView != null) {
             setupDrawerContent(mNavigationView);
         }
+
+    }
+
+    private void startIntroAnimation() {
+        int actionbarSize = DensityUtil.dp2px(MainActivity.this, 56);
+        mToolbar.setTranslationY(-actionbarSize);
+        mToolbar.animate()
+                .translationY(0)
+                .setDuration(700)
+                .setStartDelay(300)
+                .start();
 
     }
 

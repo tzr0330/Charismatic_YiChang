@@ -24,6 +24,8 @@
     <string name="tour_morePic">更多图片</string>
     <string name="tour_look">查看</string>
 
+    <string name="play_time">00:00:00</string>
+
 
     <string name="pull_to_refresh_top_pull">下拉刷新</string>
     <string name="pull_to_refresh_top_release">释放刷新</string>
