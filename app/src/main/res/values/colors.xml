@@ -10,6 +10,8 @@
 
     <color name="transparent">#00000000</color>
 
+    <color name="black">#000000</color>
+
     <!-- 白色 -->
     <color name="white">#ffffffff</color>
 

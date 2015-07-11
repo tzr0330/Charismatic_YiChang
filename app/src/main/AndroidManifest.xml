@@ -54,6 +54,19 @@
         <meta-data
             android:name="com.google.android.gms.version"
             android:value="@integer/google_play_services_version" />
+
+        <activity
+            android:name=".activity.RegisterActivity"
+            android:label="@string/title_activity_register" >
+        </activity>
+        <activity
+            android:name=".activity.RegisterPhoneActivity"
+            android:label="@string/title_activity_register_phone" >
+        </activity>
+        <activity
+            android:name=".activity.RegisterCodeActivity"
+            android:label="@string/title_activity_register_code" >
+        </activity>
     </application>
 
 </manifest>

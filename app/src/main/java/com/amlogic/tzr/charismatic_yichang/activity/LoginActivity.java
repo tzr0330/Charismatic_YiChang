@@ -1,16 +1,21 @@
 package com.amlogic.tzr.charismatic_yichang.activity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.TextInputLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.text.Editable;
+import android.text.SpannableString;
+import android.text.Spanned;
 import android.text.TextWatcher;
+import android.text.style.StyleSpan;
 import android.view.View;
 import android.widget.AutoCompleteTextView;
+import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 
 import com.amlogic.tzr.charismatic_yichang.R;
-import com.amlogic.tzr.charismatic_yichang.view.ClearEditText;
 import com.google.android.gms.common.SignInButton;
 
 /**
@@ -21,7 +26,7 @@ import com.google.android.gms.common.SignInButton;
  * https://developers.google.com/+/mobile/android/getting-started#step_1_enable_the_google_api
  * and follow the steps in "Step 1" to create an OAuth 2.0 client for your package.
  */
-public class LoginActivity extends AppCompatActivity {
+public class LoginActivity extends AppCompatActivity implements View.OnClickListener{
 
 
     /**
@@ -39,8 +44,10 @@ public class LoginActivity extends AppCompatActivity {
     private View mLoginFormView;
 
 
-    private  ClearEditText et_userName,et_passWord;
+    private  EditText et_userName,et_passWord;
     private TextInputLayout til_userName,til_passWord;
+    private TextView tv_register,tv_forgetPw,tv_title;
+    private Button btn_login;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -81,8 +88,8 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     private void initView() {
-        et_userName= (ClearEditText) findViewById(R.id.et_name);
-        et_passWord= (ClearEditText) findViewById(R.id.et_pw);
+        et_userName= (EditText) findViewById(R.id.et_name);
+        et_passWord= (EditText) findViewById(R.id.et_pw);
         mProgressView = findViewById(R.id.login_progress);
         til_userName= (TextInputLayout) findViewById(R.id.til_name);
         til_passWord= (TextInputLayout) findViewById(R.id.til_pwd);
@@ -91,10 +98,10 @@ public class LoginActivity extends AppCompatActivity {
         et_userName.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-                if (s.length()<8){
+                if (s.length() < 8) {
                     til_userName.setError(getResources().getString(R.string.error_invalid_account));
                     til_userName.setErrorEnabled(true);
-                }else {
+                } else {
                     til_userName.setErrorEnabled(false);
                 }
 
@@ -113,10 +120,10 @@ public class LoginActivity extends AppCompatActivity {
         et_passWord.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-                if (s.length()<8){
+                if (s.length() < 8) {
                     til_passWord.setError(getResources().getString(R.string.error_invalid_password));
                     til_passWord.setErrorEnabled(true);
-                }else{
+                } else {
                     til_passWord.setErrorEnabled(false);
                 }
 
@@ -132,6 +139,33 @@ public class LoginActivity extends AppCompatActivity {
 
             }
         });
+        tv_title= (TextView) findViewById(R.id.tv_al_title);
+        tv_register= (TextView) findViewById(R.id.tv_la_registerNow);
+        tv_forgetPw= (TextView) findViewById(R.id.tv_la_forgetPw);
+        btn_login= (Button) findViewById(R.id.btn_la_login);
+        tv_register.setOnClickListener(this);
+        tv_forgetPw.setOnClickListener(this);
+        btn_login.setOnClickListener(this);
+
+        SpannableString msp = new SpannableString(getResources().getString(R.string.app_name));
+        msp.setSpan(new StyleSpan(android.graphics.Typeface.BOLD_ITALIC),0,4, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+        tv_title.setText(msp);
+    }
+
+    @Override
+    public void onClick(View v) {
+        switch (v.getId()){
+            case R.id.tv_la_registerNow:
+                startActivity(new Intent(LoginActivity.this, RegisterPhoneActivity.class));
+                finish();
+                break;
+            case R.id.tv_la_forgetPw:
+                break;
+            case R.id.btn_la_login:
+                break;
+
+        }
+
     }
 
 //    private void populateAutoComplete() {

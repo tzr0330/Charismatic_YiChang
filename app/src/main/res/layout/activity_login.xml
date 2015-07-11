@@ -6,9 +6,11 @@
     android:gravity="center_horizontal"
     android:orientation="vertical"
     android:paddingBottom="@dimen/activity_vertical_margin"
-    android:paddingLeft="@dimen/activity_horizontal_margin"
-    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingLeft="@dimen/activity_margin_24dp"
+    android:paddingRight="@dimen/activity_margin_24dp"
     android:paddingTop="@dimen/activity_vertical_margin"
+    android:focusable="true"
+    android:focusableInTouchMode="true"
     tools:context="com.amlogic.tzr.charismatic_yichang.activity.LoginActivity">
 
     <!-- Login progress -->
@@ -20,74 +22,120 @@
         android:layout_marginBottom="8dp"
         android:visibility="gone" />
 
-    <ImageView
-        android:layout_width="100dp"
-        android:layout_height="100dp"
-        android:src="@mipmap/ic_app" />
 
+     <RelativeLayout
+         android:layout_width="match_parent"
+         android:layout_height="wrap_content"
+         android:layout_marginTop="16dp">
+         <TextView
+             android:id="@+id/tv_al_title"
+             android:layout_width="wrap_content"
+             android:layout_height="wrap_content"
+             android:textColor="@color/white"
+             android:layout_centerInParent="true"
+             android:paddingTop="8dp"
+             android:paddingBottom="8dp"
+             android:textSize="36sp"/>
+         <TextView
+             android:id="@+id/tv_al_subTitle"
+             android:layout_width="wrap_content"
+             android:layout_height="wrap_content"
+             android:layout_below="@+id/tv_al_title"
+             android:layout_centerHorizontal="true"
+             android:textColor="@color/white"
+             android:text="@string/login_subtitle"
+             android:textSize="16sp"/>
+
+     </RelativeLayout>
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical">
+        android:background="@color/white"
+        android:padding="16dp"
+        android:layout_marginTop="16dp"
+        android:orientation="vertical"
+        android:elevation="10dp">
 
-
-        <android.support.design.widget.TextInputLayout
-            android:id="@+id/til_name"
+        <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="88dp">
 
-            <com.amlogic.tzr.charismatic_yichang.view.ClearEditText
-                android:id="@+id/et_name"
+            <android.support.design.widget.TextInputLayout
+                android:id="@+id/til_name"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:drawableLeft="@drawable/img_login_head"
-                android:hint="@string/prompt_password"
-                android:inputType="textEmailAddress"
-                android:maxLines="1"
-                android:singleLine="true" />
-        </android.support.design.widget.TextInputLayout>
+                >
 
-        <android.support.design.widget.TextInputLayout
-            android:id="@+id/til_pwd"
+                <EditText
+                    android:id="@+id/et_name"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/prompt_password"
+                    android:inputType="text"
+                    android:maxLines="1"
+                    android:singleLine="true" />
+            </android.support.design.widget.TextInputLayout>
+        </RelativeLayout>
+
+        <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="88dp">
 
-            <com.amlogic.tzr.charismatic_yichang.view.ClearEditText
-                android:id="@+id/et_pw"
+            <android.support.design.widget.TextInputLayout
+                android:id="@+id/til_pwd"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:drawableLeft="@drawable/img_login_pw"
-                android:hint="@string/prompt_password"
-                android:inputType="textPassword"
-                android:maxLines="1"
-                android:singleLine="true" />
-        </android.support.design.widget.TextInputLayout>
+                >
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:orientation="horizontal">
-
-            <Button
-                android:id="@+id/btn_sign_in"
-                style="?android:textAppearanceSmall"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="@string/action_sign_in"
-                android:textStyle="bold" />
-
-            <Button
-                android:id="@+id/btn_register"
-                style="?android:textAppearanceSmall"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="@string/action_register"
-                android:textStyle="bold" />
-        </LinearLayout>
+                <EditText
+                    android:id="@+id/et_pw"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/prompt_password"
+                    android:inputType="textPassword"
+                    android:maxLines="1"
+                    android:singleLine="true" />
+            </android.support.design.widget.TextInputLayout>
+        </RelativeLayout>
     </LinearLayout>
+
+
+        <Button
+            android:id="@+id/btn_la_login"
+            android:layout_width="match_parent"
+            android:layout_height="54dp"
+            android:layout_gravity="center"
+            android:layout_marginTop="8dp"
+            android:background="@drawable/bt_commit"
+            android:text="@string/action_sign_in"
+            android:textColor="@color/white"
+            android:textSize="16sp" />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_marginTop="5dp" >
+
+            <TextView
+                android:id="@+id/tv_la_registerNow"
+                android:layout_width="80dp"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:text="@string/action_register"
+                android:textColor="@color/white"
+                android:textSize="13sp" />
+
+            <TextView
+                android:id="@+id/tv_la_forgetPw"
+                android:layout_width="80dp"
+                android:layout_height="match_parent"
+                android:layout_alignParentRight="true"
+                android:gravity="center"
+                android:text="@string/action_forget_pw"
+                android:textColor="@color/white"
+                android:textSize="13sp" />
+        </RelativeLayout>
+
 
 
 </LinearLayout>
