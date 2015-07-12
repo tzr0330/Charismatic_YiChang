@@ -2,13 +2,13 @@ package com.amlogic.tzr.charismatic_yichang.activity;
 
 import android.content.Context;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.MenuItem;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
 
+import com.amlogic.tzr.charismatic_yichang.BaseActivity;
 import com.amlogic.tzr.charismatic_yichang.R;
 import com.amlogic.tzr.charismatic_yichang.bean.NewsDetailBean;
 
@@ -17,7 +17,7 @@ import java.util.List;
 import cn.bmob.v3.BmobQuery;
 import cn.bmob.v3.listener.FindListener;
 
-public class NewsDetailActivity extends AppCompatActivity {
+public class NewsDetailActivity extends BaseActivity {
     private static final String TAG = "NewsDetailActivity";
     private Context mContext;
     private Toolbar mToolbar;

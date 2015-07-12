@@ -29,7 +29,7 @@ import java.util.List;
 import cn.bmob.v3.Bmob;
 
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends BaseActivity {
     private Context mContext;
     private DrawerLayout mDrawerLayout;
     private NavigationView mNavigationView;

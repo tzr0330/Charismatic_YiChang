@@ -29,6 +29,12 @@
     <string name="revice_code">接收短信大约需要</string>
     <string name="seconds">秒</string>
     <string name="resend">收不到验证码？点击重新获取</string>
+    <string name="error_invalid_verifyCode">无效的验证码</string>
+    <string name="confirm_back">验证码短信可能略有延迟，确定返回并重新开始？</string>
+    <string name="confirm">确认</string>
+    <string name="cancle">取消</string>
+    <string name="wait">等待</string>
+    <string name="back">返回</string>
 
     
 </resources>

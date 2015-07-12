@@ -35,4 +35,5 @@ dependencies {
     compile 'com.android.support:recyclerview-v7:22.2.0'
     compile 'com.google.android.gms:play-services:7.5.0'
     compile files('libs/SMSSDK-1.2.2.jar')
+    compile files('libs/MobTools.jar')
 }

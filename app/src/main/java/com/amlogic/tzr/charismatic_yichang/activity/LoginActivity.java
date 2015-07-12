@@ -3,7 +3,6 @@ package com.amlogic.tzr.charismatic_yichang.activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.TextInputLayout;
-import android.support.v7.app.AppCompatActivity;
 import android.text.Editable;
 import android.text.SpannableString;
 import android.text.Spanned;
@@ -15,6 +14,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import com.amlogic.tzr.charismatic_yichang.BaseActivity;
 import com.amlogic.tzr.charismatic_yichang.R;
 import com.google.android.gms.common.SignInButton;
 
@@ -26,7 +26,7 @@ import com.google.android.gms.common.SignInButton;
  * https://developers.google.com/+/mobile/android/getting-started#step_1_enable_the_google_api
  * and follow the steps in "Step 1" to create an OAuth 2.0 client for your package.
  */
-public class LoginActivity extends AppCompatActivity implements View.OnClickListener{
+public class LoginActivity extends BaseActivity implements View.OnClickListener{
 
 
     /**
@@ -98,34 +98,29 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         et_userName.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-                if (s.length() < 8) {
+
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+                if (s.toString().length() <9) {
                     til_userName.setError(getResources().getString(R.string.error_invalid_account));
                     til_userName.setErrorEnabled(true);
                 } else {
                     til_userName.setErrorEnabled(false);
                 }
-
-            }
-
-            @Override
-            public void onTextChanged(CharSequence s, int start, int before, int count) {
-
-            }
-
-            @Override
-            public void afterTextChanged(Editable s) {
-
             }
         });
         et_passWord.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-                if (s.length() < 8) {
-                    til_passWord.setError(getResources().getString(R.string.error_invalid_password));
-                    til_passWord.setErrorEnabled(true);
-                } else {
-                    til_passWord.setErrorEnabled(false);
-                }
+
 
             }
 
@@ -136,7 +131,12 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
 
             @Override
             public void afterTextChanged(Editable s) {
-
+                if (s.toString().length() < 9) {
+                    til_passWord.setError(getResources().getString(R.string.error_invalid_password));
+                    til_passWord.setErrorEnabled(true);
+                } else {
+                    til_passWord.setErrorEnabled(false);
+                }
             }
         });
         tv_title= (TextView) findViewById(R.id.tv_al_title);

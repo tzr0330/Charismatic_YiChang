@@ -5,7 +5,6 @@ import android.os.Bundle;
 import android.support.design.widget.CollapsingToolbarLayout;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
-import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.text.Html;
 import android.view.MenuItem;
@@ -15,6 +14,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.amlogic.tzr.charismatic_yichang.ApplicationController;
+import com.amlogic.tzr.charismatic_yichang.BaseActivity;
 import com.amlogic.tzr.charismatic_yichang.R;
 import com.amlogic.tzr.charismatic_yichang.Tool.BitmapCache;
 import com.amlogic.tzr.charismatic_yichang.bean.TourDetailBean;
@@ -28,7 +28,7 @@ import java.util.List;
 import cn.bmob.v3.BmobQuery;
 import cn.bmob.v3.listener.FindListener;
 
-public class TourDetailActivity extends AppCompatActivity {
+public class TourDetailActivity extends BaseActivity {
     private TextView tv_info, tv_tip;
 
     private Context mContext;

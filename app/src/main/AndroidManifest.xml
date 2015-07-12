@@ -18,6 +18,11 @@
     <uses-permission android:name="android.permission.READ_PROFILE" />
     <uses-permission android:name="android.permission.READ_CONTACTS" />
 
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <uses-permission android:name="android.permission.RECEIVE_SMS" />
+    <uses-permission android:name="android.permission.GET_TASKS" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+
     <application
         android:name=".ApplicationController"
         android:allowBackup="true"
@@ -67,6 +72,11 @@
             android:name=".activity.RegisterCodeActivity"
             android:label="@string/title_activity_register_code" >
         </activity>
+        <activity
+            android:name=".activity.RegisterFinalActivity"
+            android:label="@string/title_activity_register_final" >
+        </activity>
+
     </application>
 
 </manifest>

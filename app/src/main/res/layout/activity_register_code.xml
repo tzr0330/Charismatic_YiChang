@@ -2,7 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical" >
+    android:orientation="vertical">
 
     <android.support.v7.widget.Toolbar
         android:id="@+id/tl_arc_toolBar"
@@ -13,13 +13,13 @@
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="80dp" >
+        android:layout_height="80dp">
 
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
-            android:orientation="horizontal" >
+            android:orientation="horizontal">
 
             <TextView
                 android:layout_width="wrap_content"
@@ -43,41 +43,47 @@
     </RelativeLayout>
 
     <TextView
-        android:id="@+id/tv_acc_phoneNumber"
+        android:id="@+id/tv_arc_phoneNumber"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:text="13143458479"
         android:textColor="@color/black"
         android:textSize="20sp" />
-    <android.support.design.widget.TextInputLayout
-        android:id="@+id/til_arp_phone"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="16dp"
-        >
-        <EditText
-            android:id="@+id/et_arp_phone"
-            android:layout_width="match_parent"
-            android:layout_height="56dp"
-            android:inputType="phone"
-            android:maxLines="1"
-            android:hint="@string/input_verifyCode"
-            android:padding="5dp"
-            android:singleLine="true" />
-    </android.support.design.widget.TextInputLayout>
-
 
     <RelativeLayout
-        android:id="@+id/layout_acc_receive_normal"
         android:layout_width="match_parent"
-        android:layout_height="40dp" >
+        android:layout_height="88dp"
+        android:layout_margin="16dp">
+
+        <android.support.design.widget.TextInputLayout
+            android:id="@+id/til_arc_verify"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            >
+
+            <EditText
+                android:id="@+id/et_arc_verify"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/input_verifyCode"
+                android:inputType="phone"
+                android:maxLines="1"
+                android:paddingBottom="8dp"
+                android:singleLine="true" />
+        </android.support.design.widget.TextInputLayout>
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/rl_arc_receive_normal"
+        android:layout_width="match_parent"
+        android:layout_height="40dp">
 
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
-            android:orientation="horizontal" >
+            android:orientation="horizontal">
 
             <TextView
                 android:layout_width="wrap_content"
@@ -86,7 +92,7 @@
                 android:text="@string/revice_code" />
 
             <TextView
-                android:id="@+id/tv_acc_time"
+                android:id="@+id/tv_arc_time"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
@@ -102,13 +108,13 @@
     </RelativeLayout>
 
     <RelativeLayout
-        android:id="@+id/layout_acc_receive_restart"
+        android:id="@+id/rl_arc_receive_restart"
         android:layout_width="match_parent"
         android:layout_height="40dp"
-        android:visibility="gone" >
+        android:visibility="gone">
 
         <TextView
-            android:id="@+id/tv_acc_restart"
+            android:id="@+id/tv_arc_restart"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
@@ -117,12 +123,13 @@
     </RelativeLayout>
 
     <Button
-        android:id="@+id/btn_acc_next"
+        android:id="@+id/btn_arc_next"
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:layout_margin="20dp"
-        android:background="@color/accent"
+        android:background="@drawable/bt_commit"
         android:text="@string/next_setp"
+        android:textColor="@color/white"
         android:textSize="18sp" />
 
 </LinearLayout>

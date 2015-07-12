@@ -8,7 +8,6 @@ import android.os.Handler;
 import android.os.Message;
 import android.support.design.widget.TextInputLayout;
 import android.support.v7.app.AlertDialog;
-import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.text.Editable;
 import android.text.TextUtils;
@@ -20,6 +19,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.amlogic.tzr.charismatic_yichang.BaseActivity;
 import com.amlogic.tzr.charismatic_yichang.R;
 import com.amlogic.tzr.charismatic_yichang.Tool.ConfigUtil;
 import com.amlogic.tzr.charismatic_yichang.view.TextURLView;
@@ -29,7 +29,7 @@ import org.json.JSONObject;
 import cn.smssdk.EventHandler;
 import cn.smssdk.SMSSDK;
 
-public class RegisterPhoneActivity extends AppCompatActivity {
+public class RegisterPhoneActivity extends BaseActivity {
     private Context mContext;
 
     private Toolbar mToolbar;
@@ -44,24 +44,22 @@ public class RegisterPhoneActivity extends AppCompatActivity {
 
     private String phString;
 
-    private StringBuilder allBuilder ;
+    private StringBuilder allBuilder;
 
     private EventHandler eh;
 
-    private Handler handler = new Handler() {
+    Handler handler = new Handler() {
 
         @Override
         public void handleMessage(Message msg) {
             // TODO Auto-generated method stub
             super.handleMessage(msg);
-
-
             int event = msg.arg1;
             int result = msg.arg2;
             Object data = msg.obj;
             Log.e("RegisterActivity_event", "event=" + event);
             if (result == SMSSDK.RESULT_COMPLETE) {
-                if (event == SMSSDK.EVENT_GET_VERIFICATION_CODE){
+                if (event == SMSSDK.EVENT_GET_VERIFICATION_CODE) {
                     Toast.makeText(getApplicationContext(), "验证码已经发送", Toast.LENGTH_SHORT).show();
                     Intent sendPhoneIntent = new Intent(mContext, RegisterCodeActivity.class);
                     sendPhoneIntent.putExtra("user_phone", phString);
@@ -96,8 +94,8 @@ public class RegisterPhoneActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register_phone);
-        mContext=RegisterPhoneActivity.this;
-        SMSSDK.initSDK(this, ConfigUtil.APPKEY, ConfigUtil.APPSECRET);
+        mContext = RegisterPhoneActivity.this;
+        SMSSDK.initSDK(mContext, ConfigUtil.APPKEY, ConfigUtil.APPSECRET);
         eh = new EventHandler() {
             @Override
             public void afterEvent(int event, int result, Object data) {
@@ -110,6 +108,7 @@ public class RegisterPhoneActivity extends AppCompatActivity {
             }
 
         };
+        SMSSDK.registerEventHandler(eh);
         initView();
     }
 
@@ -118,18 +117,13 @@ public class RegisterPhoneActivity extends AppCompatActivity {
         setSupportActionBar(mToolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         mToolbar.setTitle(getResources().getString(R.string.action_register));
-        et_phoneNumber= (EditText) findViewById(R.id.et_arp_phone);
-        til_phoneNumber= (TextInputLayout) findViewById(R.id.til_arp_phone);
+        et_phoneNumber = (EditText) findViewById(R.id.et_arp_phone);
+        til_phoneNumber = (TextInputLayout) findViewById(R.id.til_arp_phone);
         til_phoneNumber.setHint(getResources().getString(R.string.input_phoneNumber));
         et_phoneNumber.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-                if (s.length() < 10 || s.length() > 11) {
-                    til_phoneNumber.setError(getResources().getString(R.string.error_invalid_phoneNumber));
-                    til_phoneNumber.setErrorEnabled(true);
-                } else {
-                    til_phoneNumber.setErrorEnabled(false);
-                }
+
             }
 
             @Override
@@ -139,18 +133,25 @@ public class RegisterPhoneActivity extends AppCompatActivity {
 
             @Override
             public void afterTextChanged(Editable s) {
-
+                if (s.toString().length() ==11 ) {
+                    btn_next.setEnabled(true);
+                    til_phoneNumber.setErrorEnabled(false);
+                } else {
+                    btn_next.setEnabled(false);
+                    til_phoneNumber.setError(getResources().getString(R.string.error_invalid_phoneNumber));
+                    til_phoneNumber.setErrorEnabled(true);
+                }
             }
         });
         textURLView = (TextURLView) findViewById(R.id.tv_arp_url);
         textURLView.setText(R.string.agree_agreement);
-        btn_next= (Button) findViewById(R.id.btn_arp_next);
+        btn_next = (Button) findViewById(R.id.btn_arp_next);
         btn_next.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (!TextUtils.isEmpty(et_phoneNumber.getText().toString())) {
+                if (et_phoneNumber.getText().toString().length()==11) {
                     phString = et_phoneNumber.getText().toString();
-                    AlertDialog.Builder builder=new AlertDialog.Builder(mContext);
+                    AlertDialog.Builder builder = new AlertDialog.Builder(mContext);
                     allBuilder = new StringBuilder();
                     allBuilder.append("我们将发送验证码短信到这个号码:").append(phString);
                     Log.e("Register", allBuilder.toString());
@@ -170,7 +171,6 @@ public class RegisterPhoneActivity extends AppCompatActivity {
                     builder.show();
 
                 } else {
-                    til_phoneNumber.setError(getResources().getString(R.string.error_invalid_phoneNumber));
                     til_phoneNumber.setErrorEnabled(true);
                 }
 
@@ -179,6 +179,23 @@ public class RegisterPhoneActivity extends AppCompatActivity {
 
     }
 
+    @Override
+    protected void onResume() {
+        super.onResume();
+        SMSSDK.registerEventHandler(eh);
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        SMSSDK.unregisterEventHandler(eh);
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        SMSSDK.unregisterEventHandler(eh);
+    }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {

@@ -2,19 +2,19 @@ package com.amlogic.tzr.charismatic_yichang.activity;
 
 import android.content.Context;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.amlogic.tzr.charismatic_yichang.BaseActivity;
 import com.amlogic.tzr.charismatic_yichang.R;
 import com.amlogic.tzr.charismatic_yichang.bean.User;
 
 import cn.bmob.v3.listener.SaveListener;
 
-public class RegisterActivity extends AppCompatActivity {
+public class RegisterActivity extends BaseActivity {
     private Context mContext;
 
     private Toolbar mToolbar;

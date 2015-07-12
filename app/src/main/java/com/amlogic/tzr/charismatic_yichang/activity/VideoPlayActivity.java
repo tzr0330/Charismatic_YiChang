@@ -8,7 +8,6 @@ import android.os.Bundle;
 import android.os.Environment;
 import android.os.Handler;
 import android.os.Message;
-import android.support.v7.app.AppCompatActivity;
 import android.view.GestureDetector;
 import android.view.GestureDetector.SimpleOnGestureListener;
 import android.view.MotionEvent;
@@ -24,6 +23,7 @@ import android.widget.RelativeLayout;
 import android.widget.RelativeLayout.LayoutParams;
 import android.widget.TextView;
 
+import com.amlogic.tzr.charismatic_yichang.BaseActivity;
 import com.amlogic.tzr.charismatic_yichang.R;
 import com.amlogic.tzr.charismatic_yichang.Tool.DensityUtil;
 import com.amlogic.tzr.charismatic_yichang.adapter.VideoListAdapter;
@@ -41,7 +41,7 @@ import java.util.ArrayList;
  * @Copyright: Copyright (c) 2014 Shenzhen Utoow Technology Co., Ltd. All rights
  *             reserved.
  */
-public class VideoPlayActivity extends AppCompatActivity {
+public class VideoPlayActivity extends BaseActivity {
 
 	/** 右边列表控件 */
 	private ListView listview;

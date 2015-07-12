@@ -84,6 +84,7 @@
         android:layout_margin="20dp"
         android:background="@drawable/bt_commit"
         android:text="@string/next_setp"
+        android:textColor="@color/white"
         android:textSize="18sp" />
 
     <LinearLayout

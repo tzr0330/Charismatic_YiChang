@@ -44,6 +44,7 @@
     <string name="title_activity_register">RegisterActivity</string>
     <string name="title_activity_register_phone">RegisterPhoneActivity</string>
     <string name="title_activity_register_code">RegisterCodeActivity</string>
+    <string name="title_activity_register_final">RegisterFinalActivity</string>
 
 
 
