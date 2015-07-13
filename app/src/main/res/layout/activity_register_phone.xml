@@ -6,6 +6,15 @@
     android:focusable="true"
     android:focusableInTouchMode="true">
 
+    <ProgressBar
+        android:id="@+id/pb_arp_progress"
+        style="?android:attr/progressBarStyleLarge"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:visibility="gone" />
+
+
     <!--<LinearLayout-->
     <!--android:id="@+id/ll_phone"-->
     <!--android:layout_height="60dp"-->
@@ -72,6 +81,7 @@
                 android:inputType="phone"
                 android:maxLines="1"
                 android:paddingBottom="8dp"
+                android:maxLength="11"
                 android:singleLine="true" />
         </android.support.design.widget.TextInputLayout>
     </LinearLayout>

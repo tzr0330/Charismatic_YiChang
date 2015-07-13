@@ -19,6 +19,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -48,7 +49,7 @@ public class RegisterCodeActivity extends BaseActivity {
     private TextView phoneNumberText;
     private TextView changeTimeText;
     private TextView restartText;
-    private TextView titleTextView;
+    private ProgressBar mProgressBar;
     private RelativeLayout receiveNormaLayout, receiveRestartLayout;
     private Timer timer;// 计时器
     private int seconds = 60;
@@ -60,7 +61,7 @@ public class RegisterCodeActivity extends BaseActivity {
         @Override
         public void handleMessage(Message msg) {
             // TODO Auto-generated method stub
-
+            mProgressBar.setVisibility(View.GONE);
             int event = msg.arg1;
             int result = msg.arg2;
             Object data = msg.obj;
@@ -123,10 +124,11 @@ public class RegisterCodeActivity extends BaseActivity {
     }
 
     private void initView() {
+        mProgressBar= (ProgressBar) findViewById(R.id.pb_arc_progress);
         mToolbar = (Toolbar) findViewById(R.id.tl_arc_toolBar);
         setSupportActionBar(mToolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        mToolbar.setTitle(getResources().getString(R.string.action_register));
+        mToolbar.setTitle(R.string.title_activity_register_code);
         til_verifyCode = (TextInputLayout) findViewById(R.id.til_arc_verify);
         et_verifyCode = (EditText) findViewById(R.id.et_arc_verify);
         til_verifyCode.setHint(getResources().getString(R.string.input_verifyCode));
@@ -158,6 +160,7 @@ public class RegisterCodeActivity extends BaseActivity {
             @Override
             public void onClick(View v) {
                 if (et_verifyCode.getText().toString().length()==4) {
+//                    mProgressBar.setVisibility(View.VISIBLE);
                     SMSSDK.submitVerificationCode("86", phString, et_verifyCode.getText().toString());
                 } else {
                     til_verifyCode.setErrorEnabled(true);

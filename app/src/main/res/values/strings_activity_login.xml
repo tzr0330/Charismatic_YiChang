@@ -2,7 +2,7 @@
     <string name="title_activity_login">Sign in</string>
 
     <!-- Strings related to login -->
-    <string name="prompt_account">账号</string>
+    <string name="prompt_account">账号(手机号/昵称)</string>
     <string name="prompt_password">密码</string>
     <string name="action_sign_in">登录</string>
     <string name="action_register">注册</string>
@@ -22,6 +22,7 @@
     <string name="error_invalid_phoneNumber">无效的手机号码</string>
     <string name="next_setp">下一步</string>
     <string name="agree_agreement">我已阅读并同意</string>
+    <string name="deal">服务与使用协议</string>
     <string name="check_code_first">我们已发送</string>
     <string name="verify_code">验证码</string>
     <string name="check_code_third">短信到这个号码:</string>
@@ -35,6 +36,16 @@
     <string name="cancle">取消</string>
     <string name="wait">等待</string>
     <string name="back">返回</string>
+    <string name="ensure_phone">确认手机号码</string>
+
+    <string name="tv_tips_password">密码由6-12位数字,字母或符号组成,不能是纯数字组成</string>
+    <string name="input_passWord">请输入密码</string>
+    <string name="tv_tips_name">建议填写你的真实姓名,真实的姓名可以让你的好友快速找到你</string>
+    <string name="complete">完成</string>
+    <string name="input_name">请输入你的昵称</string>
+    <string name="error_empty_passWord">密码不能为空</string>
+    <string name="error_empty_account">昵称不能为空</string>
+
 
     
 </resources>

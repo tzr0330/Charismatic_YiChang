@@ -1,5 +1,6 @@
 package com.amlogic.tzr.charismatic_yichang.activity;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.TextInputLayout;
@@ -8,15 +9,24 @@ import android.text.SpannableString;
 import android.text.Spanned;
 import android.text.TextWatcher;
 import android.text.style.StyleSpan;
+import android.util.Log;
 import android.view.View;
 import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import com.amlogic.tzr.charismatic_yichang.AppManager;
 import com.amlogic.tzr.charismatic_yichang.BaseActivity;
 import com.amlogic.tzr.charismatic_yichang.R;
+import com.amlogic.tzr.charismatic_yichang.bean.User;
+import com.amlogic.tzr.charismatic_yichang.event.LoginEvent;
 import com.google.android.gms.common.SignInButton;
+
+import cn.bmob.v3.BmobUser;
+import cn.bmob.v3.exception.BmobException;
+import cn.bmob.v3.listener.LogInListener;
+import de.greenrobot.event.EventBus;
 
 /**
  * A login screen that offers login via email/password and via Google+ sign in.
@@ -44,6 +54,7 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener{
     private View mLoginFormView;
 
 
+    private Context mContext;
     private  EditText et_userName,et_passWord;
     private TextInputLayout til_userName,til_passWord;
     private TextView tv_register,tv_forgetPw,tv_title;
@@ -53,9 +64,8 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener{
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
+        mContext=LoginActivity.this;
         initView();
-
-
 
         // Set up the login form.
 //        mEmailView = (AutoCompleteTextView) findViewById(R.id.email);
@@ -90,7 +100,7 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener{
     private void initView() {
         et_userName= (EditText) findViewById(R.id.et_name);
         et_passWord= (EditText) findViewById(R.id.et_pw);
-        mProgressView = findViewById(R.id.login_progress);
+        mProgressView = findViewById(R.id.pb_al_progress);
         til_userName= (TextInputLayout) findViewById(R.id.til_name);
         til_passWord= (TextInputLayout) findViewById(R.id.til_pwd);
         til_userName.setHint(getResources().getString(R.string.prompt_account));
@@ -109,10 +119,12 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener{
 
             @Override
             public void afterTextChanged(Editable s) {
-                if (s.toString().length() <9) {
+                if (s.toString().length() <6) {
+                    btn_login.setEnabled(false);
                     til_userName.setError(getResources().getString(R.string.error_invalid_account));
                     til_userName.setErrorEnabled(true);
                 } else {
+                    btn_login.setEnabled(true);
                     til_userName.setErrorEnabled(false);
                 }
             }
@@ -131,10 +143,12 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener{
 
             @Override
             public void afterTextChanged(Editable s) {
-                if (s.toString().length() < 9) {
+                if (s.toString().length() <6) {
+                    btn_login.setEnabled(false);
                     til_passWord.setError(getResources().getString(R.string.error_invalid_password));
                     til_passWord.setErrorEnabled(true);
                 } else {
+                    btn_login.setEnabled(true);
                     til_passWord.setErrorEnabled(false);
                 }
             }
@@ -162,13 +176,29 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener{
             case R.id.tv_la_forgetPw:
                 break;
             case R.id.btn_la_login:
+                String user_name=et_userName.getText().toString().trim();
+                String user_pw=et_passWord.getText().toString().trim();
+                BmobUser.loginByAccount(this,user_name, user_pw, new LogInListener<User>() {
+
+                    @Override
+                    public void done(User user, BmobException e) {
+                        // TODO Auto-generated method stub
+                        if (user != null) {
+                            Log.e("LoginActivity","user=="+user.toString());
+                            EventBus.getDefault().post(new LoginEvent(true, user));
+                            AppManager.getAppManager().finishActivity();
+                        }
+                    }
+                });
                 break;
 
         }
 
     }
 
-//    private void populateAutoComplete() {
+
+
+    //    private void populateAutoComplete() {
 //        getLoaderManager().initLoader(0, null, this);
 //    }
 

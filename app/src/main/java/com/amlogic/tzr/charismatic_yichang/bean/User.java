@@ -43,4 +43,14 @@ public class User extends BmobUser {
     public void setHead_thumb(BmobFile head_thumb) {
         this.head_thumb = head_thumb;
     }
+
+    @Override
+    public String toString() {
+        return "User{" +
+                "phone='" + phone + '\'' +
+                ", nick='" + nick + '\'' +
+                ", sex=" + sex +
+                ", head_thumb=" + head_thumb +
+                '}';
+    }
 }

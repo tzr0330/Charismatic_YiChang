@@ -9,24 +9,31 @@ import android.support.v4.app.FragmentTransaction;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBar;
-import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.amlogic.tzr.charismatic_yichang.Tool.BitmapCache;
+import com.amlogic.tzr.charismatic_yichang.Tool.ConfigUtil;
 import com.amlogic.tzr.charismatic_yichang.Tool.DensityUtil;
+import com.amlogic.tzr.charismatic_yichang.Tool.SPUtils;
 import com.amlogic.tzr.charismatic_yichang.activity.LoginActivity;
+import com.amlogic.tzr.charismatic_yichang.event.LoginEvent;
 import com.amlogic.tzr.charismatic_yichang.fragment.InfoFragment;
 import com.amlogic.tzr.charismatic_yichang.fragment.NewsMainFragment;
 import com.amlogic.tzr.charismatic_yichang.fragment.TourFragment;
 import com.amlogic.tzr.charismatic_yichang.fragment.VideoFragment;
+import com.android.volley.RequestQueue;
+import com.android.volley.toolbox.ImageLoader;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import cn.bmob.v3.Bmob;
+import cn.bmob.v3.datatype.BmobFile;
+import de.greenrobot.event.EventBus;
 
 
 public class MainActivity extends BaseActivity {
@@ -37,6 +44,8 @@ public class MainActivity extends BaseActivity {
     private boolean pendingIntroAnimation=false;
     private TextView mUserName;
     private ImageView mUserHead;
+    private RequestQueue mQueue;
+    private ImageLoader mImageLoader;
 
     /*
     fragment
@@ -53,6 +62,8 @@ public class MainActivity extends BaseActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         mContext=MainActivity.this;
+        mQueue = ApplicationController.getInstance().getRequestQueue();
+        mImageLoader = new ImageLoader(mQueue, new BitmapCache());
         if (savedInstanceState==null){
             pendingIntroAnimation=true;
         }
@@ -62,6 +73,7 @@ public class MainActivity extends BaseActivity {
 //            startIntroAnimation();
         }
         setTabSelection(0);
+        EventBus.getDefault().register(this);
     }
 
     private void initView() {
@@ -81,7 +93,9 @@ public class MainActivity extends BaseActivity {
         mUserHead.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(MainActivity.this, LoginActivity.class));
+                if (!(boolean)SPUtils.get(mContext,ConfigUtil.IS_LOGIN,false)) {
+                    startActivity(new Intent(MainActivity.this, LoginActivity.class));
+                }
             }
         });
 
@@ -210,4 +224,27 @@ public class MainActivity extends BaseActivity {
 
         return super.onOptionsItemSelected(item);
     }
+
+    public void onEventMainThread(LoginEvent event){
+        if (event.isLogin()){
+            SPUtils.put(mContext, ConfigUtil.IS_LOGIN, true);
+            mUserName.setText(event.getLoginUser().getUsername());
+            BmobFile icon=event.getLoginUser().getHead_thumb();
+            if (icon!=null){
+                String url=icon.getFileUrl(mContext);
+                ImageLoader.ImageListener imageListener = ImageLoader.getImageListener(mUserHead, R.mipmap.pic_default, R.mipmap.pic_default);
+                mImageLoader.get(url, imageListener);
+            }else{
+               mUserHead.setImageResource(R.mipmap.ic_user);
+            }
+        }
+
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        EventBus.getDefault().unregister(this);
+    }
+
 }

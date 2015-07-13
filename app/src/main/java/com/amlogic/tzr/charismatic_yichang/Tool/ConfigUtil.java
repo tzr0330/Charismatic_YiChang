@@ -8,4 +8,8 @@ public class ConfigUtil {
     public static  String APPKEY = "8bba3ddb84bb";
     // 填写从短信SDK应用后台注册得到的APPSECRET
     public static  String APPSECRET = "1fdc48e35c59c7155e2986b5f56addbe";
+
+    public static String IS_LOGIN="is_login";
+
+    public static String USER_ID="user_id";
 }
