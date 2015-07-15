@@ -2,174 +2,6 @@
 <items version="2" >
 
     <item
-        jar="D:\git\Charismatic_YiChang\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-cast\7.5.0\jars\classes.jar"
-        jumboMode="false"
-        revision="23.0.0 rc2"
-        sha1="8e3a972f28b8bae817e382257ba177a31bcadbbc">
-        <dex dex="D:\git\Charismatic_YiChang\app\build\intermediates\pre-dexed\debug\classes-74c41eb4cd4906898196d75f53a322b48bf58475.jar" />
-    </item>
-    <item
-        jar="D:\Eclipise\android-sdk_r24.2-windows\android-sdk-windows\extras\android\m2repository\com\android\support\support-annotations\22.2.0\support-annotations-22.2.0.jar"
-        jumboMode="false"
-        revision="23.0.0 rc2"
-        sha1="66b42a1f3eb7676070b7ef7f14b603483aecbee1">
-        <dex dex="D:\git\Charismatic_YiChang\app\build\intermediates\pre-dexed\debug\support-annotations-22.2.0-04dce3bb400defa1610d8a4116c287eb12074f6e.jar" />
-    </item>
-    <item
-        jar="D:\git\Charismatic_YiChang\app\build\intermediates\exploded-aar\com.android.support\appcompat-v7\22.2.0\jars\classes.jar"
-        jumboMode="false"
-        revision="23.0.0 rc2"
-        sha1="73753982da6bde518f3a4c6b372749981d14d1a0">
-        <dex dex="D:\git\Charismatic_YiChang\app\build\intermediates\pre-dexed\debug\classes-1b2a9a2a7a85bb8d5f30e6b46d4af2856cd445cc.jar" />
-    </item>
-    <item
-        jar="D:\git\Charismatic_YiChang\app\libs\MobTools.jar"
-        jumboMode="false"
-        revision="23.0.0 rc2"
-        sha1="c41aaf9ac27d8a39338463e980799f855ee3d432">
-        <dex dex="D:\git\Charismatic_YiChang\app\build\intermediates\pre-dexed\debug\MobTools-b7cf4fe5c17d4c37eac14644d03e32a08246f4a3.jar" />
-    </item>
-    <item
-        jar="D:\git\Charismatic_YiChang\app\build\intermediates\exploded-aar\com.android.support\mediarouter-v7\22.0.0\jars\classes.jar"
-        jumboMode="false"
-        revision="23.0.0 rc2"
-        sha1="a1372c17fccacca753d3951d3ad820571cbce075">
-        <dex dex="D:\git\Charismatic_YiChang\app\build\intermediates\pre-dexed\debug\classes-f8a71dd010c8c69ff7ea6b9878f58369198d6262.jar" />
-    </item>
-    <item
-        jar="D:\git\Charismatic_YiChang\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-appindexing\7.5.0\jars\classes.jar"
-        jumboMode="false"
-        revision="23.0.0 rc2"
-        sha1="f02127a85abd52a2cd526d4c2409f21969f80ee8">
-        <dex dex="D:\git\Charismatic_YiChang\app\build\intermediates\pre-dexed\debug\classes-332b1a18d1470a8cc617ac9bcea31fda81a646a4.jar" />
-    </item>
-    <item
-        jar="D:\git\Charismatic_YiChang\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-fitness\7.5.0\jars\classes.jar"
-        jumboMode="false"
-        revision="23.0.0 rc2"
-        sha1="a172852a35ff919e85b9b7f14bbc15c5bee25520">
-        <dex dex="D:\git\Charismatic_YiChang\app\build\intermediates\pre-dexed\debug\classes-a9fede3599aa9b969d7e5dc454e63fa6f219e559.jar" />
-    </item>
-    <item
-        jar="D:\git\Charismatic_YiChang\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-gcm\7.5.0\jars\classes.jar"
-        jumboMode="false"
-        revision="23.0.0 rc2"
-        sha1="8d736fefa22d896e84a268354b3ed48a42663150">
-        <dex dex="D:\git\Charismatic_YiChang\app\build\intermediates\pre-dexed\debug\classes-348de9bf7dea977cce4d23a889f5d9827e7406d1.jar" />
-    </item>
-    <item
-        jar="D:\git\Charismatic_YiChang\app\build\intermediates\exploded-aar\com.android.support\mediarouter-v7\22.0.0\jars\libs\internal_impl-22.0.0.jar"
-        jumboMode="false"
-        revision="23.0.0 rc2"
-        sha1="ba3df4eb0a630d7de294f0e48d3f9267d279b784">
-        <dex dex="D:\git\Charismatic_YiChang\app\build\intermediates\pre-dexed\debug\internal_impl-22.0.0-e8b3ae64bb122f3caf1a79a59f37a39a63591e77.jar" />
-    </item>
-    <item
-        jar="D:\git\Charismatic_YiChang\app\libs\Bmob_Push_V0.6beta_20150408.jar"
-        jumboMode="false"
-        revision="23.0.0 rc2"
-        sha1="db21ec99c2c7bf91c67bf80f5c5c49a92dd0562e">
-        <dex dex="D:\git\Charismatic_YiChang\app\build\intermediates\pre-dexed\debug\Bmob_Push_V0.6beta_20150408-1d7769146c57ab4f4fcb3013df4675649b680bea.jar" />
-    </item>
-    <item
-        jar="D:\git\Charismatic_YiChang\app\build\intermediates\exploded-aar\com.android.support\recyclerview-v7\22.2.0\jars\classes.jar"
-        jumboMode="false"
-        revision="23.0.0 rc2"
-        sha1="5b37cf49773f7f17aca9830efd3053b0cac56728">
-        <dex dex="D:\git\Charismatic_YiChang\app\build\intermediates\pre-dexed\debug\classes-5e0447afbdf58498cfb40abac8b0088cd28de17f.jar" />
-    </item>
-    <item
-        jar="D:\git\Charismatic_YiChang\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-panorama\7.5.0\jars\classes.jar"
-        jumboMode="false"
-        revision="23.0.0 rc2"
-        sha1="ba207be21987c11b37d9f8faa08ed6e722569f30">
-        <dex dex="D:\git\Charismatic_YiChang\app\build\intermediates\pre-dexed\debug\classes-db79cc96cb5275a5d108d3eb05c3bd9dd116c9da.jar" />
-    </item>
-    <item
-        jar="D:\git\Charismatic_YiChang\app\libs\volley.jar"
-        jumboMode="false"
-        revision="23.0.0 rc2"
-        sha1="4a94601db9bdfb7dc60efabb3dea91a0675f591d">
-        <dex dex="D:\git\Charismatic_YiChang\app\build\intermediates\pre-dexed\debug\volley-54aa2227a83ab92d9b367162dc330d7a8da6ac06.jar" />
-    </item>
-    <item
-        jar="D:\git\Charismatic_YiChang\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-location\7.5.0\jars\classes.jar"
-        jumboMode="false"
-        revision="23.0.0 rc2"
-        sha1="1e98ef3f124bb7a11f8575f9ff5dfea330b61b6f">
-        <dex dex="D:\git\Charismatic_YiChang\app\build\intermediates\pre-dexed\debug\classes-4c2208ad74a9ad07e252cf84f18a3ef6a2a38176.jar" />
-    </item>
-    <item
-        jar="D:\git\Charismatic_YiChang\app\build\intermediates\exploded-aar\com.android.support\support-v4\22.2.0\jars\libs\internal_impl-22.2.0.jar"
-        jumboMode="false"
-        revision="23.0.0 rc2"
-        sha1="57f2ab85c164ff1676ec64dee787981c046fab79">
-        <dex dex="D:\git\Charismatic_YiChang\app\build\intermediates\pre-dexed\debug\internal_impl-22.2.0-4bc0aaef30164db54a79ead9a6c42d31086ab003.jar" />
-    </item>
-    <item
-        jar="D:\git\Charismatic_YiChang\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-maps\7.5.0\jars\classes.jar"
-        jumboMode="false"
-        revision="23.0.0 rc2"
-        sha1="06a42becc33232ec0ee125161da68c1829c9f8fd">
-        <dex dex="D:\git\Charismatic_YiChang\app\build\intermediates\pre-dexed\debug\classes-578ac71646e42b5dac8d67bfa297b3b1cabd9d04.jar" />
-    </item>
-    <item
-        jar="D:\git\Charismatic_YiChang\app\build\intermediates\exploded-aar\com.android.support\cardview-v7\22.2.0\jars\classes.jar"
-        jumboMode="false"
-        revision="23.0.0 rc2"
-        sha1="97f7e239e86ef994de894818fdd8a71d2e89d6aa">
-        <dex dex="D:\git\Charismatic_YiChang\app\build\intermediates\pre-dexed\debug\classes-c71069367bd2939496bd9f0af3e0a95e3307a771.jar" />
-    </item>
-    <item
-        jar="D:\git\Charismatic_YiChang\app\libs\eventbus.jar"
-        jumboMode="false"
-        revision="23.0.0 rc2"
-        sha1="9a179701fef5778920c0471563bc1642e5df8217">
-        <dex dex="D:\git\Charismatic_YiChang\app\build\intermediates\pre-dexed\debug\eventbus-06675e3176dab2c16c6b851ee69fe9de15d50e59.jar" />
-    </item>
-    <item
-        jar="D:\git\Charismatic_YiChang\app\build\intermediates\exploded-aar\com.android.support\support-v4\22.2.0\jars\classes.jar"
-        jumboMode="false"
-        revision="23.0.0 rc2"
-        sha1="1ee588ff2c4daf7b97c1cbf922a6c7f027285c2f">
-        <dex dex="D:\git\Charismatic_YiChang\app\build\intermediates\pre-dexed\debug\classes-adb54dbf6c427dfd083c23f73697f1d241b1728a.jar" />
-    </item>
-    <item
-        jar="D:\git\Charismatic_YiChang\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-base\7.5.0\jars\classes.jar"
-        jumboMode="false"
-        revision="23.0.0 rc2"
-        sha1="a78183f30e769a98ab4820794f597763088d3065">
-        <dex dex="D:\git\Charismatic_YiChang\app\build\intermediates\pre-dexed\debug\classes-782117e3f344da9fdb011376bf2fd06df2a038d3.jar" />
-    </item>
-    <item
-        jar="D:\git\Charismatic_YiChang\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-plus\7.5.0\jars\classes.jar"
-        jumboMode="false"
-        revision="23.0.0 rc2"
-        sha1="272bc5d7063f24bc3a33ea1d318cde8f31f5ec4c">
-        <dex dex="D:\git\Charismatic_YiChang\app\build\intermediates\pre-dexed\debug\classes-d1b44bcda8759f4bf26751468c1552b0206b498b.jar" />
-    </item>
-    <item
-        jar="D:\git\Charismatic_YiChang\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-wearable\7.5.0\jars\classes.jar"
-        jumboMode="false"
-        revision="23.0.0 rc2"
-        sha1="69dd177337ead693c408c8dddc9546bb6f1244fa">
-        <dex dex="D:\git\Charismatic_YiChang\app\build\intermediates\pre-dexed\debug\classes-73a6f0a144986f4eaf1f30241b43d0e22cacfdc7.jar" />
-    </item>
-    <item
-        jar="D:\git\Charismatic_YiChang\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-nearby\7.5.0\jars\classes.jar"
-        jumboMode="false"
-        revision="23.0.0 rc2"
-        sha1="6440e5e5cfe368f9bff3c537fb8988048069cb33">
-        <dex dex="D:\git\Charismatic_YiChang\app\build\intermediates\pre-dexed\debug\classes-6e458162316baaef49d5a4b44fcc8be3218b0e5f.jar" />
-    </item>
-    <item
-        jar="D:\git\Charismatic_YiChang\app\build\intermediates\exploded-aar\Charismatic_YiChang\library\unspecified\jars\classes.jar"
-        jumboMode="false"
-        revision="23.0.0 rc2"
-        sha1="5e11ec28771e20a0afb663191f43370c86e2d716">
-        <dex dex="D:\git\Charismatic_YiChang\app\build\intermediates\pre-dexed\debug\classes-f380df2ea0f5fff5e35aca69a33da9449aa20944.jar" />
-    </item>
-    <item
         jar="D:\git\Charismatic_YiChang\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-games\7.5.0\jars\classes.jar"
         jumboMode="false"
         revision="23.0.0 rc2"
@@ -177,25 +9,11 @@
         <dex dex="D:\git\Charismatic_YiChang\app\build\intermediates\pre-dexed\debug\classes-c3bd527971f9b909fef06f026f26c374074a740d.jar" />
     </item>
     <item
-        jar="D:\git\Charismatic_YiChang\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-ads\7.5.0\jars\classes.jar"
-        jumboMode="false"
-        revision="23.0.0 rc2"
-        sha1="29ebc7e04d877062317c8cc0e68b20f0c1fcda66">
-        <dex dex="D:\git\Charismatic_YiChang\app\build\intermediates\pre-dexed\debug\classes-a05447a691e79b336ffe559ba8fcac19f33c3b87.jar" />
-    </item>
-    <item
         jar="D:\git\Charismatic_YiChang\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-identity\7.5.0\jars\classes.jar"
         jumboMode="false"
         revision="23.0.0 rc2"
         sha1="d405025c600055237c171a0bbabaa49d69696573">
         <dex dex="D:\git\Charismatic_YiChang\app\build\intermediates\pre-dexed\debug\classes-6e717599146887a09d7f5f8e22d31b1a6ecf5cd8.jar" />
-    </item>
-    <item
-        jar="D:\git\Charismatic_YiChang\app\libs\SMSSDK-1.2.2.jar"
-        jumboMode="false"
-        revision="23.0.0 rc2"
-        sha1="fdbdc82cc81d5d26e2ef56ab5f4ffb0fc04b4b00">
-        <dex dex="D:\git\Charismatic_YiChang\app\build\intermediates\pre-dexed\debug\SMSSDK-1.2.2-889cbfe3a08a3421528c278268db67fdb466280c.jar" />
     </item>
     <item
         jar="D:\git\Charismatic_YiChang\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-wallet\7.5.0\jars\classes.jar"
@@ -212,32 +30,67 @@
         <dex dex="D:\git\Charismatic_YiChang\app\build\intermediates\pre-dexed\debug\classes-a2c075426f42639d8e036a7811194a0d71823487.jar" />
     </item>
     <item
-        jar="D:\git\Charismatic_YiChang\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-safetynet\7.5.0\jars\classes.jar"
+        jar="D:\git\Charismatic_YiChang\app\build\intermediates\exploded-aar\Charismatic_YiChang\library\unspecified\jars\classes.jar"
         jumboMode="false"
         revision="23.0.0 rc2"
-        sha1="1a6411087ab88ce5542f593e63a2752b6b0d6f1a">
-        <dex dex="D:\git\Charismatic_YiChang\app\build\intermediates\pre-dexed\debug\classes-3d09b40b46eaf837b3a704095c82837d87b528e6.jar" />
+        sha1="5e11ec28771e20a0afb663191f43370c86e2d716">
+        <dex dex="D:\git\Charismatic_YiChang\app\build\intermediates\pre-dexed\debug\classes-f380df2ea0f5fff5e35aca69a33da9449aa20944.jar" />
     </item>
     <item
-        jar="D:\git\Charismatic_YiChang\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-analytics\7.5.0\jars\classes.jar"
+        jar="D:\git\Charismatic_YiChang\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-maps\7.5.0\jars\classes.jar"
         jumboMode="false"
         revision="23.0.0 rc2"
-        sha1="e7b35244f50663b3f8d150714bca9ecd7a290da1">
-        <dex dex="D:\git\Charismatic_YiChang\app\build\intermediates\pre-dexed\debug\classes-e86b9c811008d509c1ce9a285091be4d6a665663.jar" />
+        sha1="06a42becc33232ec0ee125161da68c1829c9f8fd">
+        <dex dex="D:\git\Charismatic_YiChang\app\build\intermediates\pre-dexed\debug\classes-578ac71646e42b5dac8d67bfa297b3b1cabd9d04.jar" />
     </item>
     <item
-        jar="D:\git\Charismatic_YiChang\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-appstate\7.5.0\jars\classes.jar"
+        jar="D:\git\Charismatic_YiChang\app\build\intermediates\exploded-aar\com.android.support\mediarouter-v7\22.0.0\jars\libs\internal_impl-22.0.0.jar"
         jumboMode="false"
-        revision="23.0.0 rc2"
-        sha1="68c140702c7242d914655bcb3164d9e8c45b84cb">
-        <dex dex="D:\git\Charismatic_YiChang\app\build\intermediates\pre-dexed\debug\classes-4db12c51a9720bb1827111bef64636a513176680.jar" />
+        revision="22.0.1"
+        sha1="ba3df4eb0a630d7de294f0e48d3f9267d279b784">
+        <dex dex="D:\git\Charismatic_YiChang\app\build\intermediates\pre-dexed\debug\internal_impl-22.0.0-e8b3ae64bb122f3caf1a79a59f37a39a63591e77.jar" />
     </item>
     <item
-        jar="D:\git\Charismatic_YiChang\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-drive\7.5.0\jars\classes.jar"
+        jar="D:\Eclipise\android-sdk_r24.2-windows\android-sdk-windows\extras\android\m2repository\com\android\support\support-annotations\22.2.0\support-annotations-22.2.0.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="66b42a1f3eb7676070b7ef7f14b603483aecbee1">
+        <dex dex="D:\git\Charismatic_YiChang\app\build\intermediates\pre-dexed\debug\support-annotations-22.2.0-04dce3bb400defa1610d8a4116c287eb12074f6e.jar" />
+    </item>
+    <item
+        jar="D:\git\Charismatic_YiChang\app\libs\volley.jar"
         jumboMode="false"
         revision="23.0.0 rc2"
-        sha1="f44d03c138cb6488fdbaa65e3a7e5878861a56d8">
-        <dex dex="D:\git\Charismatic_YiChang\app\build\intermediates\pre-dexed\debug\classes-ee089c3d808110686c8adfefdca47266f7091d7a.jar" />
+        sha1="4a94601db9bdfb7dc60efabb3dea91a0675f591d">
+        <dex dex="D:\git\Charismatic_YiChang\app\build\intermediates\pre-dexed\debug\volley-54aa2227a83ab92d9b367162dc330d7a8da6ac06.jar" />
+    </item>
+    <item
+        jar="D:\git\Charismatic_YiChang\app\build\intermediates\exploded-aar\com.android.support\cardview-v7\22.2.0\jars\classes.jar"
+        jumboMode="false"
+        revision="23.0.0 rc2"
+        sha1="97f7e239e86ef994de894818fdd8a71d2e89d6aa">
+        <dex dex="D:\git\Charismatic_YiChang\app\build\intermediates\pre-dexed\debug\classes-c71069367bd2939496bd9f0af3e0a95e3307a771.jar" />
+    </item>
+    <item
+        jar="D:\git\Charismatic_YiChang\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-location\7.5.0\jars\classes.jar"
+        jumboMode="false"
+        revision="23.0.0 rc2"
+        sha1="1e98ef3f124bb7a11f8575f9ff5dfea330b61b6f">
+        <dex dex="D:\git\Charismatic_YiChang\app\build\intermediates\pre-dexed\debug\classes-4c2208ad74a9ad07e252cf84f18a3ef6a2a38176.jar" />
+    </item>
+    <item
+        jar="D:\git\Charismatic_YiChang\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-fitness\7.5.0\jars\classes.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="a172852a35ff919e85b9b7f14bbc15c5bee25520">
+        <dex dex="D:\git\Charismatic_YiChang\app\build\intermediates\pre-dexed\debug\classes-a9fede3599aa9b969d7e5dc454e63fa6f219e559.jar" />
+    </item>
+    <item
+        jar="D:\git\Charismatic_YiChang\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-fitness\7.5.0\jars\classes.jar"
+        jumboMode="false"
+        revision="23.0.0 rc2"
+        sha1="a172852a35ff919e85b9b7f14bbc15c5bee25520">
+        <dex dex="D:\git\Charismatic_YiChang\app\build\intermediates\pre-dexed\debug\classes-a9fede3599aa9b969d7e5dc454e63fa6f219e559.jar" />
     </item>
     <item
         jar="D:\git\Charismatic_YiChang\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-appinvite\7.5.0\jars\classes.jar"
@@ -247,11 +100,424 @@
         <dex dex="D:\git\Charismatic_YiChang\app\build\intermediates\pre-dexed\debug\classes-dd3b2acdb5877c33985a9cfdf8eb99e7d0c3f61f.jar" />
     </item>
     <item
+        jar="D:\git\Charismatic_YiChang\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-safetynet\7.5.0\jars\classes.jar"
+        jumboMode="false"
+        revision="23.0.0 rc2"
+        sha1="1a6411087ab88ce5542f593e63a2752b6b0d6f1a">
+        <dex dex="D:\git\Charismatic_YiChang\app\build\intermediates\pre-dexed\debug\classes-3d09b40b46eaf837b3a704095c82837d87b528e6.jar" />
+    </item>
+    <item
+        jar="D:\git\Charismatic_YiChang\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-drive\7.5.0\jars\classes.jar"
+        jumboMode="false"
+        revision="23.0.0 rc2"
+        sha1="f44d03c138cb6488fdbaa65e3a7e5878861a56d8">
+        <dex dex="D:\git\Charismatic_YiChang\app\build\intermediates\pre-dexed\debug\classes-ee089c3d808110686c8adfefdca47266f7091d7a.jar" />
+    </item>
+    <item
+        jar="D:\git\Charismatic_YiChang\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-maps\7.5.0\jars\classes.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="06a42becc33232ec0ee125161da68c1829c9f8fd">
+        <dex dex="D:\git\Charismatic_YiChang\app\build\intermediates\pre-dexed\debug\classes-578ac71646e42b5dac8d67bfa297b3b1cabd9d04.jar" />
+    </item>
+    <item
+        jar="D:\git\Charismatic_YiChang\app\libs\Bmob_Push_V0.6beta_20150408.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="db21ec99c2c7bf91c67bf80f5c5c49a92dd0562e">
+        <dex dex="D:\git\Charismatic_YiChang\app\build\intermediates\pre-dexed\debug\Bmob_Push_V0.6beta_20150408-1d7769146c57ab4f4fcb3013df4675649b680bea.jar" />
+    </item>
+    <item
+        jar="D:\git\Charismatic_YiChang\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-location\7.5.0\jars\classes.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="1e98ef3f124bb7a11f8575f9ff5dfea330b61b6f">
+        <dex dex="D:\git\Charismatic_YiChang\app\build\intermediates\pre-dexed\debug\classes-4c2208ad74a9ad07e252cf84f18a3ef6a2a38176.jar" />
+    </item>
+    <item
+        jar="D:\git\Charismatic_YiChang\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-ads\7.5.0\jars\classes.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="29ebc7e04d877062317c8cc0e68b20f0c1fcda66">
+        <dex dex="D:\git\Charismatic_YiChang\app\build\intermediates\pre-dexed\debug\classes-a05447a691e79b336ffe559ba8fcac19f33c3b87.jar" />
+    </item>
+    <item
+        jar="D:\git\Charismatic_YiChang\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-ads\7.5.0\jars\classes.jar"
+        jumboMode="false"
+        revision="23.0.0 rc2"
+        sha1="29ebc7e04d877062317c8cc0e68b20f0c1fcda66">
+        <dex dex="D:\git\Charismatic_YiChang\app\build\intermediates\pre-dexed\debug\classes-a05447a691e79b336ffe559ba8fcac19f33c3b87.jar" />
+    </item>
+    <item
+        jar="D:\git\Charismatic_YiChang\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-nearby\7.5.0\jars\classes.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="6440e5e5cfe368f9bff3c537fb8988048069cb33">
+        <dex dex="D:\git\Charismatic_YiChang\app\build\intermediates\pre-dexed\debug\classes-6e458162316baaef49d5a4b44fcc8be3218b0e5f.jar" />
+    </item>
+    <item
+        jar="D:\git\Charismatic_YiChang\app\libs\Bmob_Push_V0.6beta_20150408.jar"
+        jumboMode="false"
+        revision="23.0.0 rc2"
+        sha1="db21ec99c2c7bf91c67bf80f5c5c49a92dd0562e">
+        <dex dex="D:\git\Charismatic_YiChang\app\build\intermediates\pre-dexed\debug\Bmob_Push_V0.6beta_20150408-1d7769146c57ab4f4fcb3013df4675649b680bea.jar" />
+    </item>
+    <item
+        jar="D:\git\Charismatic_YiChang\app\build\intermediates\exploded-aar\com.android.support\cardview-v7\22.2.0\jars\classes.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="97f7e239e86ef994de894818fdd8a71d2e89d6aa">
+        <dex dex="D:\git\Charismatic_YiChang\app\build\intermediates\pre-dexed\debug\classes-c71069367bd2939496bd9f0af3e0a95e3307a771.jar" />
+    </item>
+    <item
+        jar="D:\git\Charismatic_YiChang\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-games\7.5.0\jars\classes.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="02bac2dc792d78241077861566f2c82da955e7fa">
+        <dex dex="D:\git\Charismatic_YiChang\app\build\intermediates\pre-dexed\debug\classes-c3bd527971f9b909fef06f026f26c374074a740d.jar" />
+    </item>
+    <item
+        jar="D:\git\Charismatic_YiChang\app\libs\SMSSDK-1.2.2.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="fdbdc82cc81d5d26e2ef56ab5f4ffb0fc04b4b00">
+        <dex dex="D:\git\Charismatic_YiChang\app\build\intermediates\pre-dexed\debug\SMSSDK-1.2.2-889cbfe3a08a3421528c278268db67fdb466280c.jar" />
+    </item>
+    <item
+        jar="D:\git\Charismatic_YiChang\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-appinvite\7.5.0\jars\classes.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="63ec6e9f4fe5482a7447d0f3091b8e543a02554c">
+        <dex dex="D:\git\Charismatic_YiChang\app\build\intermediates\pre-dexed\debug\classes-dd3b2acdb5877c33985a9cfdf8eb99e7d0c3f61f.jar" />
+    </item>
+    <item
+        jar="D:\git\Charismatic_YiChang\app\build\intermediates\exploded-aar\com.android.support\appcompat-v7\22.2.0\jars\classes.jar"
+        jumboMode="false"
+        revision="23.0.0 rc2"
+        sha1="73753982da6bde518f3a4c6b372749981d14d1a0">
+        <dex dex="D:\git\Charismatic_YiChang\app\build\intermediates\pre-dexed\debug\classes-1b2a9a2a7a85bb8d5f30e6b46d4af2856cd445cc.jar" />
+    </item>
+    <item
+        jar="D:\git\Charismatic_YiChang\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-drive\7.5.0\jars\classes.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="f44d03c138cb6488fdbaa65e3a7e5878861a56d8">
+        <dex dex="D:\git\Charismatic_YiChang\app\build\intermediates\pre-dexed\debug\classes-ee089c3d808110686c8adfefdca47266f7091d7a.jar" />
+    </item>
+    <item
+        jar="D:\git\Charismatic_YiChang\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-nearby\7.5.0\jars\classes.jar"
+        jumboMode="false"
+        revision="23.0.0 rc2"
+        sha1="6440e5e5cfe368f9bff3c537fb8988048069cb33">
+        <dex dex="D:\git\Charismatic_YiChang\app\build\intermediates\pre-dexed\debug\classes-6e458162316baaef49d5a4b44fcc8be3218b0e5f.jar" />
+    </item>
+    <item
+        jar="D:\git\Charismatic_YiChang\app\libs\SMSSDK-1.2.2.jar"
+        jumboMode="false"
+        revision="23.0.0 rc2"
+        sha1="fdbdc82cc81d5d26e2ef56ab5f4ffb0fc04b4b00">
+        <dex dex="D:\git\Charismatic_YiChang\app\build\intermediates\pre-dexed\debug\SMSSDK-1.2.2-889cbfe3a08a3421528c278268db67fdb466280c.jar" />
+    </item>
+    <item
+        jar="D:\git\Charismatic_YiChang\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-wallet\7.5.0\jars\classes.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="6836d188602ec5382d1967c58b00960eb8ff8773">
+        <dex dex="D:\git\Charismatic_YiChang\app\build\intermediates\pre-dexed\debug\classes-aed9cb2294e779158a1830584bd1b6fa9b683606.jar" />
+    </item>
+    <item
+        jar="D:\git\Charismatic_YiChang\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-safetynet\7.5.0\jars\classes.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="1a6411087ab88ce5542f593e63a2752b6b0d6f1a">
+        <dex dex="D:\git\Charismatic_YiChang\app\build\intermediates\pre-dexed\debug\classes-3d09b40b46eaf837b3a704095c82837d87b528e6.jar" />
+    </item>
+    <item
+        jar="D:\git\Charismatic_YiChang\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-plus\7.5.0\jars\classes.jar"
+        jumboMode="false"
+        revision="23.0.0 rc2"
+        sha1="272bc5d7063f24bc3a33ea1d318cde8f31f5ec4c">
+        <dex dex="D:\git\Charismatic_YiChang\app\build\intermediates\pre-dexed\debug\classes-d1b44bcda8759f4bf26751468c1552b0206b498b.jar" />
+    </item>
+    <item
+        jar="D:\git\Charismatic_YiChang\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-cast\7.5.0\jars\classes.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="8e3a972f28b8bae817e382257ba177a31bcadbbc">
+        <dex dex="D:\git\Charismatic_YiChang\app\build\intermediates\pre-dexed\debug\classes-74c41eb4cd4906898196d75f53a322b48bf58475.jar" />
+    </item>
+    <item
+        jar="D:\git\Charismatic_YiChang\app\libs\MobTools.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="c41aaf9ac27d8a39338463e980799f855ee3d432">
+        <dex dex="D:\git\Charismatic_YiChang\app\build\intermediates\pre-dexed\debug\MobTools-b7cf4fe5c17d4c37eac14644d03e32a08246f4a3.jar" />
+    </item>
+    <item
+        jar="D:\git\Charismatic_YiChang\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-base\7.5.0\jars\classes.jar"
+        jumboMode="false"
+        revision="23.0.0 rc2"
+        sha1="a78183f30e769a98ab4820794f597763088d3065">
+        <dex dex="D:\git\Charismatic_YiChang\app\build\intermediates\pre-dexed\debug\classes-782117e3f344da9fdb011376bf2fd06df2a038d3.jar" />
+    </item>
+    <item
+        jar="C:\Users\Administrator\.gradle\caches\modules-2\files-2.1\com.nineoldandroids\library\2.4.0\e9b63380f3a242dbdbf103a2355ad7e43bad17cb\library-2.4.0.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="e9b63380f3a242dbdbf103a2355ad7e43bad17cb">
+        <dex dex="D:\git\Charismatic_YiChang\app\build\intermediates\pre-dexed\debug\library-2.4.0-dd460f45d27a359687729c3c169358b1eda3100b.jar" />
+    </item>
+    <item
+        jar="D:\git\Charismatic_YiChang\app\build\intermediates\exploded-aar\com.android.support\appcompat-v7\22.2.0\jars\classes.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="73753982da6bde518f3a4c6b372749981d14d1a0">
+        <dex dex="D:\git\Charismatic_YiChang\app\build\intermediates\pre-dexed\debug\classes-1b2a9a2a7a85bb8d5f30e6b46d4af2856cd445cc.jar" />
+    </item>
+    <item
+        jar="D:\git\Charismatic_YiChang\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-panorama\7.5.0\jars\classes.jar"
+        jumboMode="false"
+        revision="23.0.0 rc2"
+        sha1="ba207be21987c11b37d9f8faa08ed6e722569f30">
+        <dex dex="D:\git\Charismatic_YiChang\app\build\intermediates\pre-dexed\debug\classes-db79cc96cb5275a5d108d3eb05c3bd9dd116c9da.jar" />
+    </item>
+    <item
+        jar="D:\git\Charismatic_YiChang\app\libs\volley.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="4a94601db9bdfb7dc60efabb3dea91a0675f591d">
+        <dex dex="D:\git\Charismatic_YiChang\app\build\intermediates\pre-dexed\debug\volley-54aa2227a83ab92d9b367162dc330d7a8da6ac06.jar" />
+    </item>
+    <item
+        jar="D:\git\Charismatic_YiChang\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-cast\7.5.0\jars\classes.jar"
+        jumboMode="false"
+        revision="23.0.0 rc2"
+        sha1="8e3a972f28b8bae817e382257ba177a31bcadbbc">
+        <dex dex="D:\git\Charismatic_YiChang\app\build\intermediates\pre-dexed\debug\classes-74c41eb4cd4906898196d75f53a322b48bf58475.jar" />
+    </item>
+    <item
+        jar="D:\git\Charismatic_YiChang\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-base\7.5.0\jars\classes.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="a78183f30e769a98ab4820794f597763088d3065">
+        <dex dex="D:\git\Charismatic_YiChang\app\build\intermediates\pre-dexed\debug\classes-782117e3f344da9fdb011376bf2fd06df2a038d3.jar" />
+    </item>
+    <item
+        jar="D:\git\Charismatic_YiChang\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-wearable\7.5.0\jars\classes.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="69dd177337ead693c408c8dddc9546bb6f1244fa">
+        <dex dex="D:\git\Charismatic_YiChang\app\build\intermediates\pre-dexed\debug\classes-73a6f0a144986f4eaf1f30241b43d0e22cacfdc7.jar" />
+    </item>
+    <item
+        jar="D:\git\Charismatic_YiChang\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-appstate\7.5.0\jars\classes.jar"
+        jumboMode="false"
+        revision="23.0.0 rc2"
+        sha1="68c140702c7242d914655bcb3164d9e8c45b84cb">
+        <dex dex="D:\git\Charismatic_YiChang\app\build\intermediates\pre-dexed\debug\classes-4db12c51a9720bb1827111bef64636a513176680.jar" />
+    </item>
+    <item
+        jar="D:\git\Charismatic_YiChang\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-analytics\7.5.0\jars\classes.jar"
+        jumboMode="false"
+        revision="23.0.0 rc2"
+        sha1="e7b35244f50663b3f8d150714bca9ecd7a290da1">
+        <dex dex="D:\git\Charismatic_YiChang\app\build\intermediates\pre-dexed\debug\classes-e86b9c811008d509c1ce9a285091be4d6a665663.jar" />
+    </item>
+    <item
+        jar="D:\git\Charismatic_YiChang\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-panorama\7.5.0\jars\classes.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="ba207be21987c11b37d9f8faa08ed6e722569f30">
+        <dex dex="D:\git\Charismatic_YiChang\app\build\intermediates\pre-dexed\debug\classes-db79cc96cb5275a5d108d3eb05c3bd9dd116c9da.jar" />
+    </item>
+    <item
+        jar="D:\git\Charismatic_YiChang\app\build\intermediates\exploded-aar\com.android.support\recyclerview-v7\22.2.0\jars\classes.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="5b37cf49773f7f17aca9830efd3053b0cac56728">
+        <dex dex="D:\git\Charismatic_YiChang\app\build\intermediates\pre-dexed\debug\classes-5e0447afbdf58498cfb40abac8b0088cd28de17f.jar" />
+    </item>
+    <item
+        jar="D:\git\Charismatic_YiChang\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-gcm\7.5.0\jars\classes.jar"
+        jumboMode="false"
+        revision="23.0.0 rc2"
+        sha1="8d736fefa22d896e84a268354b3ed48a42663150">
+        <dex dex="D:\git\Charismatic_YiChang\app\build\intermediates\pre-dexed\debug\classes-348de9bf7dea977cce4d23a889f5d9827e7406d1.jar" />
+    </item>
+    <item
+        jar="D:\git\Charismatic_YiChang\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-appindexing\7.5.0\jars\classes.jar"
+        jumboMode="false"
+        revision="23.0.0 rc2"
+        sha1="f02127a85abd52a2cd526d4c2409f21969f80ee8">
+        <dex dex="D:\git\Charismatic_YiChang\app\build\intermediates\pre-dexed\debug\classes-332b1a18d1470a8cc617ac9bcea31fda81a646a4.jar" />
+    </item>
+    <item
+        jar="D:\git\Charismatic_YiChang\app\libs\eventbus.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="9a179701fef5778920c0471563bc1642e5df8217">
+        <dex dex="D:\git\Charismatic_YiChang\app\build\intermediates\pre-dexed\debug\eventbus-06675e3176dab2c16c6b851ee69fe9de15d50e59.jar" />
+    </item>
+    <item
+        jar="D:\git\Charismatic_YiChang\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-gcm\7.5.0\jars\classes.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="8d736fefa22d896e84a268354b3ed48a42663150">
+        <dex dex="D:\git\Charismatic_YiChang\app\build\intermediates\pre-dexed\debug\classes-348de9bf7dea977cce4d23a889f5d9827e7406d1.jar" />
+    </item>
+    <item
+        jar="D:\git\Charismatic_YiChang\app\build\intermediates\exploded-aar\com.android.support\recyclerview-v7\22.2.0\jars\classes.jar"
+        jumboMode="false"
+        revision="23.0.0 rc2"
+        sha1="5b37cf49773f7f17aca9830efd3053b0cac56728">
+        <dex dex="D:\git\Charismatic_YiChang\app\build\intermediates\pre-dexed\debug\classes-5e0447afbdf58498cfb40abac8b0088cd28de17f.jar" />
+    </item>
+    <item
+        jar="D:\git\Charismatic_YiChang\app\build\intermediates\exploded-aar\com.android.support\mediarouter-v7\22.0.0\jars\classes.jar"
+        jumboMode="false"
+        revision="23.0.0 rc2"
+        sha1="a1372c17fccacca753d3951d3ad820571cbce075">
+        <dex dex="D:\git\Charismatic_YiChang\app\build\intermediates\pre-dexed\debug\classes-f8a71dd010c8c69ff7ea6b9878f58369198d6262.jar" />
+    </item>
+    <item
+        jar="D:\git\Charismatic_YiChang\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-appindexing\7.5.0\jars\classes.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="f02127a85abd52a2cd526d4c2409f21969f80ee8">
+        <dex dex="D:\git\Charismatic_YiChang\app\build\intermediates\pre-dexed\debug\classes-332b1a18d1470a8cc617ac9bcea31fda81a646a4.jar" />
+    </item>
+    <item
+        jar="D:\Eclipise\android-sdk_r24.2-windows\android-sdk-windows\extras\android\m2repository\com\android\support\support-annotations\22.2.0\support-annotations-22.2.0.jar"
+        jumboMode="false"
+        revision="23.0.0 rc2"
+        sha1="66b42a1f3eb7676070b7ef7f14b603483aecbee1">
+        <dex dex="D:\git\Charismatic_YiChang\app\build\intermediates\pre-dexed\debug\support-annotations-22.2.0-04dce3bb400defa1610d8a4116c287eb12074f6e.jar" />
+    </item>
+    <item
+        jar="D:\git\Charismatic_YiChang\app\build\intermediates\exploded-aar\com.android.support\support-v4\22.2.0\jars\classes.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="1ee588ff2c4daf7b97c1cbf922a6c7f027285c2f">
+        <dex dex="D:\git\Charismatic_YiChang\app\build\intermediates\pre-dexed\debug\classes-adb54dbf6c427dfd083c23f73697f1d241b1728a.jar" />
+    </item>
+    <item
+        jar="D:\git\Charismatic_YiChang\app\build\intermediates\exploded-aar\Charismatic_YiChang\library\unspecified\jars\classes.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="94764002eb953bfb66234aec07b575c4e36dee64">
+        <dex dex="D:\git\Charismatic_YiChang\app\build\intermediates\pre-dexed\debug\classes-f380df2ea0f5fff5e35aca69a33da9449aa20944.jar" />
+    </item>
+    <item
+        jar="D:\git\Charismatic_YiChang\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-analytics\7.5.0\jars\classes.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="e7b35244f50663b3f8d150714bca9ecd7a290da1">
+        <dex dex="D:\git\Charismatic_YiChang\app\build\intermediates\pre-dexed\debug\classes-e86b9c811008d509c1ce9a285091be4d6a665663.jar" />
+    </item>
+    <item
+        jar="D:\git\Charismatic_YiChang\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-wearable\7.5.0\jars\classes.jar"
+        jumboMode="false"
+        revision="23.0.0 rc2"
+        sha1="69dd177337ead693c408c8dddc9546bb6f1244fa">
+        <dex dex="D:\git\Charismatic_YiChang\app\build\intermediates\pre-dexed\debug\classes-73a6f0a144986f4eaf1f30241b43d0e22cacfdc7.jar" />
+    </item>
+    <item
+        jar="D:\git\Charismatic_YiChang\app\build\intermediates\exploded-aar\com.android.support\mediarouter-v7\22.0.0\jars\libs\internal_impl-22.0.0.jar"
+        jumboMode="false"
+        revision="23.0.0 rc2"
+        sha1="ba3df4eb0a630d7de294f0e48d3f9267d279b784">
+        <dex dex="D:\git\Charismatic_YiChang\app\build\intermediates\pre-dexed\debug\internal_impl-22.0.0-e8b3ae64bb122f3caf1a79a59f37a39a63591e77.jar" />
+    </item>
+    <item
+        jar="D:\git\Charismatic_YiChang\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-plus\7.5.0\jars\classes.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="272bc5d7063f24bc3a33ea1d318cde8f31f5ec4c">
+        <dex dex="D:\git\Charismatic_YiChang\app\build\intermediates\pre-dexed\debug\classes-d1b44bcda8759f4bf26751468c1552b0206b498b.jar" />
+    </item>
+    <item
+        jar="D:\git\Charismatic_YiChang\app\build\intermediates\exploded-aar\com.android.support\support-v4\22.2.0\jars\classes.jar"
+        jumboMode="false"
+        revision="23.0.0 rc2"
+        sha1="1ee588ff2c4daf7b97c1cbf922a6c7f027285c2f">
+        <dex dex="D:\git\Charismatic_YiChang\app\build\intermediates\pre-dexed\debug\classes-adb54dbf6c427dfd083c23f73697f1d241b1728a.jar" />
+    </item>
+    <item
+        jar="D:\git\Charismatic_YiChang\app\libs\BmobSDK_V3.4.0_0616.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="20dbd020365584cafeb1a85ec9743ac9bcadf0df">
+        <dex dex="D:\git\Charismatic_YiChang\app\build\intermediates\pre-dexed\debug\BmobSDK_V3.4.0_0616-4b9b0d44b89b8efb89a95273a9d9a5182e788b35.jar" />
+    </item>
+    <item
+        jar="D:\git\Charismatic_YiChang\app\libs\MobTools.jar"
+        jumboMode="false"
+        revision="23.0.0 rc2"
+        sha1="c41aaf9ac27d8a39338463e980799f855ee3d432">
+        <dex dex="D:\git\Charismatic_YiChang\app\build\intermediates\pre-dexed\debug\MobTools-b7cf4fe5c17d4c37eac14644d03e32a08246f4a3.jar" />
+    </item>
+    <item
+        jar="D:\git\Charismatic_YiChang\app\build\intermediates\exploded-aar\com.android.support\support-v4\22.2.0\jars\libs\internal_impl-22.2.0.jar"
+        jumboMode="false"
+        revision="23.0.0 rc2"
+        sha1="57f2ab85c164ff1676ec64dee787981c046fab79">
+        <dex dex="D:\git\Charismatic_YiChang\app\build\intermediates\pre-dexed\debug\internal_impl-22.2.0-4bc0aaef30164db54a79ead9a6c42d31086ab003.jar" />
+    </item>
+    <item
+        jar="D:\git\Charismatic_YiChang\app\build\intermediates\exploded-aar\com.android.support\mediarouter-v7\22.0.0\jars\classes.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="a1372c17fccacca753d3951d3ad820571cbce075">
+        <dex dex="D:\git\Charismatic_YiChang\app\build\intermediates\pre-dexed\debug\classes-f8a71dd010c8c69ff7ea6b9878f58369198d6262.jar" />
+    </item>
+    <item
+        jar="D:\git\Charismatic_YiChang\app\build\intermediates\exploded-aar\com.android.support\support-v4\22.2.0\jars\libs\internal_impl-22.2.0.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="57f2ab85c164ff1676ec64dee787981c046fab79">
+        <dex dex="D:\git\Charismatic_YiChang\app\build\intermediates\pre-dexed\debug\internal_impl-22.2.0-4bc0aaef30164db54a79ead9a6c42d31086ab003.jar" />
+    </item>
+    <item
+        jar="D:\git\Charismatic_YiChang\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-identity\7.5.0\jars\classes.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="d405025c600055237c171a0bbabaa49d69696573">
+        <dex dex="D:\git\Charismatic_YiChang\app\build\intermediates\pre-dexed\debug\classes-6e717599146887a09d7f5f8e22d31b1a6ecf5cd8.jar" />
+    </item>
+    <item
+        jar="D:\git\Charismatic_YiChang\app\libs\eventbus.jar"
+        jumboMode="false"
+        revision="23.0.0 rc2"
+        sha1="9a179701fef5778920c0471563bc1642e5df8217">
+        <dex dex="D:\git\Charismatic_YiChang\app\build\intermediates\pre-dexed\debug\eventbus-06675e3176dab2c16c6b851ee69fe9de15d50e59.jar" />
+    </item>
+    <item
         jar="D:\git\Charismatic_YiChang\app\libs\BmobSDK_V3.4.0_0616.jar"
         jumboMode="false"
         revision="23.0.0 rc2"
         sha1="20dbd020365584cafeb1a85ec9743ac9bcadf0df">
         <dex dex="D:\git\Charismatic_YiChang\app\build\intermediates\pre-dexed\debug\BmobSDK_V3.4.0_0616-4b9b0d44b89b8efb89a95273a9d9a5182e788b35.jar" />
+    </item>
+    <item
+        jar="D:\git\Charismatic_YiChang\app\build\intermediates\exploded-aar\com.android.support\design\22.2.0\jars\classes.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="fc63b820d54c8a27a3a614bdd93920e0076581c2">
+        <dex dex="D:\git\Charismatic_YiChang\app\build\intermediates\pre-dexed\debug\classes-a2c075426f42639d8e036a7811194a0d71823487.jar" />
+    </item>
+    <item
+        jar="D:\git\Charismatic_YiChang\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-appstate\7.5.0\jars\classes.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="68c140702c7242d914655bcb3164d9e8c45b84cb">
+        <dex dex="D:\git\Charismatic_YiChang\app\build\intermediates\pre-dexed\debug\classes-4db12c51a9720bb1827111bef64636a513176680.jar" />
+    </item>
+    <item
+        jar="D:\git\Charismatic_YiChang\app\build\intermediates\exploded-aar\Charismatic_YiChang\MaterialDesign\unspecified\jars\classes.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="48d2d3b636f83ef7fcc540f95d03fe1aeaa88d22">
+        <dex dex="D:\git\Charismatic_YiChang\app\build\intermediates\pre-dexed\debug\classes-50629ca389ba170133d451916fbfe48ce5c6457c.jar" />
     </item>
 
 </items>

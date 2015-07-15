@@ -2,7 +2,7 @@ apply plugin: 'com.android.application'
 
 android {
     compileSdkVersion 22
-    buildToolsVersion "23.0.0 rc2"
+    buildToolsVersion "22.0.1"
 
     defaultConfig {
         applicationId "com.amlogic.tzr.charismatic_yichang"
@@ -22,6 +22,9 @@ android {
     }
 
 }
+repositories {
+    jcenter()
+}
 
 dependencies {
     compile fileTree(include: ['*.jar'], dir: 'libs')
@@ -37,4 +40,5 @@ dependencies {
     compile files('libs/SMSSDK-1.2.2.jar')
     compile files('libs/MobTools.jar')
     compile files('libs/eventbus.jar')
+    compile project(':MaterialDesign')
 }

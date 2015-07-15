@@ -244,6 +244,7 @@ public class MainActivity extends BaseActivity {
     @Override
     protected void onDestroy() {
         super.onDestroy();
+        SPUtils.put(mContext, ConfigUtil.IS_LOGIN, false);
         EventBus.getDefault().unregister(this);
     }
 
