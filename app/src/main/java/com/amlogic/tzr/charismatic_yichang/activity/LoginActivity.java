@@ -12,7 +12,6 @@ import android.text.style.StyleSpan;
 import android.util.Log;
 import android.view.View;
 import android.widget.AutoCompleteTextView;
-import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
@@ -21,6 +20,8 @@ import com.amlogic.tzr.charismatic_yichang.BaseActivity;
 import com.amlogic.tzr.charismatic_yichang.R;
 import com.amlogic.tzr.charismatic_yichang.bean.User;
 import com.amlogic.tzr.charismatic_yichang.event.LoginEvent;
+import com.gc.materialdesign.views.ButtonFlat;
+import com.gc.materialdesign.views.ProgressBarCircularIndeterminate;
 import com.google.android.gms.common.SignInButton;
 
 import cn.bmob.v3.BmobUser;
@@ -47,7 +48,7 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener{
     // UI references.
     private AutoCompleteTextView mEmailView;
     private EditText mPasswordView;
-    private View mProgressView;
+
     private View mEmailLoginFormView;
     private SignInButton mPlusSignInButton;
     private View mSignOutButtons;
@@ -57,8 +58,9 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener{
     private Context mContext;
     private  EditText et_userName,et_passWord;
     private TextInputLayout til_userName,til_passWord;
-    private TextView tv_register,tv_forgetPw,tv_title;
-    private Button btn_login;
+    private TextView tv_title;
+    private ButtonFlat btn_login,btn_register;
+    private ProgressBarCircularIndeterminate mProgressBar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -100,7 +102,7 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener{
     private void initView() {
         et_userName= (EditText) findViewById(R.id.et_name);
         et_passWord= (EditText) findViewById(R.id.et_pw);
-        mProgressView = findViewById(R.id.pb_al_progress);
+        mProgressBar = (ProgressBarCircularIndeterminate)findViewById(R.id.pb_al_progress);
         til_userName= (TextInputLayout) findViewById(R.id.til_name);
         til_passWord= (TextInputLayout) findViewById(R.id.til_pwd);
         til_userName.setHint(getResources().getString(R.string.prompt_account));
@@ -119,7 +121,7 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener{
 
             @Override
             public void afterTextChanged(Editable s) {
-                if (s.toString().length() <6) {
+                if (s.toString().length() < 6) {
                     btn_login.setEnabled(false);
                     til_userName.setError(getResources().getString(R.string.error_invalid_account));
                     til_userName.setErrorEnabled(true);
@@ -154,11 +156,10 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener{
             }
         });
         tv_title= (TextView) findViewById(R.id.tv_al_title);
-        tv_register= (TextView) findViewById(R.id.tv_la_registerNow);
-        tv_forgetPw= (TextView) findViewById(R.id.tv_la_forgetPw);
-        btn_login= (Button) findViewById(R.id.btn_la_login);
-        tv_register.setOnClickListener(this);
-        tv_forgetPw.setOnClickListener(this);
+
+        btn_login= (ButtonFlat) findViewById(R.id.btn_al_login);
+        btn_register= (ButtonFlat) findViewById(R.id.btn_al_register);
+        btn_register.setOnClickListener(this);
         btn_login.setOnClickListener(this);
 
         SpannableString msp = new SpannableString(getResources().getString(R.string.app_name));
@@ -169,13 +170,13 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener{
     @Override
     public void onClick(View v) {
         switch (v.getId()){
-            case R.id.tv_la_registerNow:
+            case R.id.btn_al_register:
                 startActivity(new Intent(LoginActivity.this, RegisterPhoneActivity.class));
                 finish();
                 break;
-            case R.id.tv_la_forgetPw:
-                break;
-            case R.id.btn_la_login:
+
+            case R.id.btn_al_login:
+                mProgressBar.setVisibility(View.VISIBLE);
                 String user_name=et_userName.getText().toString().trim();
                 String user_pw=et_passWord.getText().toString().trim();
                 BmobUser.loginByAccount(this,user_name, user_pw, new LogInListener<User>() {
@@ -183,6 +184,7 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener{
                     @Override
                     public void done(User user, BmobException e) {
                         // TODO Auto-generated method stub
+                        mProgressBar.setVisibility(View.GONE);
                         if (user != null) {
                             Log.e("LoginActivity","user=="+user.toString());
                             EventBus.getDefault().post(new LoginEvent(true, user));

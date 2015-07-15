@@ -1,167 +1,183 @@
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:materialdesign="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/primary"
+    android:focusable="true"
+    android:focusableInTouchMode="true"
     android:gravity="center_horizontal"
-    android:orientation="vertical"
     android:paddingBottom="@dimen/activity_vertical_margin"
     android:paddingLeft="@dimen/activity_margin_24dp"
     android:paddingRight="@dimen/activity_margin_24dp"
     android:paddingTop="@dimen/activity_vertical_margin"
-    android:focusable="true"
-    android:focusableInTouchMode="true"
     tools:context="com.amlogic.tzr.charismatic_yichang.activity.LoginActivity">
 
     <!-- Login progress -->
-    <ProgressBar
+    <com.gc.materialdesign.views.ProgressBarCircularIndeterminate
         android:id="@+id/pb_al_progress"
-        style="?android:attr/progressBarStyleLarge"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="8dp"
+        android:layout_width="32dp"
+        android:layout_height="32dp"
+        android:layout_centerInParent="true"
+        android:background="@color/primary"
         android:visibility="gone" />
 
-     <RelativeLayout
-         android:layout_width="match_parent"
-         android:layout_height="wrap_content"
-         android:layout_marginTop="16dp">
-         <TextView
-             android:id="@+id/tv_al_title"
-             android:layout_width="wrap_content"
-             android:layout_height="wrap_content"
-             android:textColor="@color/white"
-             android:layout_centerInParent="true"
-             android:paddingTop="8dp"
-             android:paddingBottom="8dp"
-             android:textSize="36sp"/>
-         <TextView
-             android:id="@+id/tv_al_subTitle"
-             android:layout_width="wrap_content"
-             android:layout_height="wrap_content"
-             android:layout_below="@+id/tv_al_title"
-             android:layout_centerHorizontal="true"
-             android:textColor="@color/white"
-             android:text="@string/login_subtitle"
-             android:textSize="16sp"/>
-
-     </RelativeLayout>
-    <LinearLayout
+    <RelativeLayout
+        android:id="@+id/rl_al_title"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/white"
-        android:padding="16dp"
-        android:layout_marginTop="16dp"
-        android:orientation="vertical"
-        android:elevation="10dp">
+        >
 
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="88dp">
+        <TextView
+            android:id="@+id/tv_al_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:paddingBottom="8dp"
+            android:paddingTop="8dp"
+            android:textColor="@color/white"
+            android:textSize="36sp" />
 
-            <android.support.design.widget.TextInputLayout
-                android:id="@+id/til_name"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                >
-
-                <EditText
-                    android:id="@+id/et_name"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:hint="@string/prompt_password"
-                    android:inputType="text"
-                    android:maxLines="1"
-                    android:singleLine="true" />
-            </android.support.design.widget.TextInputLayout>
-        </RelativeLayout>
-
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="88dp">
-
-            <android.support.design.widget.TextInputLayout
-                android:id="@+id/til_pwd"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                >
-
-                <EditText
-                    android:id="@+id/et_pw"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:hint="@string/prompt_password"
-                    android:inputType="textPassword"
-                    android:maxLines="1"
-                    android:singleLine="true" />
-            </android.support.design.widget.TextInputLayout>
-        </RelativeLayout>
-    </LinearLayout>
-
-
-        <Button
-            android:id="@+id/btn_la_login"
-            android:layout_width="match_parent"
-            android:layout_height="54dp"
-            android:layout_gravity="center"
-            android:layout_marginTop="8dp"
-            android:background="@drawable/bt_commit"
-            android:text="@string/action_sign_in"
+        <TextView
+            android:id="@+id/tv_al_subTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/tv_al_title"
+            android:layout_centerHorizontal="true"
+            android:text="@string/login_subtitle"
             android:textColor="@color/white"
             android:textSize="16sp" />
 
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="40dp"
-            android:layout_marginTop="5dp" >
-
-            <TextView
-                android:id="@+id/tv_la_registerNow"
-                android:layout_width="80dp"
-                android:layout_height="match_parent"
-                android:gravity="center"
-                android:text="@string/action_register"
-                android:textColor="@color/white"
-                android:textSize="13sp" />
-
-            <TextView
-                android:id="@+id/tv_la_forgetPw"
-                android:layout_width="80dp"
-                android:layout_height="match_parent"
-                android:layout_alignParentRight="true"
-                android:gravity="center"
-                android:text="@string/action_forget_pw"
-                android:textColor="@color/white"
-                android:textSize="13sp" />
-        </RelativeLayout>
-
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="60dp"
-        android:background="@color/white">
-        <com.gc.materialdesign.views.ButtonFlat
-            android:id="@+id/button_1"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerVertical="true"
-            android:background="#1E88E5"
-            android:layout_alignParentLeft="true"
-            android:padding="8dp"
-            android:text="@string/action_register" />
-        <com.gc.materialdesign.views.ButtonFlat
-            android:id="@+id/button_2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerVertical="true"
-            android:background="#1E88E5"
-            android:padding="8dp"
-            android:layout_alignParentRight="true"
-            android:text="@string/action_sign_in" />
-
     </RelativeLayout>
 
+    <android.support.v7.widget.CardView
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/cv_al_login"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/rl_al_title"
+        android:background="@color/white"
+        android:layout_marginTop="16dp"
+        app:cardCornerRadius="6dp"
+        android:padding="8dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="88dp"
+                android:layout_marginTop="16dp"
+                android:paddingLeft="8dp"
+                android:paddingRight="8dp">
+
+                <android.support.design.widget.TextInputLayout
+                    android:id="@+id/til_name"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <EditText
+                        android:id="@+id/et_name"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="@string/prompt_password"
+                        android:inputType="text"
+                        android:maxLines="1"
+                        android:singleLine="true" />
+                </android.support.design.widget.TextInputLayout>
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="88dp"
+                android:paddingLeft="8dp"
+                android:paddingRight="8dp">
+
+                <android.support.design.widget.TextInputLayout
+                    android:id="@+id/til_pwd"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <EditText
+                        android:id="@+id/et_pw"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="@string/prompt_password"
+                        android:inputType="textPassword"
+                        android:maxLines="1"
+                        android:singleLine="true" />
+                </android.support.design.widget.TextInputLayout>
+            </RelativeLayout>
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                >
+
+                <com.gc.materialdesign.views.ButtonFlat
+                    android:id="@+id/btn_al_login"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentLeft="true"
+                    android:layout_centerVertical="true"
+                    android:background="@color/primary"
+                    android:padding="8dp"
+                    android:text="@string/action_sign_in" />
+
+                <com.gc.materialdesign.views.ButtonFlat
+                    android:id="@+id/btn_al_register"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:background="@color/primary"
+                    android:padding="8dp"
+                    android:text="@string/action_register" />
+
+            </RelativeLayout>
+        </LinearLayout>
+    </android.support.v7.widget.CardView>
 
 
-</LinearLayout>
+    <!--<Button-->
+        <!--android:id="@+id/btn_la_login"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="54dp"-->
+        <!--android:layout_gravity="center"-->
+        <!--android:layout_marginTop="8dp"-->
+        <!--android:background="@drawable/bt_commit"-->
+        <!--android:text="@string/action_sign_in"-->
+        <!--android:textColor="@color/white"-->
+        <!--android:textSize="16sp" />-->
+
+    <!--<RelativeLayout-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="40dp"-->
+        <!--android:layout_marginTop="5dp">-->
+
+        <!--<TextView-->
+            <!--android:id="@+id/tv_la_registerNow"-->
+            <!--android:layout_width="80dp"-->
+            <!--android:layout_height="match_parent"-->
+            <!--android:gravity="center"-->
+            <!--android:text="@string/action_register"-->
+            <!--android:textColor="@color/white"-->
+            <!--android:textSize="13sp" />-->
+
+        <!--<TextView-->
+            <!--android:id="@+id/tv_la_forgetPw"-->
+            <!--android:layout_width="80dp"-->
+            <!--android:layout_height="match_parent"-->
+            <!--android:layout_alignParentRight="true"-->
+            <!--android:gravity="center"-->
+            <!--android:text="@string/action_forget_pw"-->
+            <!--android:textColor="@color/white"-->
+            <!--android:textSize="13sp" />-->
+    <!--</RelativeLayout>-->
+
+
+
+
+</RelativeLayout>
 
