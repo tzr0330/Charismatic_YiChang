@@ -45,6 +45,15 @@
     <string name="input_name">请输入你的昵称</string>
     <string name="error_empty_passWord">密码不能为空</string>
     <string name="error_empty_account">昵称不能为空</string>
+    
+    
+    
+    
+    <string name="qq">QQ</string>
+    <string name="weiChat">微信</string>
+    <string name="blog">微博</string>
+    <string name="other_login">社交账号登录</string>
+    
 
 
     

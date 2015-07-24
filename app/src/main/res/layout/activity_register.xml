@@ -23,7 +23,7 @@
             android:layout_width="60dp"
             android:layout_height="match_parent"
             android:gravity="center"
-            android:text="@string/prompt_account"
+            android:text="账号"
             android:textSize="16sp" />
 
         <EditText
@@ -32,7 +32,7 @@
             android:layout_height="match_parent"
             android:background="@null"
             android:hint="@string/prompt_account"
-            android:textColor="@color/white"
+
             android:textSize="16sp" />
     </LinearLayout>
 
@@ -58,7 +58,6 @@
             android:background="@null"
             android:hint="@string/prompt_password"
             android:inputType="textPassword"
-            android:textColor="@color/white"
             android:maxLength="24"
             android:textSize="16sp" />
     </LinearLayout>

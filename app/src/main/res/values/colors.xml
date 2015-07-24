@@ -31,5 +31,17 @@
     <color name="gray_50">#50949494</color>
     <!-- 半透明浅灰色 -->
     <color name="lightgray_50">#50cdd0d7</color>
+    <!--   淡蓝色   -->
+    <color name="primary_light">#B3E5FC</color>
+    <!--  黑色文本 -->
+    <color name="primary_text">#212121</color>
+    <!--   副文本   -->
+    <color name="secondary_text">#727272</color>
+    <!--   白色   -->
+    <color name="icons">#FFFFFF</color>
+    <!--  分割线 -->
+    <color name="divider">#B6B6B6</color>
+
+    <color name="text_like_counter">#2b5a83</color>
 
 </resources>

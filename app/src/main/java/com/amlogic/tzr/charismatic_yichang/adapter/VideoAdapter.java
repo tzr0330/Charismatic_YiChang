@@ -113,7 +113,7 @@ public class VideoAdapter extends RecyclerView.Adapter {
         return list.size();
     }
 
-    static class CellVideoHoder extends RecyclerView.ViewHolder{
+    public static class CellVideoHoder extends RecyclerView.ViewHolder{
 
         ShowMaxImageView mImageView;
         TextView titleView,clockView,dateView;

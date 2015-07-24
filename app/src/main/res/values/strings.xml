@@ -45,6 +45,8 @@
     <string name="title_activity_register_phone">使用手机号码注册</string>
     <string name="title_activity_register_code">填写验证码</string>
     <string name="title_activity_register_final">完成注册</string>
+    <string name="title_activity_user_profile">UserProfileActivity</string>
+    <string name="title_activity_publish">PublishActivity</string>
 
 
 

@@ -7,18 +7,9 @@ import cn.bmob.v3.datatype.BmobFile;
  * Created by Administrator on 2015/7/11.
  */
 public class User extends BmobUser {
-    private String phone;
     private String nick;
     private boolean sex;
     private BmobFile head_thumb;
-
-    public String getPhone() {
-        return phone;
-    }
-
-    public void setPhone(String phone) {
-        this.phone = phone;
-    }
 
     public String getNick() {
         return nick;
@@ -27,7 +18,6 @@ public class User extends BmobUser {
     public void setNick(String nick) {
         this.nick = nick;
     }
-
     public boolean isSex() {
         return sex;
     }
@@ -47,10 +37,11 @@ public class User extends BmobUser {
     @Override
     public String toString() {
         return "User{" +
-                "phone='" + phone + '\'' +
+                "phone='"  + '\'' +
                 ", nick='" + nick + '\'' +
                 ", sex=" + sex +
                 ", head_thumb=" + head_thumb +
+                ",user_name="+
                 '}';
     }
 }

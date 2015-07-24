@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/ll_vuh_topview"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="?attr/colorPrimary"
+    android:clipChildren="false"
+    android:clipToPadding="false"
+    android:orientation="vertical"
+    android:fitsSystemWindows="true"
+    app:layout_scrollFlags="scroll|enterAlways"
+    android:paddingTop="16dp"
+    android:paddingBottom="8dp">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:clipChildren="false">
+
+        <ImageView
+            android:id="@+id/iv_vup_userProfilePhoto"
+            android:layout_width="@dimen/user_profile_avatar_size"
+            android:layout_height="@dimen/user_profile_avatar_size"
+            android:layout_centerInParent="true" />
+    </RelativeLayout>
+
+        <TextView
+            android:id="@+id/tv_vup_userName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="John Smith"
+            android:gravity="center"
+            android:textColor="@color/white"
+            android:layout_marginTop="8dp"
+            android:textSize="24sp" />
+
+        <TextView
+            android:id="@+id/tv_vup_userSign"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Mobile development passionate."
+            android:gravity="center"
+            android:layout_marginTop="8dp"
+            android:textColor="@color/white"
+            android:textSize="12sp" />
+
+
+
+
+    <!--<LinearLayout-->
+    <!--android:id="@+id/vUserStats"-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:layout_marginLeft="16dp"-->
+    <!--android:layout_marginRight="16dp"-->
+    <!--android:layout_marginTop="16dp">-->
+
+    <!--<LinearLayout-->
+    <!--android:layout_width="wrap_content"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:layout_weight="1"-->
+    <!--android:gravity="center"-->
+    <!--android:orientation="vertical">-->
+
+    <!--<TextView-->
+    <!--android:layout_width="wrap_content"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:text="1167"-->
+    <!--android:textColor="#ffffff"-->
+    <!--android:textSize="20sp" />-->
+
+    <!--<TextView-->
+    <!--android:layout_width="wrap_content"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:text="posts"-->
+    <!--android:textColor="#ffffff"-->
+    <!--android:textSize="12sp" />-->
+    <!--</LinearLayout>-->
+
+    <!--<LinearLayout-->
+    <!--android:layout_width="wrap_content"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:layout_weight="1"-->
+    <!--android:gravity="center"-->
+    <!--android:orientation="vertical">-->
+
+    <!--<TextView-->
+    <!--android:layout_width="wrap_content"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:text="396"-->
+    <!--android:textColor="#ffffff"-->
+    <!--android:textSize="20sp" />-->
+
+    <!--<TextView-->
+    <!--android:layout_width="wrap_content"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:text="followers"-->
+    <!--android:textColor="#ffffff"-->
+    <!--android:textSize="12sp" />-->
+    <!--</LinearLayout>-->
+
+    <!--<LinearLayout-->
+    <!--android:layout_width="wrap_content"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:layout_weight="1"-->
+    <!--android:gravity="center"-->
+    <!--android:orientation="vertical">-->
+
+    <!--<TextView-->
+    <!--android:layout_width="wrap_content"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:text="485"-->
+    <!--android:textColor="#ffffff"-->
+    <!--android:textSize="20sp" />-->
+
+    <!--<TextView-->
+    <!--android:layout_width="wrap_content"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:text="following"-->
+    <!--android:textColor="#ffffff"-->
+    <!--android:textSize="12sp" />-->
+    <!--</LinearLayout>-->
+    <!--</LinearLayout>-->
+
+</LinearLayout>

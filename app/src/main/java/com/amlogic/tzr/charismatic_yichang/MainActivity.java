@@ -2,6 +2,8 @@ package com.amlogic.tzr.charismatic_yichang;
 
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
 import android.support.v4.app.Fragment;
@@ -16,12 +18,14 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.amlogic.tzr.charismatic_yichang.Tool.BitmapCache;
+import com.amlogic.tzr.charismatic_yichang.Tool.BitmapUtil;
 import com.amlogic.tzr.charismatic_yichang.Tool.ConfigUtil;
 import com.amlogic.tzr.charismatic_yichang.Tool.DensityUtil;
 import com.amlogic.tzr.charismatic_yichang.Tool.SPUtils;
 import com.amlogic.tzr.charismatic_yichang.activity.LoginActivity;
+import com.amlogic.tzr.charismatic_yichang.activity.UserProfileActivity;
 import com.amlogic.tzr.charismatic_yichang.event.LoginEvent;
-import com.amlogic.tzr.charismatic_yichang.fragment.InfoFragment;
+import com.amlogic.tzr.charismatic_yichang.fragment.FeedFragment;
 import com.amlogic.tzr.charismatic_yichang.fragment.NewsMainFragment;
 import com.amlogic.tzr.charismatic_yichang.fragment.TourFragment;
 import com.amlogic.tzr.charismatic_yichang.fragment.VideoFragment;
@@ -54,7 +58,7 @@ public class MainActivity extends BaseActivity {
     private NewsMainFragment mNewsMainFragment;
     private VideoFragment mFoodFragment;
     private TourFragment mTourFragment;
-    private InfoFragment mInfoFragment;
+    private FeedFragment mFeedFragment;
 
 
     @Override
@@ -78,6 +82,9 @@ public class MainActivity extends BaseActivity {
 
     private void initView() {
         mUserHead= (ImageView) findViewById(R.id.iv_user_head);
+        Bitmap bitmap= BitmapUtil.transform(BitmapFactory.decodeResource(getResources(),R.mipmap.ic_user));
+        mUserHead.setImageBitmap(bitmap);
+//        bitmap.recycle();
         mUserName= (TextView) findViewById(R.id.tv_user_name);
         mToolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(mToolbar);
@@ -95,6 +102,8 @@ public class MainActivity extends BaseActivity {
             public void onClick(View v) {
                 if (!(boolean)SPUtils.get(mContext,ConfigUtil.IS_LOGIN,false)) {
                     startActivity(new Intent(MainActivity.this, LoginActivity.class));
+                }else{
+                    startActivity(new Intent(MainActivity.this, UserProfileActivity.class));
                 }
             }
         });
@@ -143,11 +152,11 @@ public class MainActivity extends BaseActivity {
 
                 break;
             case 3:
-                if (mInfoFragment==null){
-                    mInfoFragment = new InfoFragment();
-                    transaction.add(R.id.fl_main_content,mInfoFragment);
+                if (mFeedFragment==null){
+                    mFeedFragment = new FeedFragment();
+                    transaction.add(R.id.fl_main_content,mFeedFragment);
                 }else {
-                    transaction.show(mInfoFragment);
+                    transaction.show(mFeedFragment);
                 }
                 break;
         }
@@ -164,8 +173,8 @@ public class MainActivity extends BaseActivity {
         if (mFoodFragment != null) {
             transaction.hide(mFoodFragment);
         }
-        if (mInfoFragment != null) {
-            transaction.hide(mInfoFragment);
+        if (mFeedFragment != null) {
+            transaction.hide(mFeedFragment);
         }
     }
 
@@ -228,10 +237,12 @@ public class MainActivity extends BaseActivity {
     public void onEventMainThread(LoginEvent event){
         if (event.isLogin()){
             SPUtils.put(mContext, ConfigUtil.IS_LOGIN, true);
+            SPUtils.put(mContext, ConfigUtil.LOGIN_ID, event.getLoginUser().getObjectId());
             mUserName.setText(event.getLoginUser().getUsername());
             BmobFile icon=event.getLoginUser().getHead_thumb();
             if (icon!=null){
                 String url=icon.getFileUrl(mContext);
+                SPUtils.put(mContext, ConfigUtil.USER_ICON, url);
                 ImageLoader.ImageListener imageListener = ImageLoader.getImageListener(mUserHead, R.mipmap.pic_default, R.mipmap.pic_default);
                 mImageLoader.get(url, imageListener);
             }else{

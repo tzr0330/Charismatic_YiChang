@@ -41,4 +41,5 @@ dependencies {
     compile files('libs/MobTools.jar')
     compile files('libs/eventbus.jar')
     compile project(':MaterialDesign')
+    compile 'com.squareup.picasso:picasso:2.5.2'
 }

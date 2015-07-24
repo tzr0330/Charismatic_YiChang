@@ -36,7 +36,7 @@ public class RegisterActivity extends BaseActivity {
         mToolbar = (Toolbar) findViewById(R.id.tl_ra_top);
         setSupportActionBar(mToolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        mToolbar.setTitle(getResources().getString(R.string.action_register));
+        getSupportActionBar().setTitle(getResources().getString(R.string.action_register));
         et_account= (EditText) findViewById(R.id.et_ra_account);
         et_passWord= (EditText) findViewById(R.id.et_ra_password);
         btn_register= (Button) findViewById(R.id.btn_ra_register);
@@ -48,7 +48,6 @@ public class RegisterActivity extends BaseActivity {
                 String passWord=et_passWord.getText().toString();
                 mUser.setUsername(account);
                 mUser.setPassword(passWord);
-                mUser.setPhone("13143458479");
                 mUser.setNick("jim");
                 mUser.signUp(mContext, new SaveListener() {
                     @Override

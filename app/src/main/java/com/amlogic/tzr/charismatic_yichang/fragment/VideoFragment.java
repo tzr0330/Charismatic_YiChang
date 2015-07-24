@@ -51,7 +51,7 @@ public class VideoFragment extends Fragment {
 
 
     @Override
-    public void onCreate(Bundle savedInstanceState) {
+     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         context = getActivity();
         list=new ArrayList<VideoListBean>();
