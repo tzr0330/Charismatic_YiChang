@@ -1,12 +1,18 @@
 package com.amlogic.tzr.charismatic_yichang;
 
+import android.app.Activity;
 import android.app.Application;
 import android.text.TextUtils;
 
+import com.amlogic.tzr.charismatic_yichang.Tool.ConfigUtil;
+import com.amlogic.tzr.charismatic_yichang.Tool.CrashHandler;
+import com.amlogic.tzr.charismatic_yichang.bean.User;
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.VolleyLog;
 import com.android.volley.toolbox.Volley;
+
+import java.util.LinkedList;
 
 /**
  * Created by Administrator on 2015/6/21.
@@ -28,12 +34,22 @@ public class ApplicationController extends Application {
      */
     private static ApplicationController sInstance;
 
+    private static LinkedList<Activity> activityList;
+
+    private Activity activity;
+
+    private User mUser;
+
     @Override
     public void onCreate() {
         super.onCreate();
-
-        // initialize the singleton
         sInstance = this;
+        if (!ConfigUtil.CRASH_DEBUG) {
+			/* 全局异常崩溃处理 */
+            CrashHandler catchExcep = new CrashHandler(this);
+            Thread.setDefaultUncaughtExceptionHandler(catchExcep);
+        }
+        activityList = new LinkedList<Activity>();
     }
 
     /**
@@ -95,5 +111,12 @@ public class ApplicationController extends Application {
         if (mRequestQueue != null) {
             mRequestQueue.cancelAll(tag);
         }
+    }
+
+    public void setUser(User mUser){
+        this.mUser=mUser;
+    }
+    public User getmUser(){
+        return mUser;
     }
 }

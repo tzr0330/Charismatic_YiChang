@@ -127,8 +127,6 @@ public class PublishActivity extends BaseActivity {
         feed.setContent(contentText.getText().toString());
         feed.setUser(user);
         feed.setComment(0);
-        feed.setIsLove(false);
-        feed.setLove(0);
         feed.save(mContext, new SaveListener() {
             @Override
             public void onSuccess() {

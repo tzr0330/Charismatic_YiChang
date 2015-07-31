@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
+import android.support.design.widget.CoordinatorLayout;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
 import android.support.v4.widget.SwipeRefreshLayout;
@@ -15,9 +16,11 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
 
 import com.amlogic.tzr.charismatic_yichang.R;
 import com.amlogic.tzr.charismatic_yichang.Tool.LoadFinishCallBack;
+import com.amlogic.tzr.charismatic_yichang.Tool.LogManager;
 import com.amlogic.tzr.charismatic_yichang.activity.LoginActivity;
 import com.amlogic.tzr.charismatic_yichang.activity.PublishActivity;
 import com.amlogic.tzr.charismatic_yichang.adapter.FeedAdapter;
@@ -57,7 +60,8 @@ public class FeedFragment extends Fragment {
     private List<Feed> list;
     private BmobQuery<Feed> bmobQuery;
     private LoadFinishCallBack mLoadFinisCallBack;
-
+    private RelativeLayout mProgressBar;
+    private CoordinatorLayout mainContent;
 
     public FeedFragment() {
         // Required empty public constructor
@@ -159,8 +163,8 @@ public class FeedFragment extends Fragment {
 
             }
         });
-
-
+        mProgressBar= (RelativeLayout) fragmentView.findViewById(R.id.rl_ff_progress);
+        mainContent= (CoordinatorLayout) fragmentView.findViewById(R.id.cl_ff_main);
     }
 
     private void getPicFromContent() {
@@ -173,11 +177,14 @@ public class FeedFragment extends Fragment {
         bmobQuery =new BmobQuery<Feed>();
         bmobQuery.order("-createdAt");
         bmobQuery.include("user");
+//        bmobQuery.addWhereRelatedTo()
         bmobQuery.setLimit(limit);
         bmobQuery.setSkip(page * limit);
         bmobQuery.findObjects(mContext, new FindListener<Feed>() {
             @Override
             public void onSuccess(List<Feed> queryList) {
+                mProgressBar.setVisibility(View.GONE);
+                mainContent.setVisibility(View.VISIBLE);
                 if (queryList.size() > 0) {
                     if (actionType == STATE_REFRESH) {
                         curPage = 0;
@@ -189,6 +196,7 @@ public class FeedFragment extends Fragment {
                     curPage++;
                     mRecyclerView.loadFinish();
                 }
+                mAdapter.setData(list);
                 mAdapter.notifyDataSetChanged();
                 mSwipeRefreshLayout.setRefreshing(false);
             }
@@ -197,6 +205,8 @@ public class FeedFragment extends Fragment {
             public void onError(int i, String s) {
                 mRecyclerView.loadFinish();
                 mSwipeRefreshLayout.setRefreshing(false);
+                mProgressBar.setVisibility(View.GONE);
+                mainContent.setVisibility(View.VISIBLE);
             }
         });
 
@@ -204,6 +214,8 @@ public class FeedFragment extends Fragment {
 
     public void onEventMainThread(RefreshEvent event)
     {
+        LogManager.e(TAG, "queryData(0, STATE_REFRESH) is success!");
+
         queryData(0, STATE_REFRESH);
     }
 
@@ -222,4 +234,11 @@ public class FeedFragment extends Fragment {
                 break;
         }
     }
+//    public void onEventMainThread(LoginEvent event){
+//        if (event.isLogin()){
+//            LogManager.e(TAG, "queryData(0, STATE_REFRESH) is success!");
+//            queryData(0, STATE_REFRESH);
+//        }
+//
+//    }
 }

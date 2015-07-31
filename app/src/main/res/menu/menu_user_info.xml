@@ -1,0 +1,10 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context="com.amlogic.tzr.charismatic_yichang.activity.UserInfoActivity">
+    <item
+        android:id="@+id/action_edit"
+        android:icon="@drawable/ic_edit_white_18dp"
+        android:title="编辑资料"
+        app:showAsAction="always" />
+</menu>

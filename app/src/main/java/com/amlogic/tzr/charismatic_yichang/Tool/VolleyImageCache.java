@@ -13,7 +13,7 @@ public class VolleyImageCache {
     public static void networkImageViewUse(NetworkImageView iv, String url) {
         ImageLoader imLoader = new ImageLoader(ApplicationController.getInstance().getRequestQueue(), new BitmapCache());
         iv.setDefaultImageResId(R.mipmap.pic_default);
-        iv.setErrorImageResId(R.mipmap.ic_launcher);
+        iv.setErrorImageResId(R.mipmap.pic_error);
         iv.setImageUrl(url, imLoader);
     }
 }

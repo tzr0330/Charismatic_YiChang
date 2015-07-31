@@ -4,14 +4,15 @@
     android:id="@+id/ll_vuh_topview"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="?attr/colorPrimary"
+    android:background="@color/primary"
     android:clipChildren="false"
     android:clipToPadding="false"
     android:orientation="vertical"
     android:fitsSystemWindows="true"
-    app:layout_scrollFlags="scroll|enterAlways"
-    android:paddingTop="16dp"
-    android:paddingBottom="8dp">
+    app:layout_collapseMode="parallax"
+    android:paddingTop="?attr/actionBarSize"
+    android:paddingBottom="?attr/actionBarSize"
+    >
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -24,24 +25,32 @@
             android:layout_height="@dimen/user_profile_avatar_size"
             android:layout_centerInParent="true" />
     </RelativeLayout>
-
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="40dp"
+        android:gravity="center_vertical"
+        android:layout_gravity="center_horizontal">
         <TextView
             android:id="@+id/tv_vup_userName"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="John Smith"
-            android:gravity="center"
             android:textColor="@color/white"
-            android:layout_marginTop="8dp"
-            android:textSize="24sp" />
-
+            android:textSize="16sp" />
+        <ImageView
+            android:id="@+id/iv_vup_sex"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="3dp"
+            android:src="@mipmap/userinfo_icon_female"
+            android:layout_toRightOf="@+id/tv_vup_userName"/>
+    </RelativeLayout>
         <TextView
             android:id="@+id/tv_vup_userSign"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Mobile development passionate."
+            android:text="@string/default_introduce"
             android:gravity="center"
-            android:layout_marginTop="8dp"
             android:textColor="@color/white"
             android:textSize="12sp" />
 

@@ -2,64 +2,61 @@ package com.amlogic.tzr.charismatic_yichang.activity;
 
 import android.content.Context;
 import android.content.Intent;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
-import android.net.Uri;
 import android.os.Bundle;
-import android.provider.MediaStore;
-import android.support.design.widget.TabLayout;
-import android.support.v4.app.Fragment;
-import android.support.v4.view.ViewPager;
+import android.support.design.widget.AppBarLayout;
+import android.support.design.widget.CollapsingToolbarLayout;
+import android.support.v4.widget.SwipeRefreshLayout;
+import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
+import android.view.DragEvent;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
 
-import com.amlogic.tzr.charismatic_yichang.ApplicationController;
 import com.amlogic.tzr.charismatic_yichang.BaseActivity;
 import com.amlogic.tzr.charismatic_yichang.R;
-import com.amlogic.tzr.charismatic_yichang.Tool.BitmapCache;
-import com.amlogic.tzr.charismatic_yichang.Tool.BitmapUtil;
-import com.amlogic.tzr.charismatic_yichang.Tool.ConfigUtil;
-import com.amlogic.tzr.charismatic_yichang.Tool.SPUtils;
-import com.amlogic.tzr.charismatic_yichang.adapter.FragmentAdapter;
+import com.amlogic.tzr.charismatic_yichang.Tool.LoadFinishCallBack;
+import com.amlogic.tzr.charismatic_yichang.adapter.FeedAdapter;
+import com.amlogic.tzr.charismatic_yichang.bean.Feed;
 import com.amlogic.tzr.charismatic_yichang.bean.User;
-import com.amlogic.tzr.charismatic_yichang.event.LoginEvent;
-import com.amlogic.tzr.charismatic_yichang.fragment.UserInfoFragment;
-import com.amlogic.tzr.charismatic_yichang.fragment.ZoneFragment;
-import com.android.volley.RequestQueue;
-import com.android.volley.toolbox.ImageLoader;
+import com.amlogic.tzr.charismatic_yichang.view.AutoLoadRecyclerView;
+import com.amlogic.tzr.charismatic_yichang.view.CircleTransformation;
+import com.squareup.picasso.Picasso;
 
-import java.io.File;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
-import cn.bmob.v3.BmobUser;
+import cn.bmob.v3.BmobQuery;
 import cn.bmob.v3.datatype.BmobFile;
-import cn.bmob.v3.listener.UpdateListener;
-import cn.bmob.v3.listener.UploadFileListener;
-import de.greenrobot.event.EventBus;
+import cn.bmob.v3.listener.FindListener;
 
-public class UserProfileActivity extends BaseActivity {
+public class UserProfileActivity extends BaseActivity implements AppBarLayout.OnOffsetChangedListener{
     private static final String TAG = "UserProfileActivity";
-    private static final int PICK_FROM_CAMERA = 0x000000;
-    private static final int PICK_FROM_FILE = 0x000001;
-    private static final int CROP_FROM_CAMERA = 0x000002;
-    private static final int CROP_FROM_FILE = 0x000003;
+    public static final  String CURRENT_USER="current_user";
+
+    private static final int STATE_REFRESH = 0;
+    private static final int STATE_MORE = 1;
+    private AppBarLayout appBarLayout;
+    private SwipeRefreshLayout mSwipeRefreshLayout;
+    private AutoLoadRecyclerView mRecyclerView;
+    private FeedAdapter mAdapter;
+    private List<Feed> list=new ArrayList<>();
+    private BmobQuery<Feed> bmobQuery;
+    private LoadFinishCallBack mLoadFinisCallBack;
+    private int limit = 10;
+    private int curPage = 0;
     private Context mContext;
-    private List<String> titles=new ArrayList<String>();
-    private TabLayout mTabLayout;
-    private ViewPager mViewPager;
     private Toolbar mToolbar;
     private ImageView user_icon;
-    private Uri imgUri;
-
-    private RequestQueue mQueue;
-    private ImageLoader mImageLoader;
-    private FragmentAdapter fragmentAdapter;
-    private List<Fragment> mFragments = new ArrayList<Fragment>();
+    private TextView nameView;
+    private ImageView sexView;
+    private  RelativeLayout rl_toast;
+    private User mUser;
     private String user_id = "123";
     private String bitmapUrl;
 
@@ -68,66 +65,144 @@ public class UserProfileActivity extends BaseActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_user_profile);
         mContext = UserProfileActivity.this;
-        mQueue = ApplicationController.getInstance().getRequestQueue();
-        mImageLoader = new ImageLoader(mQueue, new BitmapCache());
+        mUser= (User) getIntent().getSerializableExtra(CURRENT_USER);
         initViews();
         initDatas();
+        queryData(0, STATE_REFRESH);
     }
-
-
 
 
     private void initDatas() {
-        UserInfoFragment mUserInfoFragment = UserInfoFragment.newInstance(user_id);
-        ZoneFragment mZoneFragment = ZoneFragment.newInstance(user_id);
-        mFragments.add(mUserInfoFragment);
-        mFragments.add(mZoneFragment);
-        titles.add("主页");
-        titles.add("动态");
-        fragmentAdapter=new FragmentAdapter(getSupportFragmentManager(),mFragments,titles);
-        String icon_url = (String) SPUtils.get(mContext, ConfigUtil.USER_ICON, "123");
-
-        if (!icon_url.equals("123")) {
-            ImageLoader.ImageListener imageListener = ImageLoader.getImageListener(user_icon, R.mipmap.pic_default, R.mipmap.pic_default);
-            mImageLoader.get(icon_url, imageListener);
+//        User mUser = BmobUser.getCurrentUser(mContext, User.class);
+        if (mUser != null) {
+            user_id = mUser.getObjectId();
         } else {
-            Bitmap mBitmap = BitmapFactory.decodeResource(getResources(), R.mipmap.ic_user);
-            Bitmap circle_bitmap = BitmapUtil.transform(mBitmap);
-            mBitmap.recycle();
-            user_icon.setImageBitmap(circle_bitmap);
+            startActivity(new Intent(mContext, LoginActivity.class));
+            finish();
         }
-        mViewPager.setAdapter(fragmentAdapter);
-        mViewPager.setCurrentItem(0);
-        mTabLayout.setupWithViewPager(mViewPager);
-        mTabLayout.setTabsFromPagerAdapter(fragmentAdapter);
-
+        BmobFile file=mUser.getHead_thumb();
+        if (file!=null) {
+            String icon_url =file.getFileUrl(mContext);
+            Picasso.with(mContext).load(icon_url).into(user_icon);
+        } else {
+            Picasso.with(mContext).load(R.mipmap.ic_user).transform(new CircleTransformation()).into(user_icon);
+        }
+        nameView.setText(mUser.getUsername());
+        boolean sex=mUser.getSex();
+        if (sex==false) {
+            sexView.setImageResource(R.mipmap.userinfo_icon_male);
+        }else{
+            sexView.setImageResource(R.mipmap.userinfo_icon_female);
+        }
     }
 
     private void initViews() {
-        titles.add("主页");
-        titles.add("动态");
-        user_icon = (ImageView) findViewById(R.id.iv_vup_userProfilePhoto);
-        mTabLayout= (TabLayout) findViewById(R.id.tl_aup_header);
-        mTabLayout.addTab(mTabLayout.newTab().setText(titles.get(0)));
-        mTabLayout.addTab(mTabLayout.newTab().setText(titles.get(1)));
-        mViewPager = (ViewPager) findViewById(R.id.vp_aup_content);
         mToolbar = (Toolbar) findViewById(R.id.tl_aup_toolBar);
         setSupportActionBar(mToolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        getSupportActionBar().setTitle("用户详情");
-        user_icon.setOnClickListener(new View.OnClickListener() {
-        @Override
-        public void onClick(View v) {
-            getPicFromContent();
-        }
-    });
-}
+        CollapsingToolbarLayout collapsingToolbar =
+                (CollapsingToolbarLayout) findViewById(R.id.ctl_aup_toolbar);
+//        collapsingToolbar.setExpandedTitleColor(R.color.white);
+//        collapsingToolbar.setCollapsedTitleTextColor(R.color.accent);
+        collapsingToolbar.setTitle("用户详情");
 
-    private void getPicFromContent() {
-        Intent i = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
-        i.setType("image/*");
-        startActivityForResult(i, PICK_FROM_FILE);
+        collapsingToolbar.setOnDragListener(new View.OnDragListener() {
+            @Override
+            public boolean onDrag(View v, DragEvent event) {
+                if (event.getAction() == DragEvent.ACTION_DRAG_ENDED) {
+                    Log.e(TAG, "DragEvent.ACTION_DRAG_ENDED");
+                }
+                return false;
+            }
+        });
+        appBarLayout= (AppBarLayout) findViewById(R.id.apl_aup_appbar);
+        user_icon = (ImageView) findViewById(R.id.iv_vup_userProfilePhoto);
+        user_icon.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent=new Intent(mContext,UserInfoActivity.class);
+                intent.putExtra(CURRENT_USER,mUser);
+                startActivity(intent);
+            }
+        });
+        nameView= (TextView) findViewById(R.id.tv_vup_userName);
+        sexView= (ImageView) findViewById(R.id.iv_vup_sex);
+        mSwipeRefreshLayout = (SwipeRefreshLayout) findViewById(R.id.srl_aup_refresh);
+        mSwipeRefreshLayout.setColorSchemeResources(android.R.color.holo_blue_bright,
+                android.R.color.holo_green_light,
+                android.R.color.holo_orange_light,
+                android.R.color.holo_red_light);
+        mSwipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                queryData(0, STATE_REFRESH);
+            }
+        });
+        mRecyclerView = (AutoLoadRecyclerView) findViewById(R.id.rv_aup_feed);
+        mRecyclerView.setHasFixedSize(false);
+        mLoadFinisCallBack = mRecyclerView;
+        mRecyclerView.setLoadMoreListener(new AutoLoadRecyclerView.onLoadMoreListener() {
+            @Override
+            public void loadMore() {
+                queryData(curPage, STATE_MORE);
+            }
+        });
+        mRecyclerView.setLayoutManager(new LinearLayoutManager(mContext));
+        mAdapter = new FeedAdapter(mContext, list);
+        mRecyclerView.setAdapter(mAdapter);
     }
+
+    @Override
+    public void onOffsetChanged(AppBarLayout appBarLayout, int i) {
+                if (i == 0) {
+                    mSwipeRefreshLayout.setEnabled(true);
+                } else {
+                    mSwipeRefreshLayout.setEnabled(false);
+                }
+    }
+
+    private void queryData(final int page, final int actionType) {
+        BmobQuery<User> innerQuery = new BmobQuery<User>();
+        String[] id = {user_id};
+        innerQuery.addWhereContainedIn("objectId", Arrays.asList(id));
+        bmobQuery = new BmobQuery<Feed>();
+        bmobQuery.order("-createdAt");
+        bmobQuery.setLimit(limit);
+        bmobQuery.setSkip(page * limit);
+        bmobQuery.addWhereMatchesQuery("user", "_User", innerQuery);
+        bmobQuery.include("user");
+        bmobQuery.findObjects(mContext, new FindListener<Feed>() {
+            @Override
+            public void onSuccess(List<Feed> queryList) {
+                if (queryList.size() > 0) {
+//                    rl_toast.setVisibility(View.GONE);
+                    if (actionType == STATE_REFRESH) {
+                        curPage = 0;
+                        list.clear();
+                    }
+                    for (Feed bean : queryList) {
+                        list.add(bean);
+                    }
+                    curPage++;
+                    mRecyclerView.loadFinish();
+                } else {
+//                    rl_toast.setVisibility(View.VISIBLE);
+                }
+                mAdapter.notifyDataSetChanged();
+                mSwipeRefreshLayout.setRefreshing(false);
+            }
+
+            @Override
+            public void onError(int i, String s) {
+                mRecyclerView.loadFinish();
+                mSwipeRefreshLayout.setRefreshing(false);
+//                rl_toast.setVisibility(View.VISIBLE);
+            }
+        });
+
+    }
+
+
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -142,113 +217,24 @@ public class UserProfileActivity extends BaseActivity {
             case android.R.id.home:
                 finish();
                 return true;
+
+            case R.id.action_edit:
+
+                break;
         }
         return super.onOptionsItemSelected(item);
     }
 
 
-    private void cropImageUri(Uri uri, int outputX, int outputY, int requestCode) {
-        Intent intent = new Intent("com.android.camera.action.CROP");
-        intent.setDataAndType(uri, "image/*");
-        intent.putExtra("crop", "true");
-        intent.putExtra("aspectX", 1);
-        intent.putExtra("aspectY", 1);
-        intent.putExtra("outputX", outputX);
-        intent.putExtra("outputY", outputY);
-        intent.putExtra("scale", true);
-        intent.putExtra(MediaStore.EXTRA_OUTPUT, uri);
-        intent.putExtra("return-data", false);
-        intent.putExtra("outputFormat", Bitmap.CompressFormat.PNG.toString());
-        intent.putExtra("noFaceDetection", true); // no face detection
-        startActivityForResult(intent, requestCode);
-
+    @Override
+    protected void onResume() {
+        super.onResume();
+        appBarLayout.addOnOffsetChangedListener(this);
     }
-
 
     @Override
-    public void onActivityResult(int requestCode, int resultCode, Intent data) {
-        if (resultCode != RESULT_OK) {
-            return;
-        }
-        switch (requestCode) {
-//            case PICK_FROM_CAMERA:
-//                cropImageUri(imgUri, 250, 250, CROP_FROM_CAMERA);
-//                break;
-            case PICK_FROM_FILE:
-                imgUri = data.getData();
-                doCrop();
-                break;
-//            case CROP_FROM_CAMERA:
-//                if (imgUri != null) {
-//                    ImageRoundUtil imgUtil = new ImageRoundUtil();
-//                    image = imgUtil.toRoundBitmap(decodeUriAsBitmap(imgUri));
-//                    headView.setImageBitmap(image);
-//                }
-//                break;
-            case CROP_FROM_FILE:
-                if (null != data) {
-                    setCropImg(data);
-                }
-                break;
-        }
-
+    protected void onPause() {
+        super.onPause();
+        appBarLayout.removeOnOffsetChangedListener(this);
     }
-
-    private void doCrop() {
-        Intent intent = new Intent("com.android.camera.action.CROP");
-        intent.setDataAndType(imgUri, "image/*");
-        intent.putExtra("outputX", 250);
-        intent.putExtra("outputY", 250);
-        intent.putExtra("aspectX", 1);
-        intent.putExtra("aspectY", 1);
-        intent.putExtra("scale", true);
-        intent.putExtra("return-data", true);
-        startActivityForResult(intent, CROP_FROM_FILE);
-    }
-
-    private void setCropImg(Intent picdata) {
-        Bundle bundle = picdata.getExtras();
-        if (null != bundle) {
-            Bitmap mBitmap = BitmapUtil.transform((Bitmap) bundle.getParcelable("data"));
-//            user_icon.setImageBitmap(mBitmap);
-
-            String BitmapPath = BitmapUtil.saveBitmap(mBitmap, mContext);
-            final BmobFile file = new BmobFile(new File(BitmapPath));
-            file.upload(this, new UploadFileListener() {
-                @Override
-                public void onSuccess() {
-                    Log.e(TAG, "file.upload is ok");
-                    final User currentUser = BmobUser.getCurrentUser(mContext, User.class);
-                    currentUser.setHead_thumb(file);
-                    updateHead_thumb(file.getFileUrl(mContext));
-                    currentUser.update(mContext, new UpdateListener() {
-                        @Override
-                        public void onSuccess() {
-                            EventBus.getDefault().post(new LoginEvent(true, currentUser));
-                            Log.e(TAG, " currentUser.update is ok");
-                        }
-
-                        @Override
-                        public void onFailure(int i, String s) {
-                            Log.e(TAG, " currentUser.update is onFailure---" + i + s);
-                        }
-                    });
-                }
-
-                @Override
-                public void onFailure(int i, String s) {
-                    Log.e(TAG, "file.upload is onFailure---" + i + s);
-                }
-            });
-
-
-        }
-
-    }
-
-    private void updateHead_thumb(String url) {
-        ImageLoader.ImageListener imageListener = ImageLoader.getImageListener(user_icon, R.mipmap.pic_default, R.mipmap.pic_default);
-        mImageLoader.get(url, imageListener);
-    }
-
 }

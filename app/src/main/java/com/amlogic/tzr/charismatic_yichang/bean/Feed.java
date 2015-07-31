@@ -11,8 +11,6 @@ public class Feed extends BmobObject {
     private BmobFile photo;
     private String content;
     private int comment;
-    private int love;
-    private boolean isLove;
     private User user;
     private BmobRelation likes;
 
@@ -40,22 +38,6 @@ public class Feed extends BmobObject {
         this.comment = comment;
     }
 
-    public int getLove() {
-        return love;
-    }
-
-    public void setLove(int love) {
-        this.love = love;
-    }
-
-    public boolean isLove() {
-        return isLove;
-    }
-
-    public void setIsLove(boolean isLove) {
-        this.isLove = isLove;
-    }
-
     public User getUser() {
         return user;
     }
@@ -78,8 +60,6 @@ public class Feed extends BmobObject {
                 "photo=" + photo +
                 ", content='" + content + '\'' +
                 ", comment=" + comment +
-                ", love=" + love +
-                ", isLove=" + isLove +
                 ", user=" + user +
                 ", likes=" + likes +
                 '}';

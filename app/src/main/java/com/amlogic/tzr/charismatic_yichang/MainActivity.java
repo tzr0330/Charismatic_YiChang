@@ -2,8 +2,6 @@ package com.amlogic.tzr.charismatic_yichang;
 
 import android.content.Context;
 import android.content.Intent;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
 import android.support.v4.app.Fragment;
@@ -18,24 +16,27 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.amlogic.tzr.charismatic_yichang.Tool.BitmapCache;
-import com.amlogic.tzr.charismatic_yichang.Tool.BitmapUtil;
 import com.amlogic.tzr.charismatic_yichang.Tool.ConfigUtil;
 import com.amlogic.tzr.charismatic_yichang.Tool.DensityUtil;
 import com.amlogic.tzr.charismatic_yichang.Tool.SPUtils;
 import com.amlogic.tzr.charismatic_yichang.activity.LoginActivity;
 import com.amlogic.tzr.charismatic_yichang.activity.UserProfileActivity;
-import com.amlogic.tzr.charismatic_yichang.event.LoginEvent;
+import com.amlogic.tzr.charismatic_yichang.bean.User;
+import com.amlogic.tzr.charismatic_yichang.event.RefreshEvent;
 import com.amlogic.tzr.charismatic_yichang.fragment.FeedFragment;
 import com.amlogic.tzr.charismatic_yichang.fragment.NewsMainFragment;
 import com.amlogic.tzr.charismatic_yichang.fragment.TourFragment;
 import com.amlogic.tzr.charismatic_yichang.fragment.VideoFragment;
+import com.amlogic.tzr.charismatic_yichang.view.CircleTransformation;
 import com.android.volley.RequestQueue;
 import com.android.volley.toolbox.ImageLoader;
+import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import cn.bmob.v3.Bmob;
+import cn.bmob.v3.BmobUser;
 import cn.bmob.v3.datatype.BmobFile;
 import de.greenrobot.event.EventBus;
 
@@ -60,6 +61,8 @@ public class MainActivity extends BaseActivity {
     private TourFragment mTourFragment;
     private FeedFragment mFeedFragment;
 
+    private FragmentTransaction  transaction;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -82,9 +85,19 @@ public class MainActivity extends BaseActivity {
 
     private void initView() {
         mUserHead= (ImageView) findViewById(R.id.iv_user_head);
-        Bitmap bitmap= BitmapUtil.transform(BitmapFactory.decodeResource(getResources(),R.mipmap.ic_user));
-        mUserHead.setImageBitmap(bitmap);
-//        bitmap.recycle();
+        User mUser= BmobUser.getCurrentUser(mContext,User.class);
+        if (mUser!=null){
+            if (mUser.getHead_thumb()!=null) {
+                Picasso.with(mContext).load(mUser.getHead_thumb().getFileUrl(mContext)).into(mUserHead);
+            }else {
+                Picasso.with(context).load(R.mipmap.ic_user).transform(new CircleTransformation()).into(mUserHead);
+            }
+
+        }else{
+//            Bitmap bitmap= BitmapUtil.transform(BitmapFactory.decodeResource(getResources(), R.mipmap.ic_user));
+//            mUserHead.setImageBitmap(bitmap);
+            Picasso.with(context).load(R.mipmap.ic_user).transform(new CircleTransformation()).into(mUserHead);
+        }
         mUserName= (TextView) findViewById(R.id.tv_user_name);
         mToolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(mToolbar);
@@ -100,7 +113,7 @@ public class MainActivity extends BaseActivity {
         mUserHead.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (!(boolean)SPUtils.get(mContext,ConfigUtil.IS_LOGIN,false)) {
+                if ( BmobUser.getCurrentUser(mContext,User.class)==null) {
                     startActivity(new Intent(MainActivity.this, LoginActivity.class));
                 }else{
                     startActivity(new Intent(MainActivity.this, UserProfileActivity.class));
@@ -122,7 +135,7 @@ public class MainActivity extends BaseActivity {
     }
 
     private void setTabSelection(int index) {
-        FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+         transaction = getSupportFragmentManager().beginTransaction();
         hideFragments(transaction);
         switch (index) {
             case 0:
@@ -234,29 +247,32 @@ public class MainActivity extends BaseActivity {
         return super.onOptionsItemSelected(item);
     }
 
-    public void onEventMainThread(LoginEvent event){
-        if (event.isLogin()){
-            SPUtils.put(mContext, ConfigUtil.IS_LOGIN, true);
-            SPUtils.put(mContext, ConfigUtil.LOGIN_ID, event.getLoginUser().getObjectId());
-            mUserName.setText(event.getLoginUser().getUsername());
-            BmobFile icon=event.getLoginUser().getHead_thumb();
-            if (icon!=null){
-                String url=icon.getFileUrl(mContext);
-                SPUtils.put(mContext, ConfigUtil.USER_ICON, url);
-                ImageLoader.ImageListener imageListener = ImageLoader.getImageListener(mUserHead, R.mipmap.pic_default, R.mipmap.pic_default);
-                mImageLoader.get(url, imageListener);
-            }else{
-               mUserHead.setImageResource(R.mipmap.ic_user);
+    public void onEventMainThread(RefreshEvent event){
+        User mUser= BmobUser.getCurrentUser(mContext, User.class);
+        if (mUser!=null){
+            mUserName.setText(mUser.getUsername());
+            BmobFile icon=mUser.getHead_thumb();
+            if (icon!=null) {
+                Picasso.with(mContext).load(mUser.getHead_thumb().getFileUrl(mContext)).into(mUserHead);
+            }else {
+                Picasso.with(context).load(R.mipmap.ic_user).transform(new CircleTransformation()).into(mUserHead);
             }
+
+        }
+
+        if (mFeedFragment!=null){
+           transaction.replace(R.id.fl_main_content,mFeedFragment);
         }
 
     }
 
     @Override
     protected void onDestroy() {
+        BmobUser.logOut(this);   //清除缓存用户对象
         super.onDestroy();
         SPUtils.put(mContext, ConfigUtil.IS_LOGIN, false);
         EventBus.getDefault().unregister(this);
+
     }
 
 }

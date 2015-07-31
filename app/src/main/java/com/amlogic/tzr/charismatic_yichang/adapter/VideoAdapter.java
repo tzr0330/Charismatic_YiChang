@@ -27,6 +27,8 @@ import cn.bmob.v3.datatype.BmobFile;
 public class VideoAdapter extends RecyclerView.Adapter {
     private static final int ANIMATED_ITEMS_COUNT = 2;
 
+
+
     private Context mContext;
 
     private int lastAnimatedPosition = -1;

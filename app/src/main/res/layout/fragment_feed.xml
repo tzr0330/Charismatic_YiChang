@@ -1,9 +1,14 @@
-<android.support.design.widget.CoordinatorLayout
+<RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:fitsSystemWindows="true">
+    >
+<android.support.design.widget.CoordinatorLayout
+    android:id="@+id/cl_ff_main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
+    android:visibility="gone">
 
     <android.support.v4.widget.SwipeRefreshLayout
         android:id="@+id/srl_ff_refresh"
@@ -26,5 +31,18 @@
         android:src="@drawable/ic_instagram_white"
         android:layout_margin="@dimen/fab_margin"
         android:clickable="true"/>
-
 </android.support.design.widget.CoordinatorLayout>
+    <RelativeLayout
+        android:id="@+id/rl_ff_progress"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        >
+        <com.gc.materialdesign.views.ProgressBarCircularIndeterminate
+            android:id="@+id/pb_ff_progress"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:layout_centerInParent="true"
+            android:background="@color/primary"
+            />
+    </RelativeLayout>
+</RelativeLayout>

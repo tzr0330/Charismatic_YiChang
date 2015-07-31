@@ -5,6 +5,7 @@ package com.amlogic.tzr.charismatic_yichang.event;
  */
 public class RefreshEvent {
     private boolean isRefresh=false;
+    private boolean isLogin=false;
 
     public RefreshEvent(boolean isRefresh){
         this.isRefresh=isRefresh;
@@ -16,4 +17,5 @@ public class RefreshEvent {
     public boolean getIsRefresh(){
       return isRefresh;
     }
+
 }

@@ -10,6 +10,28 @@ public class User extends BmobUser {
     private String nick;
     private boolean sex;
     private BmobFile head_thumb;
+    private String address;
+    private String introduce;
+
+    public boolean isSex() {
+        return sex;
+    }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
+    }
+
+    public String getIntroduce() {
+        return introduce;
+    }
+
+    public void setIntroduce(String introduce) {
+        this.introduce = introduce;
+    }
 
     public String getNick() {
         return nick;
@@ -18,7 +40,7 @@ public class User extends BmobUser {
     public void setNick(String nick) {
         this.nick = nick;
     }
-    public boolean isSex() {
+    public boolean getSex() {
         return sex;
     }
 

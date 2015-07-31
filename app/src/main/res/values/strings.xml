@@ -9,7 +9,7 @@
     <string name="news_yc">宜昌资讯</string>
     <string name="tour_yc">宜昌旅游</string>
     <string name="video_yc">宜昌风采</string>
-    <string name="info_yc">宜昌百科</string>
+    <string name="info_yc">美景美言</string>
 
     <string name="version">版本</string>
     <string name="about_us">关于</string>
@@ -34,6 +34,10 @@
     <string name="pull_to_refresh_bottom_release">放开装载更多</string>
     <string name="pull_to_refresh_bottom_refreshing">正在装载数据..</string>
     <string name="pull_to_refresh_no_data">没有更多数据</string>
+    
+    
+    <string name="nothing_for_feed">没有任何动态~O__O"…</string>
+    <string name="default_introduce">暂无介绍</string>
 
 
 
@@ -47,6 +51,7 @@
     <string name="title_activity_register_final">完成注册</string>
     <string name="title_activity_user_profile">UserProfileActivity</string>
     <string name="title_activity_publish">PublishActivity</string>
+    <string name="title_activity_user_info">UserInfoActivity</string>
 
 
 

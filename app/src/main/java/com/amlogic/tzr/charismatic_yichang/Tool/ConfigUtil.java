@@ -18,4 +18,6 @@ public class ConfigUtil {
     public static String LOGIN_ID="login_id";
 
     public static String USER_ICON="user_icon";
+
+    public static final boolean CRASH_DEBUG = true;
 }
