@@ -63,7 +63,7 @@ public class FeedAdapter extends RecyclerView.Adapter implements View.OnClickLis
     private int loveCount;
     private int lastAnimatedPosition = -1;
     private boolean animateItems = false;
-    private final Map<String, String> likeAnimations = new HashMap<String, String>();
+    private final Map<RecyclerView.ViewHolder, String> likeAnimations = new HashMap<RecyclerView.ViewHolder, String>();
     private final ArrayList<Integer> likedPositions = new ArrayList<>();
 
     private User mUser;
@@ -143,7 +143,7 @@ public class FeedAdapter extends RecyclerView.Adapter implements View.OnClickLis
             feedViewHolder.btnComments.setTag(feedViewHolder);
             feedViewHolder.tsLikesCounter.setTag(feedViewHolder);
 
-            likeAnimations.clear();
+
             updateHeartButton(feedViewHolder, false);
         }
     }
@@ -164,7 +164,7 @@ public class FeedAdapter extends RecyclerView.Adapter implements View.OnClickLis
                 CellFeedViewHolder holder = (CellFeedViewHolder) view.getTag();
                 mUser=ApplicationController.getInstance().getmUser();
                 if (mUser!=null) {
-                    if (!likeAnimations.containsKey(list.get(holder.getPosition()).getObjectId())) {
+                    if (!likeAnimations.containsKey(holder)) {
                         updateHeartButton(holder, true);
                     }
                 }else{
@@ -196,7 +196,7 @@ public class FeedAdapter extends RecyclerView.Adapter implements View.OnClickLis
 
     private void updateHeartButton(final CellFeedViewHolder holder, boolean animated) {
         if (animated) {
-            if (!likeAnimations.containsKey(list.get(holder.getPosition()).getObjectId())){
+            if (!likeAnimations.containsKey(holder)){
                 AnimatorSet animatorSet = new AnimatorSet();
                 ObjectAnimator rotationAnim = ObjectAnimator.ofFloat(holder.btnLike, "rotation", 0f, 360f);
                 rotationAnim.setDuration(300);
@@ -249,11 +249,10 @@ public class FeedAdapter extends RecyclerView.Adapter implements View.OnClickLis
                 loveCount = list_user.size();
                 if (loveCount > 0&&mUser!=null) {
                     for (User user : list_user) {
-                        LogManager.e(TAG, "getLikeAnimationState is success!----mUser=="+mUser.getObjectId());
-                        LogManager.e(TAG, "user is ----"+user.getObjectId()+"--");
-                        LogManager.e(TAG, "user and mUser is equal= ----"+user.getObjectId().equals(mUser.getObjectId()));
                         if (user.getObjectId().equals(mUser.getObjectId())) {
-                            likeAnimations.put(list.get(holder.getPosition()).getObjectId(), list.get(holder.getPosition()).getObjectId());
+//                            LogManager.e(TAG, "list.get(holder.getPosition())-----"+holder.getPosition());
+//                            LogManager.e(TAG, "list.get(holder.getPosition()).getObjectId()-----" +list.get(holder.getPosition()).getObjectId());
+                            likeAnimations.put(holder, mUser.getObjectId());
                             holder.btnLike.setImageResource(R.drawable.ic_heart_red);
                         }
                     }
@@ -291,7 +290,7 @@ public class FeedAdapter extends RecyclerView.Adapter implements View.OnClickLis
 //    }
 
     private void setCurrentLike(final CellFeedViewHolder holder){
-        User mUser= BmobUser.getCurrentUser(mContext, User.class);
+        final User mUser= BmobUser.getCurrentUser(mContext, User.class);
         Feed feed=list.get(holder.getPosition());
         BmobRelation relation = new BmobRelation();
         relation.add(mUser);
@@ -301,7 +300,7 @@ public class FeedAdapter extends RecyclerView.Adapter implements View.OnClickLis
             public void onSuccess() {
                 LogManager.e(TAG, "setCurrentLike is success!");
                 updateLikesCounter(holder, true);
-                likeAnimations.put(list.get(holder.getPosition()).getObjectId(), list.get(holder.getPosition()).getObjectId());
+                likeAnimations.put(holder, mUser.getObjectId());
                 holder.btnLike.setImageResource(R.drawable.ic_heart_red);
             }
 

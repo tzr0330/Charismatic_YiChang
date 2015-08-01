@@ -42,6 +42,7 @@ import de.greenrobot.event.EventBus;
 
 
 public class MainActivity extends BaseActivity {
+    private static final String TAG = "MainActivity";
     private Context mContext;
     private DrawerLayout mDrawerLayout;
     private NavigationView mNavigationView;
@@ -116,7 +117,9 @@ public class MainActivity extends BaseActivity {
                 if ( BmobUser.getCurrentUser(mContext,User.class)==null) {
                     startActivity(new Intent(MainActivity.this, LoginActivity.class));
                 }else{
-                    startActivity(new Intent(MainActivity.this, UserProfileActivity.class));
+                     Intent intent=new Intent(mContext, UserProfileActivity.class);
+                     intent.putExtra(UserProfileActivity.CURRENT_USER,BmobUser.getCurrentUser(mContext,User.class));
+                     startActivity(intent);
                 }
             }
         });
@@ -259,10 +262,13 @@ public class MainActivity extends BaseActivity {
             }
 
         }
-
+/*
         if (mFeedFragment!=null){
-           transaction.replace(R.id.fl_main_content,mFeedFragment);
-        }
+            LogManager.e(TAG, "transaction.replace(R.id.fl_main_content,mFeedFragment); is success!----");
+            mFeedFragment = new FeedFragment();
+            transaction.replace(R.id.fl_main_content,mFeedFragment);
+            transaction.commit();
+        }*/
 
     }
 

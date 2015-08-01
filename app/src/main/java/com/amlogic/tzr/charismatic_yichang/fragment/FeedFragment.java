@@ -241,4 +241,12 @@ public class FeedFragment extends Fragment {
 //        }
 //
 //    }
+
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        mRecyclerView.setAdapter(mAdapter);
+        mAdapter.notifyDataSetChanged();
+    }
 }
