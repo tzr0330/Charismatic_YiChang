@@ -125,7 +125,7 @@ public class FeedAdapter extends RecyclerView.Adapter implements View.OnClickLis
             if (bean.getUser().getHead_thumb()!=null) {
                 BmobFile icon = bean.getUser().getHead_thumb();
                 String url = icon.getFileUrl(mContext);
-                Picasso.with(mContext).load(url).into(feedViewHolder.headImage);
+                Picasso.with(mContext).load(url).transform(new CircleTransformation()).into(feedViewHolder.headImage);
             }else{
                 Picasso.with(mContext).load(R.mipmap.ic_user).transform(new CircleTransformation()).into(feedViewHolder.headImage);
             }
@@ -135,7 +135,7 @@ public class FeedAdapter extends RecyclerView.Adapter implements View.OnClickLis
             if (bean.getPhoto()!=null){
                 BmobFile icon =bean.getPhoto();
                 String url = icon.getFileUrl(mContext);
-                Picasso.with(mContext).load(url).placeholder(R.drawable.pic_default_large).error(R.drawable.pic_default_large).transform(new ImageCompressTransformation()).into(feedViewHolder.mPhotoView);
+                Picasso.with(mContext).load(url).placeholder(R.drawable.pic_default_large).error(R.drawable.pic_default_large).into(feedViewHolder.mPhotoView);
             }
 
             feedViewHolder.headImage.setTag(feedViewHolder);

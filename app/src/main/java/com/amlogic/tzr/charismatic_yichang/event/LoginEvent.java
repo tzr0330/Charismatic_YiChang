@@ -8,8 +8,11 @@ import com.amlogic.tzr.charismatic_yichang.bean.User;
 public class LoginEvent {
     private boolean isLogin = false;
 
+    private User mUser;
+
     public LoginEvent(boolean isLogin, User mUser) {
         this.isLogin = isLogin;
+        this.mUser=mUser;
     }
 
     public boolean isLogin() {
@@ -18,5 +21,13 @@ public class LoginEvent {
 
     public void setIsLogin(boolean isLogin) {
         this.isLogin = isLogin;
+    }
+
+    public User getmUser() {
+        return mUser;
+    }
+
+    public void setmUser(User mUser) {
+        this.mUser = mUser;
     }
 }

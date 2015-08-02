@@ -5,9 +5,12 @@ import android.content.Intent;
 import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Bundle;
+import android.os.Environment;
 import android.provider.MediaStore;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -24,6 +27,7 @@ import com.amlogic.tzr.charismatic_yichang.view.CircleTransformation;
 import com.squareup.picasso.Picasso;
 
 import java.io.File;
+import java.io.FileNotFoundException;
 
 import cn.bmob.v3.BmobUser;
 import cn.bmob.v3.datatype.BmobFile;
@@ -60,6 +64,8 @@ public class UserInfoActivity extends BaseActivity implements View.OnClickListen
 
     private User mUser;
 
+    private boolean isMe=false;
+
 
 
     @Override
@@ -68,6 +74,9 @@ public class UserInfoActivity extends BaseActivity implements View.OnClickListen
         setContentView(R.layout.activity_user_info);
         mContext = UserInfoActivity.this;
         mUser= (User) getIntent().getSerializableExtra(UserProfileActivity.CURRENT_USER);
+        if (mUser.getObjectId().equals(BmobUser.getCurrentUser(mContext,User.class).getObjectId())){
+            isMe=true;
+        }
         initView();
         initData();
     }
@@ -104,7 +113,7 @@ public class UserInfoActivity extends BaseActivity implements View.OnClickListen
         if (mUser!=null){
             if (mUser.getHead_thumb()!=null){
                 String icon_url=mUser.getHead_thumb().getFileUrl(mContext);
-                Picasso.with(mContext).load(icon_url).into(headImg);
+                Picasso.with(mContext).load(icon_url).transform(new CircleTransformation()).into(headImg);
             }else{
                 Picasso.with(mContext).load(R.mipmap.ic_user).transform(new CircleTransformation()).into(headImg);
 
@@ -162,29 +171,79 @@ public class UserInfoActivity extends BaseActivity implements View.OnClickListen
 
     @Override
     public void onClick(View v) {
-        switch (v.getId()) {
-            case R.id.tv_cui_editImg:
-                getPicFromContent();
-                break;
-            case R.id.tv_cui_nick:
+        if (isMe) {
+            switch (v.getId()) {
+                case R.id.tv_cui_editImg:
+                    showDialog();
+                    break;
+                case R.id.tv_cui_nick:
 
-                break;
-            case R.id.tv_cui_sex:
+                    break;
+                case R.id.tv_cui_sex:
 
-                break;
-            case R.id.tv_cui_address:
+                    break;
+                case R.id.tv_cui_address:
 
-                break;
-            case R.id.tv_cui_introduce:
+                    break;
+                case R.id.tv_cui_introduce:
 
-                break;
-            case R.id.tv_cui_phone:
+                    break;
+                case R.id.tv_cui_phone:
 
-                break;
-            case R.id.tv_cui_createTime:
+                    break;
+                case R.id.tv_cui_createTime:
 
-                break;
+                    break;
 
+            }
+        }
+    }
+
+    private void showDialog(){
+        User mUser= BmobUser.getCurrentUser(mContext,User.class);
+        if (mUser!=null) {
+            View dialog_publish = LayoutInflater.from(mContext).inflate(
+                    R.layout.dialog_publish_photo, null);
+            AlertDialog.Builder builder = new AlertDialog.Builder(mContext);
+            builder.setView(dialog_publish);
+            builder.create();
+            final AlertDialog dialog = builder.show();
+            ImageView choiceCamera = (ImageView) dialog_publish
+                    .findViewById(R.id.img_choice_from_camera);
+            ImageView choicePhoto = (ImageView) dialog_publish
+                    .findViewById(R.id.img_choice_from_photo);
+            ImageView choiceCancle = (ImageView) dialog_publish.findViewById(R.id.img_choice_cancale);
+            choiceCamera.setOnClickListener(new View.OnClickListener() {
+
+                @Override
+                public void onClick(View arg0) {
+                    // TODO Auto-generated method stub
+                    dialog.dismiss();
+                    getPicFromCapture();
+
+                }
+            });
+
+            choicePhoto.setOnClickListener(new View.OnClickListener() {
+
+                @Override
+                public void onClick(View arg0) {
+                    // TODO Auto-generated method stub
+                    dialog.dismiss();
+                    getPicFromContent();
+                }
+            });
+
+            choiceCancle.setOnClickListener(new View.OnClickListener() {
+
+                @Override
+                public void onClick(View arg0) {
+                    // TODO Auto-generated method stub
+                    dialog.dismiss();
+                }
+            });
+        }else{
+            startActivity(new Intent(mContext, LoginActivity.class));
         }
     }
 
@@ -192,6 +251,13 @@ public class UserInfoActivity extends BaseActivity implements View.OnClickListen
         Intent i = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
         i.setType("image/*");
         startActivityForResult(i, PICK_FROM_FILE);
+    }
+
+    private void getPicFromCapture() {
+        Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+        imgUri = Uri.fromFile(new File(Environment.getExternalStorageDirectory(), "avatar_" + String.valueOf(System.currentTimeMillis()) + ".png"));
+        intent.putExtra(MediaStore.EXTRA_OUTPUT, imgUri);
+        startActivityForResult(intent, PICK_FROM_CAMERA);
     }
 
     private void cropImageUri(Uri uri, int outputX, int outputY, int requestCode) {
@@ -218,23 +284,21 @@ public class UserInfoActivity extends BaseActivity implements View.OnClickListen
             return;
         }
         switch (requestCode) {
-//            case PICK_FROM_CAMERA:
-//                cropImageUri(imgUri, 250, 250, CROP_FROM_CAMERA);
-//                break;
+            case PICK_FROM_CAMERA:
+                cropImageUri(imgUri, 250, 250, CROP_FROM_CAMERA);
+                break;
             case PICK_FROM_FILE:
                 imgUri = data.getData();
                 doCrop();
                 break;
-//            case CROP_FROM_CAMERA:
-//                if (imgUri != null) {
-//                    ImageRoundUtil imgUtil = new ImageRoundUtil();
-//                    image = imgUtil.toRoundBitmap(decodeUriAsBitmap(imgUri));
-//                    headView.setImageBitmap(image);
-//                }
-//                break;
+            case CROP_FROM_CAMERA:
+                if (imgUri != null) {
+                    setCropImg(data,CROP_FROM_CAMERA);
+                }
+                break;
             case CROP_FROM_FILE:
                 if (null != data) {
-                    setCropImg(data);
+                    setCropImg(data,CROP_FROM_FILE);
                 }
                 break;
         }
@@ -253,25 +317,35 @@ public class UserInfoActivity extends BaseActivity implements View.OnClickListen
         startActivityForResult(intent, CROP_FROM_FILE);
     }
 
-    private void setCropImg(Intent picdata) {
+    private void setCropImg(Intent picdata,int type) {
         Bundle bundle = picdata.getExtras();
+        Bitmap mBitmap=null;
         if (null != bundle) {
-            Bitmap mBitmap = BitmapUtil.transform((Bitmap) bundle.getParcelable("data"));
-//            user_icon.setImageBitmap(mBitmap);
-
+            if (type==CROP_FROM_FILE)
+            {
+                 mBitmap =bundle.getParcelable("data");
+            }else if(type==CROP_FROM_CAMERA)
+            {
+//                mBitmap = BitmapUtil.decodeUriAsBitmap(mContext,imgUri);
+                try {
+                    mBitmap = BitmapUtil.decodeSampledBitmapFromResource(mContext,photoUri,150,150);
+                } catch (FileNotFoundException e) {
+                    e.printStackTrace();
+                }
+            }
             String BitmapPath = BitmapUtil.saveBitmap(mBitmap, mContext);
             final BmobFile file = new BmobFile(new File(BitmapPath));
             file.upload(this, new UploadFileListener() {
                 @Override
                 public void onSuccess() {
                     Log.e(TAG, "file.upload is ok");
-                    final User currentUser = BmobUser.getCurrentUser(mContext, User.class);
-                    currentUser.setHead_thumb(file);
+
+                    mUser.setHead_thumb(file);
                     updateHead_thumb(file.getFileUrl(mContext));
-                    currentUser.update(mContext, new UpdateListener() {
+                    mUser.update(mContext, new UpdateListener() {
                         @Override
                         public void onSuccess() {
-                            EventBus.getDefault().post(new LoginEvent(true, currentUser));
+                            EventBus.getDefault().post(new LoginEvent(true, mUser));
                             Log.e(TAG, " currentUser.update is ok");
                         }
 
@@ -294,8 +368,10 @@ public class UserInfoActivity extends BaseActivity implements View.OnClickListen
     }
 
     private void updateHead_thumb(String url) {
-        Picasso.with(mContext).load(url).into(headImg);
+        Picasso.with(mContext).load(url).transform(new CircleTransformation()).into(headImg);
     }
+
+
 
 
 }

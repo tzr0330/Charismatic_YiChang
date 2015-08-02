@@ -20,6 +20,7 @@ import com.amlogic.tzr.charismatic_yichang.ApplicationController;
 import com.amlogic.tzr.charismatic_yichang.BaseActivity;
 import com.amlogic.tzr.charismatic_yichang.R;
 import com.amlogic.tzr.charismatic_yichang.bean.User;
+import com.amlogic.tzr.charismatic_yichang.event.LoginEvent;
 import com.amlogic.tzr.charismatic_yichang.event.RefreshEvent;
 import com.gc.materialdesign.views.ButtonFlat;
 import com.gc.materialdesign.views.ProgressBarCircularIndeterminate;
@@ -190,7 +191,7 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener{
                         if (user != null) {
                             ApplicationController.getInstance().setUser(BmobUser.getCurrentUser(mContext, User.class));
                             Log.e("LoginActivity","user=="+user.toString());
-                            EventBus.getDefault().post(new RefreshEvent(true));
+                            EventBus.getDefault().post((new LoginEvent(true, user)));
                             AppManager.getAppManager().finishActivity();
                         }
                     }

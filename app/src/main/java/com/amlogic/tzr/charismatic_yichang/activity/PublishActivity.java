@@ -1,6 +1,8 @@
 package com.amlogic.tzr.charismatic_yichang.activity;
 
+import android.app.Dialog;
 import android.content.Context;
+import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
@@ -11,10 +13,12 @@ import android.view.ViewTreeObserver;
 import android.view.animation.OvershootInterpolator;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 import com.amlogic.tzr.charismatic_yichang.BaseActivity;
 import com.amlogic.tzr.charismatic_yichang.R;
 import com.amlogic.tzr.charismatic_yichang.Tool.BitmapUtil;
+import com.amlogic.tzr.charismatic_yichang.Tool.KeyBoardUtil;
 import com.amlogic.tzr.charismatic_yichang.bean.Feed;
 import com.amlogic.tzr.charismatic_yichang.bean.User;
 import com.amlogic.tzr.charismatic_yichang.event.RefreshEvent;
@@ -22,6 +26,7 @@ import com.squareup.picasso.Callback;
 import com.squareup.picasso.Picasso;
 
 import java.io.File;
+import java.io.FileNotFoundException;
 
 import cn.bmob.v3.BmobUser;
 import cn.bmob.v3.datatype.BmobFile;
@@ -31,7 +36,7 @@ import de.greenrobot.event.EventBus;
 
 public class PublishActivity extends BaseActivity {
     private static final String TAG = "PublishActivity";
-    public static final String ARG_TAKEN_PHOTO_URI = "image";
+    public static final String ARG_TAKEN_PHOTO_URI = "post_img";
 
     private Context mContext;
 
@@ -45,18 +50,26 @@ public class PublishActivity extends BaseActivity {
 
     private EditText contentText;
 
+    /**
+     * 用户登录进行网络请求时弹出的进度提示
+     */
+    private Dialog progressDialog;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_publish);
         mContext=PublishActivity.this;
         if (savedInstanceState == null) {
-            photoUri = getIntent().getParcelableExtra(ARG_TAKEN_PHOTO_URI);
+//            BitmapPath = getIntent().getStringExtra(ARG_TAKEN_PHOTO_URI);
+            photoUri=getIntent().getParcelableExtra(ARG_TAKEN_PHOTO_URI);
         } else {
-            photoUri = savedInstanceState.getParcelable(ARG_TAKEN_PHOTO_URI);
+//            BitmapPath = savedInstanceState.getString(ARG_TAKEN_PHOTO_URI);
+            photoUri=savedInstanceState.getParcelable(ARG_TAKEN_PHOTO_URI);
         }
         photoSize = getResources().getDimensionPixelSize(R.dimen.publish_photo_thumbnail_size);
         initVIew();
+        initLoadDialog();
     }
 
     private void initVIew() {
@@ -100,18 +113,35 @@ public class PublishActivity extends BaseActivity {
                 });
     }
 
-    private void publishContent() {
-        final BmobFile file = new BmobFile(new File(BitmapUtil.getRealFilePath(mContext,photoUri)));
+    private void initLoadDialog(){
+        progressDialog = new Dialog(mContext, R.style.progress_dialog);
+        progressDialog.setContentView(R.layout.load_progress_with_text);
+        progressDialog.getWindow().setBackgroundDrawableResource(android.R.color.transparent);
+        TextView msg = (TextView)progressDialog.findViewById(R.id.id_tv_loadingmsg);
+        msg.setText("正在上传中");
+        progressDialog.setCanceledOnTouchOutside(false);
+    }
+
+    private void publishContent() throws FileNotFoundException {
+
+//        Bitmap bitmap=BitmapUtil.decodeUriAsBitmap(mContext,photoUri);
+//        Bitmap photoBitmap=BitmapUtil.compressImage(BitmapUtil.decodeUriAsBitmap(mContext, photoUri));
+        Bitmap photoBitmap=BitmapUtil.compressImage(BitmapUtil.decodeSampledBitmapFromResource(mContext,photoUri,360,480));
+        String BitmapPath = BitmapUtil.saveBitmap(photoBitmap, mContext);
+        if (!photoBitmap.isRecycled()){
+            photoBitmap.recycle();
+        }
+        final BmobFile file = new BmobFile(new File(BitmapPath));
         file.upload(mContext, new UploadFileListener() {
             @Override
             public void onSuccess() {
                 Log.e(TAG, " feed upload is onSuccess");
                 publish(file);
-
             }
 
             @Override
             public void onFailure(int i, String s) {
+                progressDialog.dismiss();
                 Log.e(TAG, " feed upload is onFailure");
             }
         });
@@ -130,6 +160,7 @@ public class PublishActivity extends BaseActivity {
         feed.save(mContext, new SaveListener() {
             @Override
             public void onSuccess() {
+                progressDialog.dismiss();
                 EventBus.getDefault().post(new RefreshEvent(true));
                 Log.e(TAG, " feed publish is onSuccess");
                 finish();
@@ -137,6 +168,7 @@ public class PublishActivity extends BaseActivity {
 
             @Override
             public void onFailure(int i, String s) {
+                progressDialog.dismiss();
                 Log.e(TAG, " feed publish is onFailure");
             }
         });
@@ -167,7 +199,13 @@ public class PublishActivity extends BaseActivity {
               finish();
               break;
           case R.id.action_publish:
-              publishContent();
+              KeyBoardUtil.closeKeybord(contentText,mContext);
+              progressDialog.show();
+              try {
+                  publishContent();
+              } catch (FileNotFoundException e) {
+                  e.printStackTrace();
+              }
               break;
 
       }

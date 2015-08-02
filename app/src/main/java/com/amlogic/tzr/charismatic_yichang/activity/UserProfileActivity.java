@@ -23,6 +23,7 @@ import com.amlogic.tzr.charismatic_yichang.Tool.LoadFinishCallBack;
 import com.amlogic.tzr.charismatic_yichang.adapter.FeedAdapter;
 import com.amlogic.tzr.charismatic_yichang.bean.Feed;
 import com.amlogic.tzr.charismatic_yichang.bean.User;
+import com.amlogic.tzr.charismatic_yichang.event.LoginEvent;
 import com.amlogic.tzr.charismatic_yichang.view.AutoLoadRecyclerView;
 import com.amlogic.tzr.charismatic_yichang.view.CircleTransformation;
 import com.squareup.picasso.Picasso;
@@ -34,6 +35,7 @@ import java.util.List;
 import cn.bmob.v3.BmobQuery;
 import cn.bmob.v3.datatype.BmobFile;
 import cn.bmob.v3.listener.FindListener;
+import de.greenrobot.event.EventBus;
 
 public class UserProfileActivity extends BaseActivity implements AppBarLayout.OnOffsetChangedListener{
     private static final String TAG = "UserProfileActivity";
@@ -69,6 +71,7 @@ public class UserProfileActivity extends BaseActivity implements AppBarLayout.On
         initViews();
         initDatas();
         queryData(0, STATE_REFRESH);
+        EventBus.getDefault().register(this);
     }
 
 
@@ -83,7 +86,7 @@ public class UserProfileActivity extends BaseActivity implements AppBarLayout.On
         BmobFile file=mUser.getHead_thumb();
         if (file!=null) {
             String icon_url =file.getFileUrl(mContext);
-            Picasso.with(mContext).load(icon_url).into(user_icon);
+            Picasso.with(mContext).load(icon_url).transform(new CircleTransformation()).into(user_icon);
         } else {
             Picasso.with(mContext).load(R.mipmap.ic_user).transform(new CircleTransformation()).into(user_icon);
         }
@@ -236,5 +239,27 @@ public class UserProfileActivity extends BaseActivity implements AppBarLayout.On
     protected void onPause() {
         super.onPause();
         appBarLayout.removeOnOffsetChangedListener(this);
+    }
+
+    public void onEventMainThread(LoginEvent event) {
+        User mUser = event.getmUser();
+        if (mUser != null) {
+            if (mUser.getUsername()!=null) {
+                nameView.setText(mUser.getUsername());
+            }
+            BmobFile icon = mUser.getHead_thumb();
+            if (icon != null) {
+                Picasso.with(mContext).load(mUser.getHead_thumb().getFileUrl(mContext)).transform(new CircleTransformation()).into(user_icon);
+            } else {
+                Picasso.with(context).load(R.mipmap.ic_user).transform(new CircleTransformation()).into(user_icon);
+            }
+
+        }
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        EventBus.getDefault().unregister(this);
     }
 }

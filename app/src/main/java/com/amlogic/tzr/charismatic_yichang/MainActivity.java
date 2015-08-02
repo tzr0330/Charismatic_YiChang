@@ -22,7 +22,7 @@ import com.amlogic.tzr.charismatic_yichang.Tool.SPUtils;
 import com.amlogic.tzr.charismatic_yichang.activity.LoginActivity;
 import com.amlogic.tzr.charismatic_yichang.activity.UserProfileActivity;
 import com.amlogic.tzr.charismatic_yichang.bean.User;
-import com.amlogic.tzr.charismatic_yichang.event.RefreshEvent;
+import com.amlogic.tzr.charismatic_yichang.event.LoginEvent;
 import com.amlogic.tzr.charismatic_yichang.fragment.FeedFragment;
 import com.amlogic.tzr.charismatic_yichang.fragment.NewsMainFragment;
 import com.amlogic.tzr.charismatic_yichang.fragment.TourFragment;
@@ -89,7 +89,7 @@ public class MainActivity extends BaseActivity {
         User mUser= BmobUser.getCurrentUser(mContext,User.class);
         if (mUser!=null){
             if (mUser.getHead_thumb()!=null) {
-                Picasso.with(mContext).load(mUser.getHead_thumb().getFileUrl(mContext)).into(mUserHead);
+                Picasso.with(mContext).load(mUser.getHead_thumb().getFileUrl(mContext)).transform(new CircleTransformation()).into(mUserHead);
             }else {
                 Picasso.with(context).load(R.mipmap.ic_user).transform(new CircleTransformation()).into(mUserHead);
             }
@@ -250,10 +250,12 @@ public class MainActivity extends BaseActivity {
         return super.onOptionsItemSelected(item);
     }
 
-    public void onEventMainThread(RefreshEvent event){
-        User mUser= BmobUser.getCurrentUser(mContext, User.class);
+    public void onEventMainThread(LoginEvent event){
+        User mUser= event.getmUser();
         if (mUser!=null){
-            mUserName.setText(mUser.getUsername());
+            if (mUser.getUsername()!=null) {
+                mUserName.setText(mUser.getUsername());
+            }
             BmobFile icon=mUser.getHead_thumb();
             if (icon!=null) {
                 Picasso.with(mContext).load(mUser.getHead_thumb().getFileUrl(mContext)).into(mUserHead);

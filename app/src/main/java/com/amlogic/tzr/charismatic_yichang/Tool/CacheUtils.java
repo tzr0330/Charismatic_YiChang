@@ -58,8 +58,8 @@ public class CacheUtils {
         return appCacheDir;
     }
 
-    private static File getExternalCacheDir(Context context, String dirName) {
-        File dataDir = new File(new File(Environment.getExternalStorageDirectory(), "Android"), "data");
+    public static File getExternalCacheDir(Context context, String dirName) {
+        File dataDir = new File(new File(Environment.getExternalStorageDirectory(), "Charismatic_yichang"), "data");
         File appCacheDir2 = new File(new File(dataDir, context.getPackageName()), "cache");
         File appCacheDir = new File(appCacheDir2, dirName);
         if (!appCacheDir.exists()) {

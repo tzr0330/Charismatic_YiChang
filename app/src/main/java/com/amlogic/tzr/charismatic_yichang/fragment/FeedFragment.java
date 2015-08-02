@@ -3,8 +3,10 @@ package com.amlogic.tzr.charismatic_yichang.fragment;
 
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Bundle;
+import android.os.Environment;
 import android.provider.MediaStore;
 import android.support.design.widget.CoordinatorLayout;
 import android.support.design.widget.FloatingActionButton;
@@ -26,9 +28,10 @@ import com.amlogic.tzr.charismatic_yichang.activity.PublishActivity;
 import com.amlogic.tzr.charismatic_yichang.adapter.FeedAdapter;
 import com.amlogic.tzr.charismatic_yichang.bean.Feed;
 import com.amlogic.tzr.charismatic_yichang.bean.User;
-import com.amlogic.tzr.charismatic_yichang.event.RefreshEvent;
+import com.amlogic.tzr.charismatic_yichang.event.LoginEvent;
 import com.amlogic.tzr.charismatic_yichang.view.AutoLoadRecyclerView;
 
+import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -62,6 +65,10 @@ public class FeedFragment extends Fragment {
     private LoadFinishCallBack mLoadFinisCallBack;
     private RelativeLayout mProgressBar;
     private CoordinatorLayout mainContent;
+
+    private Uri imgUri;
+    private Bitmap photoBitmap;
+    private String BitmapPath;
 
     public FeedFragment() {
         // Required empty public constructor
@@ -134,7 +141,7 @@ public class FeedFragment extends Fragment {
                         public void onClick(View arg0) {
                             // TODO Auto-generated method stub
                             dialog.dismiss();
-//                        getPicFromCapture();
+                            getPicFromCapture();
 
                         }
                     });
@@ -171,6 +178,13 @@ public class FeedFragment extends Fragment {
         Intent i = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
         i.setType("image/*");
         startActivityForResult(i, PICK_FROM_FILE);
+    }
+
+    private void getPicFromCapture() {
+        Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+        imgUri = Uri.fromFile(new File(Environment.getExternalStorageDirectory(), "avatar_" + String.valueOf(System.currentTimeMillis()) + ".png"));
+        intent.putExtra(MediaStore.EXTRA_OUTPUT, imgUri);
+        startActivityForResult(intent, PICK_FROM_CAMERA);
     }
 
     private void queryData(final int page,final int actionType){
@@ -212,10 +226,11 @@ public class FeedFragment extends Fragment {
 
     }
 
-    public void onEventMainThread(RefreshEvent event)
+    public void onEventMainThread(LoginEvent event)
     {
         LogManager.e(TAG, "queryData(0, STATE_REFRESH) is success!");
-
+        mProgressBar.setVisibility(View.VISIBLE);
+        mainContent.setVisibility(View.GONE);
         queryData(0, STATE_REFRESH);
     }
 
@@ -227,20 +242,25 @@ public class FeedFragment extends Fragment {
         }
         switch (requestCode) {
             case PICK_FROM_FILE:
-                Uri mUri=data.getData();
+                imgUri=data.getData();
+//                photoBitmap=BitmapUtil.decodeUriAsBitmap(mContext, imgUri);
+//                BitmapPath = BitmapUtil.saveBitmap(photoBitmap, mContext);
+//                photoBitmap.recycle();
                 Intent pictureIntent=new Intent(getActivity(), PublishActivity.class);
-                pictureIntent.putExtra("image",mUri);
+                pictureIntent.putExtra(PublishActivity.ARG_TAKEN_PHOTO_URI,imgUri);
                 startActivity(pictureIntent);
+                break;
+            case PICK_FROM_CAMERA:
+//                photoBitmap=BitmapUtil.decodeUriAsBitmap(mContext, imgUri);
+//                BitmapPath = BitmapUtil.saveBitmap(photoBitmap, mContext);
+//                photoBitmap.recycle();
+                Intent cameraIntent=new Intent(getActivity(), PublishActivity.class);
+                cameraIntent.putExtra(PublishActivity.ARG_TAKEN_PHOTO_URI,imgUri);
+                startActivity(cameraIntent);
                 break;
         }
     }
-//    public void onEventMainThread(LoginEvent event){
-//        if (event.isLogin()){
-//            LogManager.e(TAG, "queryData(0, STATE_REFRESH) is success!");
-//            queryData(0, STATE_REFRESH);
-//        }
-//
-//    }
+
 
 
     @Override
@@ -248,5 +268,11 @@ public class FeedFragment extends Fragment {
         super.onResume();
         mRecyclerView.setAdapter(mAdapter);
         mAdapter.notifyDataSetChanged();
+    }
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        EventBus.getDefault().unregister(this);
     }
 }
