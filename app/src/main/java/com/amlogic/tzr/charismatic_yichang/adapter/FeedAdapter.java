@@ -26,7 +26,6 @@ import com.amlogic.tzr.charismatic_yichang.activity.LoginActivity;
 import com.amlogic.tzr.charismatic_yichang.bean.Feed;
 import com.amlogic.tzr.charismatic_yichang.bean.User;
 import com.amlogic.tzr.charismatic_yichang.view.CircleTransformation;
-import com.amlogic.tzr.charismatic_yichang.view.ImageCompressTransformation;
 import com.amlogic.tzr.charismatic_yichang.view.ShowMaxImageView;
 import com.squareup.picasso.Picasso;
 
@@ -162,7 +161,7 @@ public class FeedAdapter extends RecyclerView.Adapter implements View.OnClickLis
                 break;
             case R.id.btn_ifl_Like:
                 CellFeedViewHolder holder = (CellFeedViewHolder) view.getTag();
-                mUser=ApplicationController.getInstance().getmUser();
+                mUser=BmobUser.getCurrentUser(mContext,User.class);
                 if (mUser!=null) {
                     if (!likeAnimations.containsKey(holder)) {
                         updateHeartButton(holder, true);

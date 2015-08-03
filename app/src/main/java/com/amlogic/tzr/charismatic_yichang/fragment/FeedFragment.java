@@ -231,6 +231,7 @@ public class FeedFragment extends Fragment {
         LogManager.e(TAG, "queryData(0, STATE_REFRESH) is success!");
         mProgressBar.setVisibility(View.VISIBLE);
         mainContent.setVisibility(View.GONE);
+//        mSwipeRefreshLayout.setRefreshing(true);
         queryData(0, STATE_REFRESH);
     }
 

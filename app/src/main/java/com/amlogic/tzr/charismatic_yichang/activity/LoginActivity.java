@@ -21,7 +21,6 @@ import com.amlogic.tzr.charismatic_yichang.BaseActivity;
 import com.amlogic.tzr.charismatic_yichang.R;
 import com.amlogic.tzr.charismatic_yichang.bean.User;
 import com.amlogic.tzr.charismatic_yichang.event.LoginEvent;
-import com.amlogic.tzr.charismatic_yichang.event.RefreshEvent;
 import com.gc.materialdesign.views.ButtonFlat;
 import com.gc.materialdesign.views.ProgressBarCircularIndeterminate;
 import com.google.android.gms.common.SignInButton;
@@ -173,8 +172,8 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener{
     public void onClick(View v) {
         switch (v.getId()){
             case R.id.btn_al_register:
-//                startActivity(new Intent(LoginActivity.this, RegisterPhoneActivity.class));
-                startActivity(new Intent(LoginActivity.this, RegisterActivity.class));
+                startActivity(new Intent(LoginActivity.this, RegisterPhoneActivity.class));
+//                startActivity(new Intent(LoginActivity.this, RegisterActivity.class));
                 finish();
                 break;
 

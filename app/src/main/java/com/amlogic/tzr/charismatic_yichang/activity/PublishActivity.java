@@ -21,7 +21,7 @@ import com.amlogic.tzr.charismatic_yichang.Tool.BitmapUtil;
 import com.amlogic.tzr.charismatic_yichang.Tool.KeyBoardUtil;
 import com.amlogic.tzr.charismatic_yichang.bean.Feed;
 import com.amlogic.tzr.charismatic_yichang.bean.User;
-import com.amlogic.tzr.charismatic_yichang.event.RefreshEvent;
+import com.amlogic.tzr.charismatic_yichang.event.LoginEvent;
 import com.squareup.picasso.Callback;
 import com.squareup.picasso.Picasso;
 
@@ -148,7 +148,7 @@ public class PublishActivity extends BaseActivity {
     }
 
     private void publish(BmobFile file) {
-        User user = BmobUser.getCurrentUser(mContext, User.class);
+        final User user = BmobUser.getCurrentUser(mContext, User.class);
 //        Log.e(TAG, " feed publish user=="+user.toString());
         Feed feed = new Feed();
         if (file != null) {
@@ -161,7 +161,7 @@ public class PublishActivity extends BaseActivity {
             @Override
             public void onSuccess() {
                 progressDialog.dismiss();
-                EventBus.getDefault().post(new RefreshEvent(true));
+                EventBus.getDefault().post(new LoginEvent(true,user));
                 Log.e(TAG, " feed publish is onSuccess");
                 finish();
             }
